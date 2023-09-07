@@ -1,8 +1,13 @@
-/**
- * Title: app-routing.module.ts
- * Author: Professor Krasso
- * Date: 8/5/23
- */
+/*
+======================================
+; Title: app-routing.module .ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 07 September 2023
+; Last Updated: 07 September 2023
+; Description: This code supports all routes
+; Sources Used: Bellevue University WEB-450 GitHub Repository
+;=====================================
+*/
 
 // imports statements
 import { NgModule } from '@angular/core';

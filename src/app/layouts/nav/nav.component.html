@@ -9,4 +9,64 @@
 ;=====================================
 -->
 
-<nav></nav>
+<nav class="bg-potter-black ps-3 navbar navbar-expand-sm fixed-top">
+  <a routerLink="/" class="logo"><img src="./assets/logo.png" width="50%"></a>
+
+  <button
+  class="navbar-toggler"
+  type="button"
+  data-bs-toggle="collapse"
+  data-bs-target="#navbarResponsive"
+  aria-controls="navbarResponsive"
+  aria-expanded="false"
+  aria-label="Toggle navigation">
+
+  <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- navbar links-->
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ms-auto p-2">
+      <li class="nav-item">
+        <a routerLink="/home" class="nav-link font-yellow">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/about" class="nav-link font-yellow">About</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/contact" class="nav-link font-yellow">Contact</a>
+      </li>
+
+      <li>
+        <a class="nav-link font-yellow" routerLink="/security/signin">Sign in</a>
+      </li>
+
+      <!--user account-->
+      <li class="nav-item dropdown">
+        <a
+        href="#"
+        class="nav-link pe-3 font-yellow bg-slytherin"
+        id="navbarDropdown"
+        role="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false">
+      <span class="material-icons">person</span>
+    </a>
+
+    <ul class="dropdown-menu dropdown-menu-end bg-black" aria-labelledby="navbarDropdown">
+      <li class="dropdown-item font-yellow">
+        Signed in as
+      </li>
+      <hr />
+      <li>
+        <a routerLink="#" class="dropdown-item font-yellow">Insert Link</a>
+      </li>
+      <li>
+        <a class="dropdown-item font-yellow">Sign Out</a>
+      </li>
+
+    </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

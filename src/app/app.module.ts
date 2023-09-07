@@ -13,6 +13,7 @@
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './layouts/nav/nav.component';
