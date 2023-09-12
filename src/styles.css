@@ -3,7 +3,7 @@
 ; Title: styles.css
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 07 September 2023
+; Last Updated: 12 September 2023
 ; Description: This code supports styling for the entire App
 ; Sources Used: N/A
 ;=====================================
@@ -42,6 +42,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   background-color: white;
 }
 
+/* font colors */
+.font-yellow {
+  color: #FFD800;
+}
+
+.font-black {
+  color: #000000;
+}
 
 /* paddings */
 
