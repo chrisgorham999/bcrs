@@ -18,6 +18,7 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -25,8 +26,9 @@ import { NgModule } from '@angular/core';
     AppComponent,
     HomeComponent,
     BaseLayoutComponent,
+    FooterComponent,
     NavComponent,
-    FooterComponent
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
