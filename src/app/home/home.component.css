@@ -1,0 +1,30 @@
+/*
+======================================
+; Title: home.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 07 September 2023
+; Last Updated: 12 September 2023
+; Description: This code supports styling for the Home Component
+; Sources Used: N/A
+;=====================================
+*/
+
+.landing-padding-left {
+  padding-left: 50px;
+}
+
+.landing-column-padding-left {
+  padding-left: 25px;
+}
+
+a {
+  color: black;
+}
+
+.italics {
+  font-style: italic;
+}
+
+
+
+

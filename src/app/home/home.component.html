@@ -3,20 +3,70 @@
 ; Title: home.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 07 September 2023
+; Last Updated: 12 September 2023
 ; Description: This code supports the HTML functionality for the Home Component
 ; Sources Used: Bellevue University WEB-450 GitHub
 ;=====================================
 -->
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col">
-      <h1>Home Component Works! <span class="material-icons">thumb_up</span></h1>
+<div class="container-fluid pt-2 bg-potter-yellow">
+
+  <div class="row p-3 m-3">
+
+    <!--First Column: Notes-->
+    <div class="col-sm-4 landing-padding-left">
+      <h2 class="bg-black font-yellow rounded padding-left">Notes & Reminders <span class="material-icons">description</span></h2>
+      <br>
+      <h5>
+        <ul>
+          <li>If the toner alarm on the printer goes off, please replace it! This keeps our invoices looking fresh for our customers!</li><br>
+          <li>Please label your items in the fridge. The fridge will be purged of all non-labeled materials every Friday after close.</li><br>
+          <li>We will be closed on Friday, November 10th in observance of Veteran's Day.</li><br>
+          <li>If you haven't filled out your direct deposit form, please do so soon! Paper checks will end on January 1, 2024.</li><br>
+          <li>GorGen, the developers of this app, will be in the store to conduct training on Friday, October 13, on the new invoice creation system and the employee profiles.</li>
+        </ul>
+      </h5>
+      <br><br>
     </div>
+
+    <!--Second Column: Company News-->
+    <div class="col-sm-4 landing-column-padding-left">
+      <h2 class="bg-black font-yellow rounded padding-left">Company News <span class="material-icons">newspaper</span></h2>
+      <br>
+        <div class="text-center">
+          <h4>
+            We were featured in the Bellevue Observer! Check out the article here:
+          </h4><br>
+            <div class="italics">
+              <a href="https://www.bellevueobserver.com/article/001" target="_blank">Article: Local Computer Company Expands Services Offered</a><br><br>
+              <a href="https://www.bellevueobserver.com/article/001" target="_blank"><img class="rounded" src="./assets/company.png" width="30%" alt="a photo of people in a company setting holding each other's hands"></a><br>
+              <a href="https://www.pexels.com/photo/photo-of-people-holding-each-other-s-hands-3184433" target="_blank">Source: Pexels</a><br><br><br>
+            </div>
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+    <!--Third Column: Employee News-->
+    <div class="col-sm-4 landing-column-padding-left">
+      <h2 class="bg-black font-yellow rounded padding-left">Employee News <span class="material-icons">feed</span></h2><br>
+      <h4>Congrats to our newest Employee, Chris, and his wife Megan on the birth of their son, Gordon!</h4>Mom and baby are doing well. Please sign the card in the break room for them by the end of the week!<br>
+      <div class="text-center">
+        <img class="rounded" src="./assets/newborn.png" alt="picture of a newborn baby" width="30%"><br>
+      </div>
+      <hr><br>
+      <h4>Congrats to Amy for graduating from Bellevue University with a Bachelor's Degree in Web Development!<br></h4><br>
+      Please sign the card in the break room for them by the end of the week!<br>
+      <div class="text-center italics"><br>
+        <img class="rounded" src="./assets/graduate.png" alt="picture of a woman holding a graduation certification wearing a cap and gown" width="30%"><br>
+        <a href="https://www.pexels.com/photo/woman-in-academic-dress-and-academic-cap-8106673/" target="_blank">Source: Pexels</a>
+      </div>
+      <hr>
   </div>
 
-  <a routerLink="/security">Test Security Module</a>
 </div>
-
-

@@ -1,1 +1,188 @@
-/* You can add global styles to this file, and also import other style files */
+/*
+======================================
+; Title: styles.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 07 September 2023
+; Last Updated: 12 September 2023
+; Description: This code supports styling for the entire App
+; Sources Used: N/A
+;=====================================
+*/
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* various backgrounds */
+
+.bg-potter-black {
+  background-color: #000000;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+.bg-potter-orange {
+  background-color: #de9245;
+}
+
+.bg-grey {
+  background-color: #5d5d5d;
+}
+
+.bg-lighter-grey {
+  background-color: grey;
+}
+
+.bg-yellow {
+  background-color: yellow;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+/* font colors */
+.font-yellow {
+  color: #FFD800;
+}
+
+.font-black {
+  color: #000000;
+}
+
+/* paddings */
+
+.padding-right {
+  padding-right: 60px;
+}
+
+.padding-left {
+  padding-left: 20px;
+}
+
+.medium-padding-left {
+  padding-left: 100px;
+}
+
+.big-padding-left {
+  padding-left: 200px;
+}
+
+.padding-top {
+  padding-top: 10px;
+}
+
+.padding-standard {
+  padding: 10px;
+}
+
+.edit-padding-left {
+  padding-left: 225px;
+}
+
+
+/* floats */
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+
+/* other stuff */
+
+.center {
+  text-align: center;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.logo {
+  margin-top: 5px;
+}
+
+.main-container {
+  padding-top: 25px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.msg-error {
+  margin: 10px 0;
+  padding: 12px;
+  color: #D8000C;
+  background-color: #FFD2D2;
+}
+
+.pointer {
+  padding: 1px;
+}
+
+.pointer:hover {
+  cursor: pointer;
+}
+
+.left-side {
+  width: 50%;
+}
+
+.button-width {
+  width: 35%;
+}
+
+.comments {
+  height: 100px;
+}
+
+.main-font {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 28px;
+}
+
+.text-underline-hover {
+  text-decoration: none;
+}
+
+.text-underline-hover:hover {
+  text-decoration: underline;
+}
+
+.full-height {
+  height: 100vh !important;
+}
+
+a {
+  color: black;
+}
+
+link:hover {
+  cursor: pointer;
+}
+
+/* Mobile view ports */
+@media only screen and (max-device-width: 576px) {
+  .dropdown-menu {
+    background-color: #212529 !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+  }
+
+.dropdown-item {
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+  background-color: #212529 !important;
+  color: white;
+}
+
+.material-icons {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+}
