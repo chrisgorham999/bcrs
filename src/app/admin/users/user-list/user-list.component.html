@@ -1,3 +1,14 @@
+<!--
+======================================
+; Title: user-list.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 14 September 2023
+; Last Updated: 14 September 2023
+; Description: This code supports the HTML functionality for User List Component
+; Sources Used: Bellevue University WEB-450 GitHub
+;=====================================
+-->
+
 <div class="container-fluid pt-2" style="min-height: 600px">
   <h1 class="text-center">Welcome to the User List Page!</h1>
 
@@ -36,7 +47,7 @@
               <th>Functions</th>
             </tr>
           </thead>
-          <tbody *ngFor="let employee of employees">
+          <tbody *ngFor="let user of users">
             <tr>
               <td>{{ user.firstName }}</td>
               <td>{{ user.lastName }}</td>

@@ -1,9 +1,22 @@
-import { Component } from '@angular/core';
-import { User } from '../user';
-import { UserViewModel } from '../user-view-model';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+/*
+======================================
+; Title: user-view.component.ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 14 September 2023
+; Last Updated: 14 September 2023
+; Description: This code supports the View User Component
+; Sources Used: Bellevue University WEB-450 GitHub Repository
+;=====================================
+*/
+
+// imports
 import { ActivatedRoute, Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../user';
 import { UserService } from '../user.service';
+import { UserViewModel } from '../user-view-model';
+
 
 @Component({
   selector: 'app-user-view',
@@ -14,6 +27,7 @@ export class UserViewComponent {
   email: string // define the email variable
   user: User // define the user variable
 
+  // form validators
   userForm: FormGroup = this.fb.group({
     firstName: [null, Validators.compose([Validators.required])],
     lastName: [null, Validators.compose([Validators.required])],
@@ -43,6 +57,7 @@ export class UserViewComponent {
           console.error(err)
         },
         complete: () => {
+          // populate form with values from the db
           this.userForm.controls['firstName'].setValue(this.user.firstName)
           this.userForm.controls['lastName'].setValue(this.user.lastName)
           this.userForm.controls['role'].setValue(this.user.role)

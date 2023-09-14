@@ -4,7 +4,7 @@
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
 ; Last Updated: 14 September 2023
-; Description: This code supports connecting to the server
+; Description: This code supports variables for connecting to the Mongo database
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
 */
