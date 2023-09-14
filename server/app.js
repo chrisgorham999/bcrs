@@ -51,6 +51,8 @@ const options = {
 
 // more swagger: wire openapiSpecification to app variable
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+// Do we need this code????
 app.use("/api", userRoute);
 
 // error handler for 404 errors

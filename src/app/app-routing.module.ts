@@ -3,7 +3,7 @@
 ; Title: app-routing.module .ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 12 September 2023
+; Last Updated: 14 September 2023
 ; Description: This code supports all routes
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -15,6 +15,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { authGuard } from './shared/auth.guard';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -36,6 +37,11 @@ const routes: Routes = [
         path: 'not-found',
         component: NotFoundComponent,
         title: 'Error: Page Not Found'
+      },
+      {
+        path: 'admin',
+        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+        canActivate: [authGuard]
       }
     ]
   },

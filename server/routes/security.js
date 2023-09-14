@@ -47,11 +47,11 @@ router.post('/signin', (req, res, next) => {
     }
 
     mongo(async db => {
-      const employee = await db.collection('employees').findOne(
+      const user = await db.collection('users').findOne(
         { email: signin.email }
       )
 
-      if (!employee) {
+      if (!user) {
         const err = new Error('Unauthorized')
         err.status = 401
         err.message = 'Unauthorized: The email or password is invalid.'
@@ -60,7 +60,7 @@ router.post('/signin', (req, res, next) => {
         return
       }
 
-      let passwordIsValid = bcrypt.compareSync(signin.password, employee.password)
+      let passwordIsValid = bcrypt.compareSync(signin.password, user.password)
 
       if (!passwordIsValid) {
         const err = new Error('Unauthorized')
@@ -71,7 +71,7 @@ router.post('/signin', (req, res, next) => {
         return
       }
 
-      res.send(employee)
+      res.send(user)
     }, next)
   } catch (err) {
     console.log('err')
