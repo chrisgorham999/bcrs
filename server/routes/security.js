@@ -65,8 +65,8 @@ router.post('/signin', (req, res, next) => {
       if (!passwordIsValid) {
         const err = new Error('Unauthorized')
         err.status = 401
-        err.message = "Unauthorized: The email or password is invalid."
-        console.log("Unauthorized: The email or password is invalid.", err)
+        err.message = 'Unauthorized: The email or password is invalid.'
+        console.log('Unauthorized: The email or password is invalid.', err)
         next(err)
         return
       }

@@ -30,14 +30,7 @@
       <li class="nav-item">
         <a routerLink="/home" class="nav-link font-yellow">Home</a>
       </li>
-      <li class="nav-item">
-        <a routerLink="/about" class="nav-link font-yellow">About</a>
-      </li>
-      <li class="nav-item">
-        <a routerLink="/contact" class="nav-link font-yellow">Contact</a>
-      </li>
-
-      <li>
+      <li *ngIf="!isSignedIn">
         <a class="nav-link font-yellow" routerLink="/security/signin">Sign in</a>
       </li>
 
@@ -54,15 +47,15 @@
     </a>
 
     <ul class="dropdown-menu dropdown-menu-end bg-black" aria-labelledby="navbarDropdown">
-      <li class="dropdown-item font-yellow">
-        Signed in as
+      <li class="dropdown-item font-yellow custom-drop">
+        Signed in as {{ sessionUser.fullName }}
       </li>
-      <hr />
-      <li>
-        <a routerLink="#" class="dropdown-item font-yellow">Insert Link</a>
+      <hr class="font-yellow">
+      <li *ngIf="sessionUser.role === 'admin'">
+        <a routerLink="/admin/users" class="dropdown-item font-yellow custom-drop">Employees</a>
       </li>
       <li>
-        <a class="dropdown-item font-yellow">Sign Out</a>
+        <a (click)="signout()" class="dropdown-item font-yellow custom-drop">Sign Out</a>
       </li>
 
     </ul>
