@@ -1,8 +1,21 @@
+/*
+======================================
+; Title: user-new.component.ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 14 September 2023
+; Last Updated: 14 September 2023
+; Description: This code supports the New User Component
+; Sources Used: Bellevue University WEB-450 GitHub Repository
+;=====================================
+*/
+
+// imports
 import { Component } from '@angular/core';
-import { UserService } from '../user.service';
-import { User } from '../user';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
+import { User } from '../user';
+
 
 @Component({
   selector: 'app-user-new',
@@ -11,8 +24,10 @@ import { Router } from '@angular/router';
 })
 export class UserNewComponent {
 
+  // establishes error message as a string
   errorMessage: string;
 
+  // form validators
   userForm: FormGroup = this.fb.group({
     firstName: [null, Validators.compose([Validators.required])],
     lastName: [null, Validators.compose([Validators.required])],
@@ -22,11 +37,16 @@ export class UserNewComponent {
   })
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
+
+    // set error message to empty string
     this.errorMessage = '';
 
   }
+
+  // createUser function
   createUser() {
     const user: User = {
+      // pull values from the form
       firstName: this.userForm.controls['firstName'].value,
       lastName: this.userForm.controls['lastName'].value,
       email: this.userForm.controls['email'].value,
@@ -36,9 +56,10 @@ export class UserNewComponent {
 
   this.userService.createUser(user).subscribe({
     next: (res) => {
-      console.log(res)
+      console.log(res) // for troubleshooting purposes
       this.router.navigate(['/admin/users'])
     },
+    // error handling
     error: (err) => {
       if (err.error.message) {
         this.errorMessage = err.error.message

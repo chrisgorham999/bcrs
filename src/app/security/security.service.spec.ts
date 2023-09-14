@@ -10,8 +10,8 @@
 */
 
 // imports
-import { TestBed } from '@angular/core/testing';
 import { SecurityService } from './security.service';
+import { TestBed } from '@angular/core/testing';
 
 describe('SecurityService', () => {
   let service: SecurityService;

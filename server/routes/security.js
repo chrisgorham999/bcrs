@@ -4,7 +4,7 @@
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
 ; Last Updated: 14 September 2023
-; Description: This code supports the Security Route
+; Description: This code supports the Security Route for Sign In
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
 */
