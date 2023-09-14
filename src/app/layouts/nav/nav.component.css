@@ -3,7 +3,7 @@
 ; Title: nav.component.css
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 07 September 2023
+; Last Updated: 14 September 2023
 ; Description: This code supports styling for the Nav Component
 ; Sources Used: N/A
 ;=====================================
@@ -19,4 +19,8 @@
 .custom-drop:hover {
   background-color: #FFD800;
   color: black;
+}
+
+.custom-drop-link {
+  cursor: pointer;
 }
