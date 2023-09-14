@@ -17,14 +17,16 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class SecurityService {
 
-//  TODO: add back in security service;
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-    // still testing
-  // function that returns a user by email address
- // findUserById(email: string) {
-   //  return this.http.get('/api/users/' + email)
-  // }
+  signin(email: string, password: string) {
+    return this.http.post('/api/security/signin', {
+      email,
+      password
+    })
+  }
+
 }

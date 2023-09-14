@@ -10,22 +10,11 @@
 */
 
 // imports
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { SecurityService } from '../security.service';
-
-
-export interface SessionUser {
-
-  // define variables
-  email: string;
-  firstName: string;
-  lastName: string;
-}
-
+import { SecurityService } from './../security.service';
 
 @Component({
   selector: 'app-signin',
@@ -33,51 +22,66 @@ export interface SessionUser {
   styleUrls: ['./signin.component.css']
 })
 export class SigninComponent {
-    // define variables
-    errorMessage: string
-    sessionUser: SessionUser
-    isLoading: boolean = false
+  errorMessage: string
+  isLoading: boolean = false
 
-      // form validators - must be a number and is a required entry
   signinForm = this.fb.group({
-    empId: [null, Validators.compose([Validators.required, Validators.pattern('^[0-9]*$')])]
+    email: [null, Validators.compose([Validators.required, Validators.email])],
+    password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])]
   })
 
-  constructor(private fb: FormBuilder, private router: Router, private cookieService: CookieService, private secService: SecurityService, private route: ActivatedRoute) {
-    this.sessionUser = {} as SessionUser
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private cookieService: CookieService,
+    private secService: SecurityService,
+    private route: ActivatedRoute
+  ) {
     this.errorMessage = ''
   }
 
-  // the sign in function
- // signin() {
- //   this.isLoading = true;
-  //  const empId = this.signinForm.controls['empId'].value
+  signin() {
+    this.isLoading = true;
 
-   // if (!empId || isNaN(parseInt(empId, 10))) {
-     // this.errorMessage = 'The employee ID you entered is invalid, please try again'
-     // this.isLoading = false
-     // return
+    console.log('Sign in Form:', this.signinForm.value)
+
+    let email = this.signinForm.controls['email'].value
+    let password = this.signinForm.controls['password'].value
+
+    if (!email || !password) {
+      this.errorMessage = 'Please provide an email address and password'
+      this.isLoading = false;
+      return
     }
-    // finds the employee ID number in the database
- //   this.secService.findUserById(empId).subscribe({
- //     next: (employee: any) => {
- //       this.sessionUser = employee
- //       this.cookieService.set('session_user', empId, 1)
- //       this.cookieService.set('session_name', `${employee.firstName} $   {employee.lastName}`, 1)
- //       const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/'
 
-   //     this.isLoading = false;
-     //   this.router.navigate([returnUrl])
-  //    },
-      // error handling
-    //  error: (err) => {
-     //   this.isLoading = false
-     //   if (err.error.message) {
-     //     this.errorMessage = err.error.message
-    //      return
-   //     }
- //     }
- //   })
-//  }
+    this.secService.signin(email, password).subscribe({
+      next: (user: any) => {
+        console.log('User:', user)
 
-// }
+        const sessionCookie = {
+          fullName: `${user.firstName} ${user.lastName}`,
+          role: user.role
+        }
+
+        this.cookieService.set('session_user', JSON.stringify(sessionCookie), 1)
+
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/'
+
+        this.isLoading = false
+
+        this.router.navigate([returnUrl])
+      },
+      error: (err) => {
+        this.isLoading = false
+
+        console.log('err', err)
+
+        if (err.error.status === 401) {
+          this.errorMessage = err.message
+          return
+        }
+      }
+    })
+
+  }
+}
