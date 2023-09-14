@@ -1,0 +1,146 @@
+[
+  {
+    "email": "thedude@bcrs.com",
+    "password": "whiteRussian98",
+    "firstName": "Jeffrey ",
+    "lastName": "Lebowski",
+    "phoneNumber": "213-618-5216",
+    "address": "15436 Los Angeles Street, Los Angeles, California",
+    "isDisabled": false,
+    "role": "admin",
+    "selectedSecurityQuestions": [
+      {
+        "question": "What is your favorite color?",
+        "answer": "mauve"
+      },
+      {
+        "question": "What is your favorite drink?",
+        "answer": "white russian"
+      },
+      {
+        "question": "What is your favorite car?",
+        "answer": "1973 Ford Gran Torino"
+      }
+    ],
+    "invoice": [
+      {
+        "email": "jeffbridges@email.com",
+        "fullName": "Jeff Bridges",
+        "partsAmount": 0,
+        "laborAmount": 0,
+        "lineItemTotal": 0,
+        "invoiceTotal": 269.97,
+        "orderDate": "9/12/23",
+        "lineItems": [
+          {
+            "name": "Password Reset",
+            "price": 39.99
+          },
+          {
+            "name": "RAM Upgrade",
+            "price": 129.99
+          },
+          {
+            "name": "Spyware Removal",
+            "price": 99.99
+          }
+        ]
+      },
+      {
+        "email": "jeffbridges@email.com",
+        "fullName": "Jeff Bridges",
+        "partsAmount": 0,
+        "laborAmount": 0,
+        "lineItemTotal": 0,
+        "invoiceTotal": 269.97,
+        "orderDate": "9/12/23",
+        "lineItems": [
+          {
+            "name": "Password Reset",
+            "price": 39.99
+          },
+          {
+            "name": "RAM Upgrade",
+            "price": 129.99
+          },
+          {
+            "name": "Spyware Removal",
+            "price": 99.99
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "email": "bandit@bcrs.com",
+    "password": "coorsBeer77",
+    "firstName": "Bo ",
+    "lastName": "Bandit",
+    "phoneNumber": "213-618-5216",
+    "address": "165 Firebird Ln, Texarkana, Texas",
+    "isDisabled": false,
+    "role": "standard",
+    "selectedSecurityQuestions": [
+      {
+        "question": "What is your favorite color?",
+        "answer": "black"
+      },
+      {
+        "question": "What is your favorite drink?",
+        "answer": "coors light"
+      },
+      {
+        "question": "What is your favorite car?",
+        "answer": "1977 pontiac firebird trans am"
+      }
+    ],
+    "invoice": [
+      {
+        "email": "reynolds@email.com",
+        "fullName": "Burt Reynolds",
+        "partsAmount": 0,
+        "laborAmount": 0,
+        "lineItemTotal": 0,
+        "invoiceTotal": 269.97,
+        "orderDate": "9/12/23",
+        "lineItems": [
+          {
+            "name": "Password Reset",
+            "price": 39.99
+          },
+          {
+            "name": "RAM Upgrade",
+            "price": 129.99
+          },
+          {
+            "name": "Spyware Removal",
+            "price": 99.99
+          }
+        ]
+      },
+      {
+        "email": "reynolds@email.com",
+        "fullName": "Burt Reynolds",
+        "partsAmount": 0,
+        "laborAmount": 0,
+        "lineItemTotal": 0,
+        "invoiceTotal": 269.97,
+        "orderDate": "9/12/23",
+        "lineItems": [
+          {
+            "name": "Password Reset",
+            "price": 39.99
+          },
+          {
+            "name": "RAM Upgrade",
+            "price": 129.99
+          },
+          {
+            "name": "Spyware Removal",
+            "price": 99.99
+          }
+        ]
+      }
+    ]
+  }
+]
