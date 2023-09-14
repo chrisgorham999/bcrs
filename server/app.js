@@ -1,9 +1,14 @@
-/**
- * Title: app.js
- * Author: Professor Krasso
- * Modified by: Shane Hingtgen
- * Date: 9/12/2023
- */
+/*
+======================================
+; Title: app.js
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 07 September 2023
+; Last Updated: 14 September 2023
+; Description: This code supports the server, imports, and routing
+; Sources Used: Bellevue University WEB-450 GitHub Repository
+;=====================================
+*/
+
 "use strict";
 
 // Require statements
@@ -11,6 +16,7 @@ const express = require("express");
 const createServer = require("http-errors");
 const path = require("path");
 const userRoute = require("./routes/user");
+const securityRoute = require("./routes/security");
 
 // swagger
 const swaggerUi = require("swagger-ui-express");
@@ -29,6 +35,7 @@ app.use("/", express.static(path.join(__dirname, "../dist/bcrs")));
 
 // our two routes from our routes folder
 app.use("/api/users", userRoute);
+app.use("/api/security", securityRoute);
 
 // more swagger: openapi specification
 const options = {

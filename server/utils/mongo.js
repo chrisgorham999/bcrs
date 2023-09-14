@@ -1,8 +1,13 @@
-/**
- * Title: mongo.js
- * Author: Shane Hingtgen
- * Date: 9/12/23
- */
+/*
+======================================
+; Title: mongo.js
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 07 September 2023
+; Last Updated: 14 September 2023
+; Description: This code supports connecting to the server and server functions
+; Sources Used: Bellevue University WEB-450 GitHub Repository
+;=====================================
+*/
 
 "use strict";
 const { MongoClient } = require("mongodb");
