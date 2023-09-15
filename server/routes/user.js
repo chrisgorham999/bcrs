@@ -78,15 +78,30 @@ const updateUserSchema = {
     lastName: {
       type: "string",
     },
-    password: { type: "string" },
-    address: { type: "string" },
-    phoneNumber: { type: "string" },
-    isDisabled: { type: "boolean" },
+    password: { 
+      type: "string" 
+    },
+    phoneNumber: {
+      type: "string",
+    },
+    address: {
+      type: "string",
+    },
+    isDisabled: {
+      type: "boolean",
+    },
     role: {
       type: "string",
     },
   },
-  required: ["firstName", "lastName", "role"],
+  required: [
+    "firstName",
+    "lastName",
+    "phoneNumber",
+    "address",
+    "isDisabled",
+    "role",
+  ],
   additionalProperties: false,
 };
 
@@ -123,7 +138,7 @@ router.get("/", (req, res, next) => {
       const users = await db
         .collection("users")
         .find(
-          {},
+          { isDisabled: false },
           {
             projection: {
               email: 1,
