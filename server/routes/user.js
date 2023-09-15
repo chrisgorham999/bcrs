@@ -78,6 +78,10 @@ const updateUserSchema = {
     lastName: {
       type: "string",
     },
+    password: { type: "string" },
+    address: { type: "string" },
+    phoneNumber: { type: "string" },
+    isDisabled: { type: "boolean" },
     role: {
       type: "string",
     },
@@ -172,6 +176,7 @@ router.get("/", (req, res, next) => {
 
 router.get("/:email", (req, res, next) => {
   try {
+    console.log("email", req.params.email);
     let { email } = req.params; //get the empId from the req.params object
     // email = parseInt(email, 10); // try to determine if email is numerical value
 
@@ -204,7 +209,7 @@ router.get("/:email", (req, res, next) => {
 
         //another early return method
         if (!user) {
-          // if empId does not exist
+          // if user does not exist
           const err = new Error("Unable to find users with email ", email);
           err.status = 404;
           console.log("err", err);
@@ -252,7 +257,7 @@ router.get("/:email", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   try {
-    const { user } = req.body; // get the user object from the request body
+    const user = req.body; // get the user object from the request body
     console.log("user", user);
 
     const validator = ajv.compile(userSchema); // compile the schema
@@ -265,13 +270,14 @@ router.post("/", (req, res, next) => {
       next(err);
       return;
     }
+    0;
 
     user.password = bcrypt.hashSync(user.password, saltRounds); // hash the password
 
     mongo(async (db) => {
       const result = await db.collection("users").insertOne(user); // insert the user object into the employees collection
       console.log("result", result);
-      res.json({ id: result.insertedId });
+      res.status(201).json({ id: result.insertedId });
     }, next);
   } catch (err) {
     console.log("err", err);
@@ -282,10 +288,10 @@ router.post("/", (req, res, next) => {
 // updateUser
 router.put("/:email", (req, res, next) => {
   try {
-    let { email } = req.params;
+    let email = req.params;
     // empId = parseInt(empId, 10);
 
-    // if (isNaN(empId)) {
+    // if (isNaN(empId)) {npm
     //   const err = new Error("input must be a number");
     //   err.status = 400;
     //   console.log("err", err);
@@ -293,10 +299,11 @@ router.put("/:email", (req, res, next) => {
     //   return;
     // }
 
-    const { user } = req.body;
+    const user = req.body;
 
     const validator = ajv.compile(updateUserSchema);
-    const valid = validator(email);
+    const valid = validator(user);
+    console.log(user);
 
     if (!valid) {
       const err = new Error("Bad Request");
