@@ -69,22 +69,22 @@ const userSchema = {
   additionalProperties: false,
 };
 
-/*const updateUserSchema = {
-    type: "object",
-    properties: {
-      firstName: {
-        type: "string",
-      },
-      lastName: {
-        type: "string",
-      },
-      role: {
-        type: "string",
-      },
+const updateUserSchema = {
+  type: "object",
+  properties: {
+    firstName: {
+      type: "string",
     },
-    required: ["firstName", "lastName", "role"],
-    additionalProperties: false,
-  };*/
+    lastName: {
+      type: "string",
+    },
+    role: {
+      type: "string",
+    },
+  },
+  required: ["firstName", "lastName", "role"],
+  additionalProperties: false,
+};
 
 /**
  * findAllUsers
@@ -273,6 +273,59 @@ router.post("/", (req, res, next) => {
       console.log("result", result);
       res.json({ id: result.insertedId });
     }, next);
+  } catch (err) {
+    console.log("err", err);
+    next(err);
+  }
+});
+
+// updateUser
+router.put("/:email", (req, res, next) => {
+  try {
+    let { email } = req.params;
+    // empId = parseInt(empId, 10);
+
+    // if (isNaN(empId)) {
+    //   const err = new Error("input must be a number");
+    //   err.status = 400;
+    //   console.log("err", err);
+    //   next(err);
+    //   return;
+    // }
+
+    const { user } = req.body;
+
+    const validator = ajv.compile(updateUserSchema);
+    const valid = validator(email);
+
+    if (!valid) {
+      const err = new Error("Bad Request");
+      err.status = 400;
+      err.errors = validator.errors;
+      console.log("updatedUserSchema validation failed", err);
+      next(err);
+      return;
+    }
+
+    mongo(async (db) => {
+      const result = await db.collection("user").updateOne(
+        { email },
+        {
+          $set: {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phoneNumber,
+            address: user.address,
+            isDisabled: user.isDisabled,
+            role: user.role,
+          },
+        }
+      );
+
+      console.log("update user result: ", result);
+
+      res.status(204).send();
+    });
   } catch (err) {
     console.log("err", err);
     next(err);
