@@ -16,4 +16,8 @@ export interface User {
   email: string
   password: string
   role: string
+  phoneNumber: string
+  address: string
+  isDisabled: boolean
+  selectedSecurityQuestions: []
 }

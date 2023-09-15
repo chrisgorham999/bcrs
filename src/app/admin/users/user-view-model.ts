@@ -14,4 +14,8 @@ export interface UserViewModel {
   firstName: string
   lastName: string
   role: string
+  phoneNumber: string
+  address: string
+  isDisabled: boolean
+  selectedSecurityQuestions: []
 }

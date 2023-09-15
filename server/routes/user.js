@@ -45,15 +45,15 @@ const userSchema = {
     address: {
       type: "string",
     },
-    isDisabled: {
-      type: "boolean",
-    },
     role: {
       type: "string",
     },
-    selectedSecurityQuestions: {
-      type: "array",
+    isDisabled: {
+      type: "boolean"
     },
+    selectedSecurityQuestions: {
+      type: "array"
+    }
   },
   required: [
     "email",
@@ -63,8 +63,8 @@ const userSchema = {
     "phoneNumber",
     "address",
     "isDisabled",
-    "role",
     "selectedSecurityQuestions",
+    "role",
   ],
   additionalProperties: false,
 };
@@ -78,8 +78,8 @@ const updateUserSchema = {
     lastName: {
       type: "string",
     },
-    password: { 
-      type: "string" 
+    password: {
+      type: "string"
     },
     phoneNumber: {
       type: "string",
@@ -272,7 +272,7 @@ router.get("/:email", (req, res, next) => {
 
 router.post("/", (req, res, next) => {
   try {
-    const user = req.body; // get the user object from the request body
+    const { user } = req.body; // get the user object from the request body
     console.log("user", user);
 
     const validator = ajv.compile(userSchema); // compile the schema
