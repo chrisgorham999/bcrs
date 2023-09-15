@@ -91,7 +91,14 @@ const updateUserSchema = {
       type: "string",
     },
   },
-  required: ["firstName", "lastName", "role"],
+  required: [
+    "firstName",
+    "lastName",
+    "phoneNumber",
+    "address",
+    "isDisabled",
+    "role",
+  ],
   additionalProperties: false,
 };
 
