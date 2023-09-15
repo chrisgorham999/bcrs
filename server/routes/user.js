@@ -119,7 +119,7 @@ router.get("/", (req, res, next) => {
       const users = await db
         .collection("users")
         .find(
-          {},
+          { isDisabled: false },
           {
             projection: {
               email: 1,
