@@ -45,15 +45,15 @@ const userSchema = {
     address: {
       type: "string",
     },
-    isDisabled: {
-      type: "boolean",
-    },
     role: {
       type: "string",
     },
-    selectedSecurityQuestions: {
-      type: "array",
+    isDisabled: {
+      type: "boolean"
     },
+    selectedSecurityQuestions: {
+      type: "array"
+    }
   },
   required: [
     "email",
@@ -63,28 +63,47 @@ const userSchema = {
     "phoneNumber",
     "address",
     "isDisabled",
-    "role",
     "selectedSecurityQuestions",
+    "role",
   ],
   additionalProperties: false,
 };
 
-/*const updateUserSchema = {
-    type: "object",
-    properties: {
-      firstName: {
-        type: "string",
-      },
-      lastName: {
-        type: "string",
-      },
-      role: {
-        type: "string",
-      },
+const updateUserSchema = {
+  type: "object",
+  properties: {
+    firstName: {
+      type: "string",
     },
-    required: ["firstName", "lastName", "role"],
-    additionalProperties: false,
-  };*/
+    lastName: {
+      type: "string",
+    },
+    password: {
+      type: "string"
+    },
+    phoneNumber: {
+      type: "string",
+    },
+    address: {
+      type: "string",
+    },
+    isDisabled: {
+      type: "boolean",
+    },
+    role: {
+      type: "string",
+    },
+  },
+  required: [
+    "firstName",
+    "lastName",
+    "phoneNumber",
+    "address",
+    "isDisabled",
+    "role",
+  ],
+  additionalProperties: false,
+};
 
 /**
  * findAllUsers
@@ -119,7 +138,7 @@ router.get("/", (req, res, next) => {
       const users = await db
         .collection("users")
         .find(
-          {},
+          { isDisabled: false },
           {
             projection: {
               email: 1,
@@ -172,6 +191,7 @@ router.get("/", (req, res, next) => {
 
 router.get("/:email", (req, res, next) => {
   try {
+    console.log("email", req.params.email);
     let { email } = req.params; //get the empId from the req.params object
     // email = parseInt(email, 10); // try to determine if email is numerical value
 
@@ -204,7 +224,7 @@ router.get("/:email", (req, res, next) => {
 
         //another early return method
         if (!user) {
-          // if empId does not exist
+          // if user does not exist
           const err = new Error("Unable to find users with email ", email);
           err.status = 404;
           console.log("err", err);
@@ -265,14 +285,69 @@ router.post("/", (req, res, next) => {
       next(err);
       return;
     }
+    0;
 
     user.password = bcrypt.hashSync(user.password, saltRounds); // hash the password
 
     mongo(async (db) => {
       const result = await db.collection("users").insertOne(user); // insert the user object into the employees collection
       console.log("result", result);
-      res.json({ id: result.insertedId });
+      res.status(201).json({ id: result.insertedId });
     }, next);
+  } catch (err) {
+    console.log("err", err);
+    next(err);
+  }
+});
+
+// updateUser
+router.put("/:email", (req, res, next) => {
+  try {
+    let email = req.params;
+    // empId = parseInt(empId, 10);
+
+    // if (isNaN(empId)) {npm
+    //   const err = new Error("input must be a number");
+    //   err.status = 400;
+    //   console.log("err", err);
+    //   next(err);
+    //   return;
+    // }
+
+    const user = req.body;
+
+    const validator = ajv.compile(updateUserSchema);
+    const valid = validator(user);
+    console.log(user);
+
+    if (!valid) {
+      const err = new Error("Bad Request");
+      err.status = 400;
+      err.errors = validator.errors;
+      console.log("updatedUserSchema validation failed", err);
+      next(err);
+      return;
+    }
+
+    mongo(async (db) => {
+      const result = await db.collection("user").updateOne(
+        { email },
+        {
+          $set: {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phoneNumber,
+            address: user.address,
+            isDisabled: user.isDisabled,
+            role: user.role,
+          },
+        }
+      );
+
+      console.log("update user result: ", result);
+
+      res.status(204).send();
+    });
   } catch (err) {
     console.log("err", err);
     next(err);

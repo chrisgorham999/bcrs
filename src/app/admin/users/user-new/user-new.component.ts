@@ -3,7 +3,7 @@
 ; Title: user-new.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 15 September 2023
 ; Description: This code supports the New User Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -13,8 +13,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
 import { User } from '../user';
+import { UserService } from '../user.service';
+
 
 
 @Component({
@@ -29,11 +30,13 @@ export class UserNewComponent {
 
   // form validators
   userForm: FormGroup = this.fb.group({
-    firstName: [null, Validators.compose([Validators.required])],
-    lastName: [null, Validators.compose([Validators.required])],
-    email: [null, Validators.compose([Validators.required, Validators.email])],
-    password: [null, Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])],
-    role: [null, Validators.compose([Validators.required])]
+    firstName: ['', Validators.compose([Validators.required])],
+    lastName: ['', Validators.compose([Validators.required])],
+    email: ['', Validators.compose([Validators.required, Validators.email])],
+    password: ['', Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])],
+    address: ['', Validators.compose([Validators.required])],
+    role: ['', Validators.compose([Validators.required])],
+    phoneNumber: ['', Validators.compose([Validators.required])]
   })
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
@@ -47,11 +50,17 @@ export class UserNewComponent {
   createUser() {
     const user: User = {
       // pull values from the form
-      firstName: this.userForm.controls['firstName'].value,
-      lastName: this.userForm.controls['lastName'].value,
       email: this.userForm.controls['email'].value,
       password: this.userForm.controls['password'].value,
-      role: this.userForm.controls['role'].value
+      firstName: this.userForm.controls['firstName'].value,
+      lastName: this.userForm.controls['lastName'].value,
+      phoneNumber: this.userForm.controls['phoneNumber'].value,
+      address: this.userForm.controls['address'].value,
+      role: this.userForm.controls['role'].value,
+      // set to false because we're creating a user, we don't want it disabled and the admin shouldn't have to tell us that, it is implied
+      isDisabled: false,
+      // add in the functionality for this later
+      selectedSecurityQuestions: []
     }
 
   this.userService.createUser(user).subscribe({

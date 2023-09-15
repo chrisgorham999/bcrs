@@ -56,6 +56,102 @@
             "description": "Server Error"
           }
         }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create a new user",
+        "description": "Creates a new user.",
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "isDisabled": {
+                    "type": "boolean"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "selectedSecurityQuestions": {
+                    "type": "array",
+                    "items": {
+                      "properties": {
+                        "question1": {
+                          "_id": {
+                            "type": "string"
+                          }
+                        },
+                        "answer1": {
+                          "type": "string"
+                        },
+                        "question2": {
+                          "_id": {
+                            "type": "string"
+                          }
+                        },
+                        "answer2": {
+                          "type": "string"
+                        },
+                        "question3": {
+                          "_id": {
+                            "type": "string"
+                          }
+                        },
+                        "answer3": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "firstName",
+                  "lastName",
+                  "phoneNumber",
+                  "address",
+                  "isDisabled",
+                  "role",
+                  "selectedSecurityQuestions"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          }
+        }
       }
     },
     "/users/{email}": {
@@ -105,6 +201,143 @@
             "description": "Server Error"
           }
         }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "Updates a user",
+        "description": "Updates a user",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "type": "string"
+                  },
+                  "lastName": {
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "type": "string"
+                  },
+                  "address": {
+                    "type": "string"
+                  },
+                  "isDisabled": {
+                    "type": "boolean"
+                  },
+                  "role": {
+                    "type": "string"
+                  }
+                }
+              },
+              "required": [
+                "email",
+                "password",
+                "firstName",
+                "lastName",
+                "phoneNumber",
+                "address",
+                "isDisabled",
+                "role",
+                "selectedSecurityQuestions"
+              ],
+              "additionalProperties": false
+            }
+          }
+        }
+      },
+      "responses": {
+        "204": {
+          "description": "No Content"
+        },
+        "400": {
+          "description": "Bad request"
+        },
+        "404": {
+          "description": "Not found"
+        },
+        "500": {
+          "description": "Internal Server Error"
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "userSchema": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "phoneNumber": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "isDisabled": {
+            "type": "boolean"
+          },
+          "role": {
+            "type": "string"
+          },
+          "selectedSecurityQuestions": {
+            "type": "array"
+          }
+        },
+        "required": [
+          "email",
+          "password",
+          "firstName",
+          "lastName",
+          "phoneNumber",
+          "address",
+          "isDisabled",
+          "role",
+          "selectedSecurityQuestions"
+        ],
+        "additionalProperties": false
+      },
+      "SecurityQuestion": {
+        "type": "object",
+        "properties": {
+          "questionId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "answer": {
+            "type": "string"
+          }
+        },
+        "required": ["questionId", "answer"]
       }
     }
   }
