@@ -29,9 +29,11 @@ export class UserViewComponent {
 
   // form validators
   userForm: FormGroup = this.fb.group({
-    firstName: [null, Validators.compose([Validators.required])],
-    lastName: [null, Validators.compose([Validators.required])],
-    role: [null, Validators.compose([Validators.required])]
+    firstName: ['', Validators.compose([Validators.required])],
+    lastName: ['', Validators.compose([Validators.required])],
+    address: ['', Validators.compose([Validators.required])],
+    phoneNumber: ['', Validators.compose([Validators.required])],
+    role: ['', Validators.compose([Validators.required])]
   })
 
   constructor(
@@ -61,6 +63,8 @@ export class UserViewComponent {
           this.userForm.controls['firstName'].setValue(this.user.firstName)
           this.userForm.controls['lastName'].setValue(this.user.lastName)
           this.userForm.controls['role'].setValue(this.user.role)
+          this.userForm.controls['address'].setValue(this.user.address)
+          this.userForm.controls['phoneNumber'].setValue(this.user.phoneNumber)
         }
       })
     }
@@ -73,6 +77,8 @@ export class UserViewComponent {
       user.firstName = this.userForm.controls['firstName'].value
       user.lastName = this.userForm.controls['lastName'].value
       user.role = this.userForm.controls['role'].value
+      user.address = this.userForm.controls['address'].value
+      user.phoneNumber = this.userForm.controls['phoneNumber'].value
 
       console.log('User ViewModel: ', user) // log the user view model to the console
 

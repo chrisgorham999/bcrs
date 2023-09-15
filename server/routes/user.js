@@ -78,17 +78,11 @@ const updateUserSchema = {
     lastName: {
       type: "string",
     },
-    password: {
-      type: "string"
-    },
     phoneNumber: {
       type: "string",
     },
     address: {
       type: "string",
-    },
-    isDisabled: {
-      type: "boolean",
     },
     role: {
       type: "string",
@@ -99,7 +93,6 @@ const updateUserSchema = {
     "lastName",
     "phoneNumber",
     "address",
-    "isDisabled",
     "role",
   ],
   additionalProperties: false,
@@ -303,7 +296,7 @@ router.post("/", (req, res, next) => {
 // updateUser
 router.put("/:email", (req, res, next) => {
   try {
-    let email = req.params;
+    let { email } = req.params;
     // empId = parseInt(empId, 10);
 
     // if (isNaN(empId)) {npm
@@ -314,7 +307,7 @@ router.put("/:email", (req, res, next) => {
     //   return;
     // }
 
-    const user = req.body;
+    const { user } = req.body;
 
     const validator = ajv.compile(updateUserSchema);
     const valid = validator(user);
@@ -329,8 +322,8 @@ router.put("/:email", (req, res, next) => {
       return;
     }
 
-    mongo(async (db) => {
-      const result = await db.collection("user").updateOne(
+    mongo(async db => {
+      const result = await db.collection("users").updateOne(
         { email },
         {
           $set: {
@@ -338,7 +331,6 @@ router.put("/:email", (req, res, next) => {
             lastName: user.lastName,
             phoneNumber: user.phoneNumber,
             address: user.address,
-            isDisabled: user.isDisabled,
             role: user.role,
           },
         }
