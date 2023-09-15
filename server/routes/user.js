@@ -78,6 +78,15 @@ const updateUserSchema = {
     lastName: {
       type: "string",
     },
+    phoneNumber: {
+      type: "string",
+    },
+    address: {
+      type: "string",
+    },
+    isDisabled: {
+      type: "boolean",
+    },
     role: {
       type: "string",
     },
