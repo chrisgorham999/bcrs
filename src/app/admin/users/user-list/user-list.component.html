@@ -28,8 +28,8 @@
         </div>
       </div>
 
-      <a routerLink="/admin/users/new" class="text-dark text-underline-hover">Add A New User</a>
-      <br>
+      <a routerLink="/admin/users/new" class="text-dark text-underline-hover"><button mat-raised-button class="btn bg-black font-yellow">Add A New User</button></a>
+      <br><br>
       <div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
         <div class="spinner-border spinner-lg" style="width: 3rem; height: 3rem;" role="status" aria-hidden="true">
           <span class="sr-only visually-hidden">Loading...</span>
@@ -41,10 +41,10 @@
         <table *ngIf="!isLoading" class="table">
           <thead class="table-dark">
             <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Role</th>
-              <th>Functions</th>
+              <th class="font-yellow">First Name</th>
+              <th class="font-yellow">Last Name</th>
+              <th class="font-yellow">Role</th>
+              <th class="font-yellow">Functions</th>
             </tr>
           </thead>
           <tbody *ngFor="let user of users">
