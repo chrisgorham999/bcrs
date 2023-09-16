@@ -23,11 +23,11 @@
       </div>
 
       <div class="card">
-        <div class="card-body">
+        <div class="card-body bg-black font-yellow">
           <form [formGroup]="userForm" (ngSubmit)="createUser();">
 
             <fieldset class="form-group">
-              <legend>User Information</legend>
+              <legend>User Information</legend><br>
 
               <div class="mb-3">
                 <label for="txtFirstName">First Name:</label>
@@ -146,11 +146,11 @@
 
             </fieldset>
 
-            <input type="submit" id="submit" value="Submit" [disabled]="!userForm.valid" class="btn btn-lg bg-dark text-white mx-auto d-block">
+            <input type="submit" id="submit" value="Submit" [disabled]="!userForm.valid" class="btn btn-lg bg-black font-yellow mx-auto d-block">
           </form>
         </div>
-      </div>
-      <a routerLink="/admin/users" class="text-underline-hover text-dark">Return to User List</a>
+      </div><br>
+      <a routerLink="/admin/users" class="text-underline-hover text-dark"><button mat-raised-button class="btn bg-black font-yellow">Return to User List</button></a>
     </div>
   </div>
 </div>
