@@ -62,9 +62,10 @@ export class UserListComponent {
     this.userService.disableUser(email, user).subscribe({
       next: (res) => {
         this.successMessage = 'User disabled successfully'
-        this.hideAlert()
-        // reload the page after the user is disabled so that the user list is updated to reflect
-        location.reload();
+        this.userService.getUsers();
+        //this.pageRefresh() // refreshes the page after 3 seconds to show the updates user list
+        this.hideAlert() // hides the alert after 3 seconds
+
       },
       error: (err) => {
         this.errorMessage = err.message
@@ -74,10 +75,22 @@ export class UserListComponent {
     })
   }
 
+  // makes alerts disappear after 3 seconds by resetting them to empty values
   hideAlert() {
     setTimeout(() => {
       this.successMessage = ''
       this.errorMessage = ''
     }, 3000)
   }
+
+  // reload the page to show updated user list after a user is disabled
+  pageRefresh() {
+    setTimeout(() => {
+      location.reload()
+    }, 1000)
+  }
+
+
 }
+
+
