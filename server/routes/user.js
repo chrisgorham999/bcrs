@@ -87,6 +87,9 @@ const updateUserSchema = {
     role: {
       type: "string",
     },
+    isDisabled: {
+      type: "boolean"
+    }
   },
   required: [
     "firstName",
@@ -94,6 +97,7 @@ const updateUserSchema = {
     "phoneNumber",
     "address",
     "role",
+    "isDisabled"
   ],
   additionalProperties: false,
 };
@@ -297,15 +301,6 @@ router.post("/", (req, res, next) => {
 router.put("/:email", (req, res, next) => {
   try {
     let { email } = req.params;
-    // empId = parseInt(empId, 10);
-
-    // if (isNaN(empId)) {npm
-    //   const err = new Error("input must be a number");
-    //   err.status = 400;
-    //   console.log("err", err);
-    //   next(err);
-    //   return;
-    // }
 
     const { user } = req.body;
 
@@ -332,12 +327,36 @@ router.put("/:email", (req, res, next) => {
             phoneNumber: user.phoneNumber,
             address: user.address,
             role: user.role,
+            isDisabled: user.isDisabled
           },
         }
       );
 
       console.log("update user result: ", result);
 
+      res.status(204).send();
+    });
+  } catch (err) {
+    console.log("err", err);
+    next(err);
+  }
+});
+
+// disableUser
+router.delete("/:email", (req, res, next) => {
+  try {
+    let { email } = req.params;
+
+    mongo(async db => {
+      const result = await db.collection("users").updateOne(
+        { email },
+        {
+          $set: {
+            isDisabled: true
+          },
+        }
+      );
+      console.log("update user result: ", result);
       res.status(204).send();
     });
   } catch (err) {

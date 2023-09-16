@@ -11,7 +11,9 @@
 
 // imports
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from '../user';
+import { UserDisableModel } from '../user-disable-model';
 import { UserService } from '../user.service';
 
 @Component({
@@ -25,7 +27,7 @@ export class UserListComponent {
   errorMessage: string
   isLoading: boolean
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.users = []
     this.successMessage = ''
     this.errorMessage = ''
@@ -48,17 +50,18 @@ export class UserListComponent {
     })
   }
 
-  deleteUser(email: string) {
+  disableUser(email: string) {
     if (!confirm('Are you sure you want to delete user record ' + email + '?')) {
       return
     }
+    let user = {} as UserDisableModel;
+    user.isDisabled = true;
+    console.log('You made it here')
+    console.log(user) // for troubleshooting purposes
 
-    this.userService.deleteUser(email).subscribe({
+    this.userService.disableUser(email, user).subscribe({
       next: (res) => {
-        this.users = this.users.filter(user => user.email !== email)
-
-        this.successMessage = 'User deleted successfully'
-
+        this.successMessage = 'User disabled successfully'
         this.hideAlert()
       },
       error: (err) => {

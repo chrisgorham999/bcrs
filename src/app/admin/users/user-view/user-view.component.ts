@@ -3,7 +3,7 @@
 ; Title: user-view.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 16 September 2023
 ; Description: This code supports the View User Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -69,7 +69,7 @@ export class UserViewComponent {
       })
     }
 
-    // updateUser() function definition that accepts no parameters and returns nothing (void)
+    // updateUser function
     updateUser() {
       let user = {} as UserViewModel // initialize the user view model
 
@@ -79,6 +79,7 @@ export class UserViewComponent {
       user.role = this.userForm.controls['role'].value
       user.address = this.userForm.controls['address'].value
       user.phoneNumber = this.userForm.controls['phoneNumber'].value
+      user.isDisabled = false
 
       console.log('User ViewModel: ', user) // log the user view model to the console
 

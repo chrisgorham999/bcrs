@@ -54,11 +54,9 @@
               <td>{{ user.role }}</td>
               <td>
                 <a routerLink="/admin/users/{{ user.email}}/view">
-                  <span class="material-icons text-secondary">edit</span>
-                </a>
-
-                <a class="link" (click)="deleteUser(user.email)">
-                  <span class="material-icons text-secondary">delete</span>
+                <span class="material-icons text-secondary">edit</span></a>
+                <a class="link" (click)="disableUser(user.email)">
+                <span class="material-icons text-secondary">delete</span>
                 </a>
               </td>
             </tr>
@@ -74,8 +72,10 @@
             <h5 class="card-title">{{ user.firstName }} {{ user.lastName}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ user.role }}</h6>
             <p class="card-text">User Email: {{ user.email }}</p>
-            <a routerLink="/admin/users/{{ user.email }}/view" class="card-link">Edit</a>
-            <a (click)="deleteUser(user.email)" class="card-link">Delete</a>
+            <a routerLink="/admin/users/{{ user.email }}/view" class="card-link">edit</a>
+            <a class="link" (click)="disableUser(user.email)">
+              <span class="material-icons text-secondary">delete</span>
+            </a>
           </div>
         </div>
       </div>
