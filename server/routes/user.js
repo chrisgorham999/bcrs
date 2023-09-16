@@ -3,7 +3,7 @@
 ; Title: user.js
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 16 September 2023
 ; Description: This code supports the User Route
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -366,6 +366,13 @@ router.delete("/:email", (req, res, next) => {
       }
 
       console.log("update user result: ", result);
+      if (result.modifiedCount !== 1) {
+        const err = new Error("User not found");
+        err.status = 404;
+        console.log("err", err);
+        next(err);
+        return;
+      }
       res.status(204).send();
     });
   } catch (err) {
