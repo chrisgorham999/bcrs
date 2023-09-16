@@ -49,11 +49,11 @@ const userSchema = {
       type: "string",
     },
     isDisabled: {
-      type: "boolean"
+      type: "boolean",
     },
     selectedSecurityQuestions: {
-      type: "array"
-    }
+      type: "array",
+    },
   },
   required: [
     "email",
@@ -88,8 +88,8 @@ const updateUserSchema = {
       type: "string",
     },
     isDisabled: {
-      type: "boolean"
-    }
+      type: "boolean",
+    },
   },
   required: [
     "firstName",
@@ -97,7 +97,7 @@ const updateUserSchema = {
     "phoneNumber",
     "address",
     "role",
-    "isDisabled"
+    "isDisabled",
   ],
   additionalProperties: false,
 };
@@ -317,7 +317,7 @@ router.put("/:email", (req, res, next) => {
       return;
     }
 
-    mongo(async db => {
+    mongo(async (db) => {
       const result = await db.collection("users").updateOne(
         { email },
         {
@@ -327,7 +327,7 @@ router.put("/:email", (req, res, next) => {
             phoneNumber: user.phoneNumber,
             address: user.address,
             role: user.role,
-            isDisabled: user.isDisabled
+            isDisabled: user.isDisabled,
           },
         }
       );
@@ -347,15 +347,24 @@ router.delete("/:email", (req, res, next) => {
   try {
     let { email } = req.params;
 
-    mongo(async db => {
+    mongo(async (db) => {
       const result = await db.collection("users").updateOne(
         { email },
         {
           $set: {
-            isDisabled: true
+            isDisabled: true,
           },
         }
       );
+
+      if (result.modifiedCount !== 1) {
+        const err = new Error("User not found");
+        err.status = 404;
+        console.log("err", err);
+        next(err);
+        return;
+      }
+
       console.log("update user result: ", result);
       if (result.modifiedCount !== 1) {
         const err = new Error("User not found");
