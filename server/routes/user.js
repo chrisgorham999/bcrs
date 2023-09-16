@@ -356,7 +356,6 @@ router.delete("/:email", (req, res, next) => {
           },
         }
       );
-      console.log("update user result: ", result);
 
       if (result.modifiedCount !== 1) {
         const err = new Error("User not found");
@@ -366,6 +365,7 @@ router.delete("/:email", (req, res, next) => {
         return;
       }
 
+      console.log("update user result: ", result);
       res.status(204).send();
     });
   } catch (err) {
