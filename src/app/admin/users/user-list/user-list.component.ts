@@ -62,6 +62,7 @@ export class UserListComponent {
     this.userService.disableUser(email, user).subscribe({
       next: (res) => {
         this.successMessage = 'User disabled successfully'
+
         this.hideAlert()
       },
       error: (err) => {
