@@ -3,7 +3,7 @@
 ; Title: user-new.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 15 September 2023
+; Last Updated: 16 September 2023
 ; Description: This code supports the New User Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
