@@ -1,0 +1,26 @@
+/*
+======================================
+; Title: user-view.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 15 September 2023
+; Last Updated: 15 September 2023
+; Description: This code supports styling for the View User Component
+; Sources Used: N/A
+;=====================================
+*/
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.extra-width {
+  width: 10%;
+}
