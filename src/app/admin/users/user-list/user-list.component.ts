@@ -62,8 +62,7 @@ export class UserListComponent {
     this.userService.disableUser(email, user).subscribe({
       next: (res) => {
         this.successMessage = 'User disabled successfully'
-        this.userService.getUsers();
-        //this.pageRefresh() // refreshes the page after 3 seconds to show the updates user list
+        this.pageRefresh() // refreshes the page after 3 seconds to show the updates user list
         this.hideAlert() // hides the alert after 3 seconds
 
       },
