@@ -3,7 +3,7 @@
 ; Title: user.js
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 16 September 2023
+; Last Updated: 17 September 2023
 ; Description: This code supports the User Route
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
