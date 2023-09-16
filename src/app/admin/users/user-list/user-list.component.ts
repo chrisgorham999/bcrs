@@ -63,6 +63,7 @@ export class UserListComponent {
       next: (res) => {
         this.successMessage = 'User disabled successfully'
         this.hideAlert()
+        // reload the page after the user is disabled so that the user list is updated to reflect
         location.reload();
       },
       error: (err) => {
