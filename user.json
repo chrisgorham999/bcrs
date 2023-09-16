@@ -27,24 +27,7 @@
         "description": "Returns all users.",
         "responses": {
           "200": {
-            "description": "Email document found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "email": {
-                      "type": "string",
-                      "example": "bach@nodebucket.com"
-                    },
-                    "role": {
-                      "type": "string",
-                      "example": "standard"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Email document found"
           },
           "400": {
             "description": "Bad request"
@@ -69,74 +52,63 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "email": {
-                    "type": "string"
-                  },
-                  "password": {
-                    "type": "string"
-                  },
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "phoneNumber": {
-                    "type": "string"
-                  },
-                  "address": {
-                    "type": "string"
-                  },
-                  "isDisabled": {
-                    "type": "boolean"
-                  },
-                  "role": {
-                    "type": "string"
-                  },
-                  "selectedSecurityQuestions": {
-                    "type": "array",
-                    "items": {
-                      "properties": {
-                        "question1": {
-                          "_id": {
-                            "type": "string"
-                          }
-                        },
-                        "answer1": {
-                          "type": "string"
-                        },
-                        "question2": {
-                          "_id": {
-                            "type": "string"
-                          }
-                        },
-                        "answer2": {
-                          "type": "string"
-                        },
-                        "question3": {
-                          "_id": {
-                            "type": "string"
-                          }
-                        },
-                        "answer3": {
-                          "type": "string"
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "example": "emailasdasd"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "Password01"
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "example": "First"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Last"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "12312312"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "12312312"
+                      },
+                      "isDisabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "standard"
+                      },
+                      "selectedSecurityQuestions": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "example": "test"
                         }
                       }
-                    }
+                    },
+                    "required": [
+                      "email",
+                      "password",
+                      "firstName",
+                      "lastName",
+                      "phoneNumber",
+                      "address",
+                      "isDisabled",
+                      "role",
+                      "selectedSecurityQuestions"
+                    ],
+                    "additionalProperties": false
                   }
-                },
-                "required": [
-                  "email",
-                  "password",
-                  "firstName",
-                  "lastName",
-                  "phoneNumber",
-                  "address",
-                  "isDisabled",
-                  "role",
-                  "selectedSecurityQuestions"
-                ],
-                "additionalProperties": false
+                }
               }
             }
           }
@@ -172,24 +144,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Email document found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "email": {
-                      "type": "string",
-                      "example": "bach@nodebucket.com"
-                    },
-                    "role": {
-                      "type": "string",
-                      "example": "standard"
-                    }
-                  }
-                }
-              }
-            }
+            "description": "Email document found"
           },
           "400": {
             "description": "Bad request"
@@ -225,41 +180,41 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "password": {
-                    "type": "string"
-                  },
-                  "firstName": {
-                    "type": "string"
-                  },
-                  "lastName": {
-                    "type": "string"
-                  },
-                  "phoneNumber": {
-                    "type": "string"
-                  },
-                  "address": {
-                    "type": "string"
-                  },
-                  "isDisabled": {
-                    "type": "boolean"
-                  },
-                  "role": {
-                    "type": "string"
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "firstName": {
+                        "type": "string",
+                        "example": "Wolf"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Gang"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "34535435345"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "not here"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "standard"
+                      }
+                    },
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "phoneNumber",
+                      "address",
+                      "role"
+                    ],
+                    "additionalProperties": false
                   }
                 }
-              },
-              "required": [
-                "email",
-                "password",
-                "firstName",
-                "lastName",
-                "phoneNumber",
-                "address",
-                "isDisabled",
-                "role",
-                "selectedSecurityQuestions"
-              ],
-              "additionalProperties": false
+              }
             }
           }
         }
