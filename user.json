@@ -172,6 +172,20 @@
             }
           }
         ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
         "requestBody": {
           "description": "User object",
           "required": true,
@@ -219,18 +233,73 @@
           }
         }
       },
-      "responses": {
-        "204": {
-          "description": "No Content"
+      "delete": {
+        "tags": ["Users"],
+        "summary": "disables a user by email",
+        "description": "disables a user based on their email address.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Email address of the user to disable."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "User disabled successfully."
+          },
+          "404": {
+            "description": "User not found."
+          },
+          "500": {
+            "description": "Internal server error."
+          }
+        }
+      }
+    },
+    "/security/signin": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Sign in a user",
+        "description": "Signs in a user with their email and password.",
+        "requestBody": {
+          "description": "Sign in object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": ["email", "password"],
+                "additionalProperties": false
+              }
+            }
+          }
         },
-        "400": {
-          "description": "Bad request"
-        },
-        "404": {
-          "description": "Not found"
-        },
-        "500": {
-          "description": "Internal Server Error"
+        "responses": {
+          "200": {
+            "description": "User signed in successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
         }
       }
     }

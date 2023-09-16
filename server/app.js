@@ -20,7 +20,8 @@ const securityRoute = require("./routes/security");
 
 // swagger
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("../user.json");
+const swaggerDocument = require("../user.json", "../security.json");
+
 // https://levelup.gitconnected.com/how-to-add-swagger-ui-to-existing-node-js-and-express-js-project-2c8bad9364ce
 // Link provided by Erin Brady with assistance from Chris Gorham
 
