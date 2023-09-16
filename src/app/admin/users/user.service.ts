@@ -13,7 +13,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { UserDisableModel } from './user-disable-model';
 import { UserViewModel } from './user-view-model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -43,7 +45,10 @@ export class UserService {
     })
   }
 
-  deleteUser(email: string) {
+  disableUser(email: string, user: UserDisableModel) {
     return this.http.delete('/api/users/' + email)
-  }
+    }
+
 }
+
+
