@@ -12,3 +12,15 @@
 .font-yellow {
   color: #FFD800;
 }
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.extra-width {
+  width: 10%;
+}
