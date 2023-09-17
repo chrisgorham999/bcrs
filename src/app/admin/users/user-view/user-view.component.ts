@@ -32,7 +32,7 @@ export class UserViewComponent {
     firstName: ['', Validators.compose([Validators.required])],
     lastName: ['', Validators.compose([Validators.required])],
     address: ['', Validators.compose([Validators.required])],
-    phoneNumber: ['', Validators.compose([Validators.required])],
+    phoneNumber: ['', Validators.compose([Validators.required, Validators.pattern("^[0-9-]*$")])],
     role: ['', Validators.compose([Validators.required])]
   })
 

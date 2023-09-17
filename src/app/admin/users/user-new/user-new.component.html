@@ -73,13 +73,20 @@
 
               <div class="mb-3">
                 <label for="txtPhoneNumber">Phone Number:</label>
-                <input type="text" id="txtPhoneNumber" class="form-control" formControlName="phoneNumber" required>
+                <input type="text" id="txtPhoneNumber" placeholder="format: 555-111-5555 or 5551115555" class="form-control" formControlName="phoneNumber" required>
               </div>
 
               <!-- phone number error handling -->
               <div *ngIf="userForm.controls['phoneNumber'].touched && userForm.controls['phoneNumber'].hasError('required')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Phone Number is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              <div *ngIf="userForm.controls['phoneNumber'].touched && userForm.controls['phoneNumber'].hasError('pattern')">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Phone Number must be in format: 555-111-5555 or 5551115555
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>

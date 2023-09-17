@@ -52,8 +52,8 @@ const userSchema = {
       type: "boolean",
     },
     selectedSecurityQuestions: {
-      type: "array",
-    },
+      type: "array"
+    }
   },
   required: [
     "email",
@@ -101,6 +101,7 @@ const updateUserSchema = {
   ],
   additionalProperties: false,
 };
+
 
 /**
  * findAllUsers
