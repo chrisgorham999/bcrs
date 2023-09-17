@@ -3,7 +3,7 @@
 ; Title: user-new.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 15 September 2023
+; Last Updated: 16 September 2023
 ; Description: This code supports the New User Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -36,7 +36,7 @@ export class UserNewComponent {
     password: ['', Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])],
     address: ['', Validators.compose([Validators.required])],
     role: ['', Validators.compose([Validators.required])],
-    phoneNumber: ['', Validators.compose([Validators.required])]
+    phoneNumber: ['', Validators.compose([Validators.required, Validators.pattern("^[0-9-]*$")])]
   })
 
   constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
@@ -60,7 +60,8 @@ export class UserNewComponent {
       // set to false because we're creating a user, we don't want it disabled and the admin shouldn't have to tell us that, it is implied
       isDisabled: false,
       // add in the functionality for this later
-      selectedSecurityQuestions: []
+      selectedSecurityQuestions: [
+      ]
     }
 
   this.userService.createUser(user).subscribe({

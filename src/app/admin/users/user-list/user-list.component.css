@@ -3,7 +3,7 @@
 ; Title: user-list.component.css
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 15 September 2023
-; Last Updated: 15 September 2023
+; Last Updated: 16 September 2023
 ; Description: This code supports styling for the User List Component
 ; Sources Used: N/A
 ;=====================================
@@ -12,4 +12,8 @@
 
 .font-yellow {
   color: #FFD800;
+}
+
+.pointer {
+  cursor: pointer;
 }
