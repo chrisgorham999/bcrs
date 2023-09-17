@@ -190,18 +190,7 @@ router.get("/", (req, res, next) => {
 router.get("/:email", (req, res, next) => {
   try {
     console.log("email", req.params.email);
-    let { email } = req.params; //get the empId from the req.params object
-    // email = parseInt(email, 10); // try to determine if email is numerical value
-
-    //an early return method
-    // if (isNaN(email)) {
-    //   // if empId is not a number
-    //   const err = new Error("input must be a number");
-    //   err.status = 400;
-    //   console.log("err", err);
-    //   next(err);
-    //   return;
-    // }
+    let { email } = req.params; //get the emmail from the req.params object
 
     // connection to mongo, to find collection of users, then find one empId.
     mongo(
