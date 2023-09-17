@@ -3,7 +3,7 @@
 ; Title: security.js
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 17 September 2023
 ; Description: This code supports the Security Route for Sign In
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -11,6 +11,7 @@
 
 'use strict'
 
+// imports / requires
 const express = require('express')
 const { mongo } = require('../utils/mongo')
 const bcrypt = require('bcryptjs')
@@ -19,6 +20,7 @@ const Ajv = require('ajv')
 const router = express.Router()
 const ajv = new Ajv()
 
+// the signIn schema
 const signinSchema = {
   type: 'object',
   properties: {
@@ -29,6 +31,7 @@ const signinSchema = {
   additionalProperties: false
 }
 
+// signIn API
 router.post('/signin', (req, res, next) => {
   try {
     const signin = req.body
@@ -79,4 +82,5 @@ router.post('/signin', (req, res, next) => {
   }
 })
 
+// export the router
 module.exports = router
