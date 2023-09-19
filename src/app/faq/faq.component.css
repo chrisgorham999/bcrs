@@ -1,0 +1,22 @@
+/*
+======================================
+; Title: faq.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 19 September 2023
+; Last Updated: 19 September 2023
+; Description: This code supports styling for the FAQ Component
+; Sources Used: N/A
+;=====================================
+*/
+
+.faq-padding-left {
+  padding-left: 40px;
+}
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.faq-padding-right {
+  padding-right: 40px;
+}

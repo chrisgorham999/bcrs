@@ -3,7 +3,7 @@
 ; Title: app.module.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 07 September 2023
+; Last Updated: 19 September 2023
 ; Description: This code supports the App Module and handles all imports
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -18,11 +18,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { FaqComponent } from './faq/faq.component';
 
 
 
@@ -33,7 +35,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BaseLayoutComponent,
     FooterComponent,
     NavComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     BrowserAnimationsModule,
     HttpClientModule,
     MatButtonModule,
+    MatExpansionModule,
     MatFormFieldModule
   ],
   providers: [],
