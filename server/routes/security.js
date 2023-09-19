@@ -12,6 +12,8 @@
 'use strict'
 
 // imports and requires
+
+// imports / requires
 const express = require('express')
 const { mongo } = require('../utils/mongo')
 const bcrypt = require('bcryptjs')
@@ -21,6 +23,7 @@ const router = express.Router()
 const ajv = new Ajv()
 const saltRounds = 10
 
+// the signIn schema
 const signinSchema = {
   type: 'object',
   properties: {
@@ -65,6 +68,7 @@ const resetPasswordSchema = {
   additionalProperties: false
 }
 
+// signIn API
 router.post('/signin', (req, res, next) => {
   try {
     const signin = req.body
@@ -299,5 +303,6 @@ router.delete('/users/:email/reset-password', (req, res, next) => {
   }
 })
 
-// exports
+
+// export the router
 module.exports = router
