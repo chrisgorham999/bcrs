@@ -59,9 +59,6 @@ export class UserNewComponent {
       role: this.userForm.controls['role'].value,
       // set to false because we're creating a user, we don't want it disabled and the admin shouldn't have to tell us that, it is implied
       isDisabled: false,
-      // add in the functionality for this later
-      selectedSecurityQuestions: [
-      ]
     }
 
   this.userService.createUser(user).subscribe({

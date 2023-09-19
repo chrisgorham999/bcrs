@@ -17,10 +17,12 @@ const createServer = require("http-errors");
 const path = require("path");
 const userRoute = require("./routes/user");
 const securityRoute = require("./routes/security");
+const invoiceRoute = require("./routes/invoice");
 
 // swagger
 const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("../user.json");
+const swaggerDocument = require("../user.json", "../security.json", "../invoice.json");
+
 // https://levelup.gitconnected.com/how-to-add-swagger-ui-to-existing-node-js-and-express-js-project-2c8bad9364ce
 // Link provided by Erin Brady with assistance from Chris Gorham
 
@@ -36,6 +38,7 @@ app.use("/", express.static(path.join(__dirname, "../dist/bcrs")));
 // our two routes from our routes folder
 app.use("/api/users", userRoute);
 app.use("/api/security", securityRoute);
+// app.use("/api/invoice", invoiceRoute); // i think we need to add this in the DB?
 
 // more swagger: openapi specification
 const options = {
