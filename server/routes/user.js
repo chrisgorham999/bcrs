@@ -3,7 +3,7 @@
 ; Title: user.js
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 16 September 2023
+; Last Updated: 18 September 2023
 ; Description: This code supports the User Route
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -18,7 +18,6 @@ const { mongo } = require("../utils/mongo");
 const Ajv = require("ajv");
 const { ObjectId } = require("mongodb");
 const bcrypt = require("bcryptjs");
-const ret = require("bluebird/js/release/util");
 
 const saltRounds = 10; // number of salt rounds for hashing
 
@@ -51,9 +50,6 @@ const userSchema = {
     isDisabled: {
       type: "boolean",
     },
-    selectedSecurityQuestions: {
-      type: "array"
-    }
   },
   required: [
     "email",
@@ -63,7 +59,6 @@ const userSchema = {
     "phoneNumber",
     "address",
     "isDisabled",
-    "selectedSecurityQuestions",
     "role",
   ],
   additionalProperties: false,
@@ -370,6 +365,38 @@ router.delete("/:email", (req, res, next) => {
     next(err);
   }
 });
+
+
+// findSelectedSecurityQuestions API
+router.get('/:email/security-questions', (req, res, next) => {
+    try {
+      const email = req.params.email // pulls email value from route
+      console.log('Email address:', email) // for troubleshooting purposes
+
+      mongo(async db => {
+        const user = await db.collection('users').findOne(
+          { email: email },
+          { projection: { email: 1, selectedSecurityQuestions: 1 } }
+        )
+
+        console.log('Selected security questions', user)
+
+        if (!user) {
+          const err = new Error('Unable to find user with email' + email)
+          err.status = 404
+          console.log('err', err)
+          next(err)
+          return
+        }
+
+        res.send(user)
+
+      }, next)
+    } catch(err) {
+      console.log ('err', err) // log for troubleshooting
+      next(err)
+    }
+})
 
 // exporting router module
 module.exports = router;
