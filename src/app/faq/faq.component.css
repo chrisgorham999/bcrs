@@ -20,3 +20,15 @@
 .faq-padding-right {
   padding-right: 40px;
 }
+
+a {
+  color: black;
+}
+
+.zoom {
+
+}
+
+.zoom:hover {
+  width: 100%;
+}
