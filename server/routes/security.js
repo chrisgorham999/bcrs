@@ -54,6 +54,7 @@ const registerSchema = {
     password: { type: 'string' },
     firstName: { type: 'string' },
     lastName: { type: 'string' },
+    isDisabled: { type: 'boolean' }, // if there's an error check here first
     selectedSecurityQuestions: securityQuestionsSchema
   },
   required: ['email', 'password', 'firstName', 'lastName', 'selectedSecurityQuestions'],
