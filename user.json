@@ -103,9 +103,7 @@
                           },
                           "required": ["question", "answer"],
                           "additionalProperties": false
-                        },
-                        "minItems": 3,
-                        "maxItems": 3
+                        }
                       }
                     }
                   }
@@ -118,8 +116,7 @@
                   "phoneNumber",
                   "address",
                   "isDisabled",
-                  "role",
-                  "selectedSecurityQuestions"
+                  "role"
                 ],
                 "additionalProperties": false
               }
