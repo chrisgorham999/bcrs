@@ -196,6 +196,7 @@ router.post("/register", (req, res, next) => {
         next(err);
         return;
       }
+
       // get the info for the new user
       const newUser = {
         email: user.email,
@@ -210,20 +211,21 @@ router.post("/register", (req, res, next) => {
       };
       console.log("User to be inserted into MongoDB:", newUser);
 
-<<<<<<< HEAD
-      const result = await db.collection("users").insertOne(newUser);
-=======
+<<<<<<<<< Temporary merge branch 1
         const result = await db.collection('users').insertOne(newUser)
 
         console.log('MongoDB Result:', result)
         res.send({ id: result.insertedId })
 
     }, next)
->>>>>>> main
+=========
+      const result = await db.collection("users").insertOne(newUser);
+>>>>>>>>> Temporary merge branch 2
 
       console.log("MongoDB Result:", result);
       res.send({ id: result.insertedId });
     }, next);
+
   } catch (err) {
     console.log("err", err);
   }
