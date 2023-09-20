@@ -28,15 +28,14 @@ const securityQuestionsSchema = {
   items: {
     type: "object",
     properties: {
-      question1: { type: "string" },
-      answer1: { type: "string" },
-      question2: { type: "string" },
-      answer2: { type: "string" },
-      question3: { type: "string" },
-      answer3: { type: "string" },
+      question: { type: "string" },
+      answer: { type: "string" },
     },
+    required: ["question", "answer"],
     additionalProperties: false,
   },
+  minItems: 3, // Minimum number of items (security questions and answers)
+  maxItems: 3, // Maximum number of items (security questions and answers)
 };
 
 const userSchema = {
@@ -203,7 +202,7 @@ router.get("/", (req, res, next) => {
 router.get("/:email", (req, res, next) => {
   try {
     console.log("email", req.params.email);
-    let { email } = req.params; //get the emmail from the req.params object
+    let { email } = req.params; //get the email from the req.params object
 
     // connection to mongo, to find collection of users, then find one empId.
     mongo(
