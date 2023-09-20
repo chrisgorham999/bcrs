@@ -34,8 +34,8 @@ const securityQuestionsSchema = {
     required: ["question", "answer"],
     additionalProperties: false,
   },
-  minItems: 3, // Minimum number of items (security questions and answers)
-  maxItems: 3, // Maximum number of items (security questions and answers)
+  // minItems: 3, // Minimum number of items (security questions and answers)
+  // maxItems: 3, // Maximum number of items (security questions and answers)
 };
 
 const userSchema = {
@@ -66,7 +66,7 @@ const userSchema = {
       type: "boolean",
     },
     selectedSecurityQuestions: {
-      type: "array"
+      type: "array",
     },
   },
   required: [
