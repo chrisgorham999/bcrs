@@ -23,6 +23,30 @@ const saltRounds = 10; // number of salt rounds for hashing
 
 const ajv = new Ajv(); //creates a new instance of Ajv class
 
+const securityQuestionsSchema = {
+  type: "array",
+  items: {
+    type: "object",
+    properties: {
+      question1: { type: "string" },
+      answer1: { type: "string" },
+      question2: { type: "string" },
+      answer2: { type: "string" },
+      question3: { type: "string" },
+      answer3: { type: "string" },
+    },
+    required: [
+      "question1",
+      "answer1",
+      "question2",
+      "answer2",
+      "question3",
+      "answer3",
+    ],
+    additionalProperties: false,
+  },
+};
+
 const userSchema = {
   type: "object",
   properties: {
@@ -38,10 +62,10 @@ const userSchema = {
     lastName: {
       type: "string",
     },
-    phoneNumber: {
+    address: {
       type: "string",
     },
-    address: {
+    phoneNumber: {
       type: "string",
     },
     role: {
@@ -50,6 +74,7 @@ const userSchema = {
     isDisabled: {
       type: "boolean",
     },
+    selectedSecurityQuestions: securityQuestionsSchema,
   },
   required: [
     "email",
@@ -73,10 +98,10 @@ const updateUserSchema = {
     lastName: {
       type: "string",
     },
-    phoneNumber: {
+    address: {
       type: "string",
     },
-    address: {
+    phoneNumber: {
       type: "string",
     },
     role: {
@@ -96,7 +121,6 @@ const updateUserSchema = {
   ],
   additionalProperties: false,
 };
-
 
 /**
  * findAllUsers
@@ -366,37 +390,37 @@ router.delete("/:email", (req, res, next) => {
   }
 });
 
-
 // findSelectedSecurityQuestions API
-router.get('/:email/security-questions', (req, res, next) => {
-    try {
-      const email = req.params.email // pulls email value from route
-      console.log('Email address:', email) // for troubleshooting purposes
+router.get("/:email/security-questions", (req, res, next) => {
+  try {
+    const email = req.params.email; // pulls email value from route
+    console.log("Email address:", email); // for troubleshooting purposes
 
-      mongo(async db => {
-        const user = await db.collection('users').findOne(
+    mongo(async (db) => {
+      const user = await db
+        .collection("users")
+        .findOne(
           { email: email },
           { projection: { email: 1, selectedSecurityQuestions: 1 } }
-        )
+        );
 
-        console.log('Selected security questions', user)
+      console.log("Selected security questions", user);
 
-        if (!user) {
-          const err = new Error('Unable to find user with email' + email)
-          err.status = 404
-          console.log('err', err)
-          next(err)
-          return
-        }
+      if (!user) {
+        const err = new Error("Unable to find user with email" + email);
+        err.status = 404;
+        console.log("err", err);
+        next(err);
+        return;
+      }
 
-        res.send(user)
-
-      }, next)
-    } catch(err) {
-      console.log ('err', err) // log for troubleshooting
-      next(err)
-    }
-})
+      res.send(user);
+    }, next);
+  } catch (err) {
+    console.log("err", err); // log for troubleshooting
+    next(err);
+  }
+});
 
 // exporting router module
 module.exports = router;

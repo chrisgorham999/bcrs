@@ -13,18 +13,15 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from '../user';
+import { User, SecurityQuestion } from '../user';
 import { UserService } from '../user.service';
-
-
 
 @Component({
   selector: 'app-user-new',
   templateUrl: './user-new.component.html',
-  styleUrls: ['./user-new.component.css']
+  styleUrls: ['./user-new.component.css'],
 })
 export class UserNewComponent {
-
   // establishes error message as a string
   errorMessage: string;
 
@@ -33,17 +30,34 @@ export class UserNewComponent {
     firstName: ['', Validators.compose([Validators.required])],
     lastName: ['', Validators.compose([Validators.required])],
     email: ['', Validators.compose([Validators.required, Validators.email])],
-    password: ['', Validators.compose([Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$')])],
+    password: [
+      '',
+      Validators.compose([
+        Validators.required,
+        Validators.pattern(
+          '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'
+        ),
+      ]),
+    ],
     address: ['', Validators.compose([Validators.required])],
     role: ['', Validators.compose([Validators.required])],
-    phoneNumber: ['', Validators.compose([Validators.required, Validators.pattern("^[0-9-]*$")])]
-  })
+    phoneNumber: [
+      '',
+      Validators.compose([
+        Validators.required,
+        Validators.pattern('^[0-9-]*$'),
+      ]),
+    ],
+    selectedSecurityQuestions: ['', Validators.compose([Validators.required])],
+  });
 
-  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
-
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private userService: UserService
+  ) {
     // set error message to empty string
     this.errorMessage = '';
-
   }
 
   // createUser function
@@ -54,27 +68,29 @@ export class UserNewComponent {
       password: this.userForm.controls['password'].value,
       firstName: this.userForm.controls['firstName'].value,
       lastName: this.userForm.controls['lastName'].value,
-      phoneNumber: this.userForm.controls['phoneNumber'].value,
       address: this.userForm.controls['address'].value,
+      phoneNumber: this.userForm.controls['phoneNumber'].value,
       role: this.userForm.controls['role'].value,
       // set to false because we're creating a user, we don't want it disabled and the admin shouldn't have to tell us that, it is implied
       isDisabled: false,
-    }
+      selectedSecurityQuestions:
+        this.userForm.controls['selectedSecurityQuestions'].value,
+    };
 
-  this.userService.createUser(user).subscribe({
-    next: (res) => {
-      console.log(res) // for troubleshooting purposes
-      this.router.navigate(['/admin/users'])
-    },
-    // error handling
-    error: (err) => {
-      if (err.error.message) {
-        this.errorMessage = err.error.message
-      } else {
-        this.errorMessage = 'Something went wrong, please contact system admin'
-      }
-    }
-  })
-
-}
+    this.userService.createUser(user).subscribe({
+      next: (res) => {
+        console.log(res); // for troubleshooting purposes
+        this.router.navigate(['/admin/users']);
+      },
+      // error handling
+      error: (err) => {
+        if (err.error.message) {
+          this.errorMessage = err.error.message;
+        } else {
+          this.errorMessage =
+            'Something went wrong, please contact system admin';
+        }
+      },
+    });
+  }
 }
