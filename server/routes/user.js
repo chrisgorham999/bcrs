@@ -28,23 +28,14 @@ const securityQuestionsSchema = {
   items: {
     type: "object",
     properties: {
-      question1: { type: "string" },
-      answer1: { type: "string" },
-      question2: { type: "string" },
-      answer2: { type: "string" },
-      question3: { type: "string" },
-      answer3: { type: "string" },
+      question: { type: "string" },
+      answer: { type: "string" },
     },
-    required: [
-      "question1",
-      "answer1",
-      "question2",
-      "answer2",
-      "question3",
-      "answer3",
-    ],
+    required: ["question", "answer"],
     additionalProperties: false,
   },
+  minItems: 3, // Minimum number of items (security questions and answers)
+  maxItems: 3, // Maximum number of items (security questions and answers)
 };
 
 const userSchema = {

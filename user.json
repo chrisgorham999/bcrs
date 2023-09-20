@@ -92,57 +92,36 @@
                         "items": {
                           "type": "object",
                           "properties": {
-                            "question1": {
+                            "question": {
                               "type": "string",
                               "example": "What is your favorite color?"
                             },
-                            "answer1": {
+                            "answer": {
                               "type": "string",
                               "example": "Blue"
-                            },
-                            "question2": {
-                              "type": "string",
-                              "example": "What's your favorite food?"
-                            },
-                            "answer2": {
-                              "type": "string",
-                              "example": "Pizza"
-                            },
-                            "question3": {
-                              "type": "string",
-                              "example": "What was the name of your first pet?"
-                            },
-                            "answer3": {
-                              "type": "string",
-                              "example": "Penny"
                             }
                           },
-                          "required": [
-                            "question1",
-                            "answer1",
-                            "question2",
-                            "answer2",
-                            "question3",
-                            "answer3"
-                          ],
+                          "required": ["question", "answer"],
                           "additionalProperties": false
                         },
-                        "required": [
-                          "email",
-                          "password",
-                          "firstName",
-                          "lastName",
-                          "phoneNumber",
-                          "address",
-                          "isDisabled",
-                          "role",
-                          "selectedSecurityQuestions"
-                        ],
-                        "additionalProperties": false
+                        "minItems": 3,
+                        "maxItems": 3
                       }
                     }
                   }
-                }
+                },
+                "required": [
+                  "email",
+                  "password",
+                  "firstName",
+                  "lastName",
+                  "phoneNumber",
+                  "address",
+                  "isDisabled",
+                  "role",
+                  "selectedSecurityQuestions"
+                ],
+                "additionalProperties": false
               }
             }
           }
@@ -394,41 +373,20 @@
                         "items": {
                           "type": "object",
                           "properties": {
-                            "question1": {
+                            "question": {
                               "type": "string",
                               "example": "What is your favorite color?"
                             },
-                            "answer1": {
+                            "answer": {
                               "type": "string",
                               "example": "Blue"
-                            },
-                            "question2": {
-                              "type": "string",
-                              "example": "What's your favorite food?"
-                            },
-                            "answer2": {
-                              "type": "string",
-                              "example": "Pizza"
-                            },
-                            "question3": {
-                              "type": "string",
-                              "example": "What was the name of your first pet?"
-                            },
-                            "answer3": {
-                              "type": "string",
-                              "example": "Penny"
                             }
                           },
-                          "required": [
-                            "question1",
-                            "answer1",
-                            "question2",
-                            "answer2",
-                            "question3",
-                            "answer3"
-                          ],
+                          "required": ["question", "answer"],
                           "additionalProperties": false
-                        }
+                        },
+                        "minItems": 3,
+                        "maxItems": 3
                       }
                     },
                     "required": [
@@ -442,21 +400,54 @@
                   }
                 }
               }
-            },
-            "responses": {
-              "200": {
-                "description": "User registered successfully"
-              },
-              "400": {
-                "description": "Bad request"
-              },
-              "404": {
-                "description": "Not found"
-              },
-              "500": {
-                "description": "Internal server error"
-              }
             }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User registered successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/security/verify/users/{email}": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Verify User",
+        "description": "Verifies the email so the user can eventually reset password.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "bach@nodebucket.com"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal server error"
           }
         }
       }
