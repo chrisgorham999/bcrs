@@ -177,6 +177,7 @@ link:hover {
   }
 
 .dropdown-item {
+  cursor: pointer;
 }
 
 .dropdown-item:hover {

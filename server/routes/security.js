@@ -248,7 +248,7 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
     const valid = validate(securityQuestions);
 
     if (!valid) {
-      const err = new Error("Bad Reqeust");
+      const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validate.errors;
       console.log("securityQuestions validation errors", validate.errors);

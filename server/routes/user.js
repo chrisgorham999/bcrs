@@ -65,7 +65,9 @@ const userSchema = {
     isDisabled: {
       type: "boolean",
     },
-    selectedSecurityQuestions: securityQuestionsSchema,
+    selectedSecurityQuestions: {
+      type: "array"
+    },
   },
   required: [
     "email",
@@ -200,7 +202,7 @@ router.get("/", (req, res, next) => {
 router.get("/:email", (req, res, next) => {
   try {
     console.log("email", req.params.email);
-    let { email } = req.params; //get the emmail from the req.params object
+    let { email } = req.params; //get the email from the req.params object
 
     // connection to mongo, to find collection of users, then find one empId.
     mongo(
