@@ -57,7 +57,7 @@
                     "properties": {
                       "email": {
                         "type": "string",
-                        "example": "emailasdasd"
+                        "example": "email@email.com"
                       },
                       "password": {
                         "type": "string",
@@ -71,57 +71,91 @@
                         "type": "string",
                         "example": "Last"
                       },
-                      "phoneNumber": {
-                        "type": "string",
-                        "example": "12312312"
-                      },
                       "address": {
                         "type": "string",
-                        "example": "12312312"
+                        "example": "123 Main St"
                       },
-                      "isDisabled": {
-                        "type": "boolean",
-                        "example": false
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "3395959555"
                       },
                       "role": {
                         "type": "string",
                         "example": "standard"
                       },
+                      "isDisabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
                       "selectedSecurityQuestions": {
                         "type": "array",
                         "items": {
-                          "type": "string",
-                          "example": "test"
-                        }
+                          "type": "object",
+                          "properties": {
+                            "question1": {
+                              "type": "string",
+                              "example": "What is your favorite color?"
+                            },
+                            "answer1": {
+                              "type": "string",
+                              "example": "Blue"
+                            },
+                            "question2": {
+                              "type": "string",
+                              "example": "What's your favorite food?"
+                            },
+                            "answer2": {
+                              "type": "string",
+                              "example": "Pizza"
+                            },
+                            "question3": {
+                              "type": "string",
+                              "example": "What was the name of your first pet?"
+                            },
+                            "answer3": {
+                              "type": "string",
+                              "example": "Penny"
+                            }
+                          },
+                          "required": [
+                            "question1",
+                            "answer1",
+                            "question2",
+                            "answer2",
+                            "question3",
+                            "answer3"
+                          ],
+                          "additionalProperties": false
+                        },
+                        "required": [
+                          "email",
+                          "password",
+                          "firstName",
+                          "lastName",
+                          "phoneNumber",
+                          "address",
+                          "isDisabled",
+                          "role",
+                          "selectedSecurityQuestions"
+                        ],
+                        "additionalProperties": false
                       }
-                    },
-                    "required": [
-                      "email",
-                      "password",
-                      "firstName",
-                      "lastName",
-                      "phoneNumber",
-                      "address",
-                      "isDisabled",
-                      "role",
-                      "selectedSecurityQuestions"
-                    ],
-                    "additionalProperties": false
+                    }
                   }
                 }
               }
+            },
+            "responses": {
+              "201": {
+                "description": "User created successfully"
+              },
+              "400": {
+                "description": "Bad request"
+              },
+              "404": {
+                "description": "Not found"
+              }
             }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "User created successfully"
-          },
-          "400": {
-            "description": "Bad request"
-          },
-          "404": {
-            "description": "Not found"
           }
         }
       }
@@ -205,13 +239,13 @@
                         "type": "string",
                         "example": "Gang"
                       },
+                      "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
                       "phoneNumber": {
                         "type": "string",
                         "example": "34535435345"
-                      },
-                      "address": {
-                        "type": "string",
-                        "example": "not here"
                       },
                       "role": {
                         "type": "string",
@@ -306,66 +340,125 @@
           }
         }
       }
-    }
-  },
-  "components": {
-    "schemas": {
-      "userSchema": {
-        "type": "object",
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          },
-          "firstName": {
-            "type": "string"
-          },
-          "lastName": {
-            "type": "string"
-          },
-          "phoneNumber": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "isDisabled": {
-            "type": "boolean"
-          },
-          "role": {
-            "type": "string"
-          },
-          "selectedSecurityQuestions": {
-            "type": "array"
+    },
+    "/security/register": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Register a new user.",
+        "description": "Register a new user.",
+        "requestBody": {
+          "description": "Register a new user.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "example": "email@email.com"
+                      },
+                      "password": {
+                        "type": "string",
+                        "example": "Password01"
+                      },
+                      "firstName": {
+                        "type": "string",
+                        "example": "First"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Last"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "3395959555"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "standard"
+                      },
+                      "isDisabled": {
+                        "type": "boolean",
+                        "example": false
+                      },
+                      "selectedSecurityQuestions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "question1": {
+                              "type": "string",
+                              "example": "What is your favorite color?"
+                            },
+                            "answer1": {
+                              "type": "string",
+                              "example": "Blue"
+                            },
+                            "question2": {
+                              "type": "string",
+                              "example": "What's your favorite food?"
+                            },
+                            "answer2": {
+                              "type": "string",
+                              "example": "Pizza"
+                            },
+                            "question3": {
+                              "type": "string",
+                              "example": "What was the name of your first pet?"
+                            },
+                            "answer3": {
+                              "type": "string",
+                              "example": "Penny"
+                            }
+                          },
+                          "required": [
+                            "question1",
+                            "answer1",
+                            "question2",
+                            "answer2",
+                            "question3",
+                            "answer3"
+                          ],
+                          "additionalProperties": false
+                        }
+                      }
+                    },
+                    "required": [
+                      "email",
+                      "password",
+                      "firstName",
+                      "lastName",
+                      "selectedSecurityQuestions"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "User registered successfully"
+              },
+              "400": {
+                "description": "Bad request"
+              },
+              "404": {
+                "description": "Not found"
+              },
+              "500": {
+                "description": "Internal server error"
+              }
+            }
           }
-        },
-        "required": [
-          "email",
-          "password",
-          "firstName",
-          "lastName",
-          "phoneNumber",
-          "address",
-          "isDisabled",
-          "role",
-          "selectedSecurityQuestions"
-        ],
-        "additionalProperties": false
-      },
-      "SecurityQuestion": {
-        "type": "object",
-        "properties": {
-          "questionId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "answer": {
-            "type": "string"
-          }
-        },
-        "required": ["questionId", "answer"]
+        }
       }
     }
   }
