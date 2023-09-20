@@ -211,7 +211,16 @@ router.post("/register", (req, res, next) => {
       };
       console.log("User to be inserted into MongoDB:", newUser);
 
+<<<<<<<<< Temporary merge branch 1
+        const result = await db.collection('users').insertOne(newUser)
+
+        console.log('MongoDB Result:', result)
+        res.send({ id: result.insertedId })
+
+    }, next)
+=========
       const result = await db.collection("users").insertOne(newUser);
+>>>>>>>>> Temporary merge branch 2
 
       console.log("MongoDB Result:", result);
       res.send({ id: result.insertedId });
