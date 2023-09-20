@@ -11,10 +11,12 @@
 -->
 
 <div class="row">
-<br>
+  <br />
   <!--First Column-->
-  <div class="col faq-padding-left"><br>
-    <h2>Account FAQ:</h2><br>
+  <div class="col faq-padding-left">
+    <br />
+    <h2>Account FAQ:</h2>
+    <br />
 
     <!--How To Register For A New Account-->
     <mat-expansion-panel>
@@ -28,12 +30,42 @@
       <p>Step 3</p>
       <p>Step 4</p>
     </mat-expansion-panel>
-    <br>
+    <br />
     <!--How To Register For A New Account-->
     <mat-expansion-panel>
       <mat-expansion-panel-header>
+        <mat-panel-title> How do I reset my password? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Step 1</p>
+      <p>Step 2</p>
+      <p>Step 3</p>
+      <p>Step 4</p>
+    </mat-expansion-panel>
+    <br />
+  </div>
+
+  <!--Second Column-->
+  <div class="col faq-padding-left">
+    <br />
+    <h2>Customer Service FAQ:</h2>
+    <br />
+
+    <!--Making an Invoice-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title> How do I make an invoice? </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p>Step 2</p>
+      <p>Step 3</p>
+      <p>Step 4</p>
+    </mat-expansion-panel>
+    <br />
+
+    <!--Service Repair Request-->
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
         <mat-panel-title>
-          How do I reset my password?
+          How do I make a service repair request?
         </mat-panel-title>
       </mat-expansion-panel-header>
       <p>Step 1</p>
@@ -41,104 +73,160 @@
       <p>Step 3</p>
       <p>Step 4</p>
     </mat-expansion-panel>
-    <br>
-
-
-
-
+    <br />
   </div>
 
+  <!--Third Column-->
+  <div class="col faq-padding-left faq-padding-right">
+    <br />
+    <h2>Administrator FAQ:</h2>
+    <br />
 
-    <!--Second Column-->
-    <div class="col faq-padding-left"><br>
-      <h2>Customer Service FAQ:</h2><br>
-
-      <!--Making an Invoice-->
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            How do I make an invoice?
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Step 2</p>
-        <p>Step 3</p>
-        <p>Step 4</p>
-      </mat-expansion-panel>
-      <br>
-
-      <!--Service Repair Request-->
-      <mat-expansion-panel>
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            How do I make a service repair request?
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>Step 1</p>
-        <p>Step 2</p>
-        <p>Step 3</p>
-        <p>Step 4</p>
-      </mat-expansion-panel>
-      <br>
-
-    </div>
-
-
-    <!--Third Column-->
-    <div class="col faq-padding-left faq-padding-right"><br>
-      <h2>Administrator FAQ:</h2><br>
-
-      <!--How To Register For A New Account-->
-      <mat-expansion-panel>
+    <!--How To Register For A New Account-->
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          How do I add a user?
-        </mat-panel-title>
+        <mat-panel-title> How do I add a user? </mat-panel-title>
       </mat-expansion-panel-header>
-      <p><b>Step 1:</b> Navigate to the <a routerLink="/admin/users" target="_blank">User List</a> page - the link is located in the top right of the page under the profile icon when you are signed in as an Administrator.</p>
-      <img class="zoom rounded" src="./assets/addstep1.png" width="50%" alt="image showing where the Users link is"><br><br>
-      <p><b>Step 2:</b> On the <a routerLink="/admin/users" target="_blank">User List</a> page, click the "Add A New User" button. This will bring you to the <a routerLink="/admin/users/new" target="_blank">User Creation</a>page.</p>
-      <img class="zoom rounded" src="./assets/addstep2.png" width="50%" alt="image showing where the Add A New User button is"><br><br>
-      <p><b>Step 3:</b> On the <a routerLink="/admin/users/new" target="_blank">User Creation</a> page, fill out the form with the New User's Information. <i>Note: Ensure all fields are filled out and in the proper format or you will receive an error. The submit button will not be active until all errors are resolved.</i></p>
-      <p><b>Step 4: </b>Hit the Submit button at the bottom of the form. You will then be redirected back to the <a routerLink="/admin/users" target="_blank">User List</a> page where you should see your newly created User!</p>
+      <p>
+        <b>Step 1:</b> Navigate to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page - the
+        link is located in the top right of the page under the profile icon when
+        you are signed in as an Administrator.
+      </p>
+      <img
+        class="zoom rounded"
+        src="./assets/addstep1.png"
+        width="50%"
+        alt="image showing where the Users link is"
+      /><br /><br />
+      <p>
+        <b>Step 2:</b> On the
+        <a routerLink="/admin/users" target="_blank">User List</a> page, click
+        the "Add A New User" button. This will bring you to the
+        <a routerLink="/admin/users/new" target="_blank">User Creation</a>page.
+      </p>
+      <img
+        class="zoom rounded"
+        src="./assets/addstep2.png"
+        width="50%"
+        alt="image showing where the Add A New User button is"
+      /><br /><br />
+      <p>
+        <b>Step 3:</b> On the
+        <a routerLink="/admin/users/new" target="_blank">User Creation</a> page,
+        fill out the form with the New User's Information.
+        <i
+          >Note: Ensure all fields are filled out and in the proper format or
+          you will receive an error. The submit button will not be active until
+          all errors are resolved.</i
+        >
+      </p>
+      <p>
+        <b>Step 4: </b>Hit the Submit button at the bottom of the form. You will
+        then be redirected back to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page where
+        you should see your newly created User!
+      </p>
     </mat-expansion-panel>
-    <br>
+    <br />
 
-      <!--Editing a User-->
-      <mat-expansion-panel>
+    <!--Editing a User-->
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          How do I edit a user's information?
-        </mat-panel-title>
+        <mat-panel-title> How do I edit a user's information? </mat-panel-title>
       </mat-expansion-panel-header>
-      <p><b>Step 1: </b>Navigate to the <a routerLink="/admin/users" target="_blank">User List</a> page - the link for this is located in the top right of the page under the profile icon when you are signed in as an Administrator.</p>
-      <img class="rounded zoom" src="./assets/addstep1.png" width="50%" alt="image showing where the Users link is"><br><br>
-      <p><b>Step 2: </b>Click the pencil icon next to the user you wish to disable.</p>
-      <img class="rounded zoom" src="./assets/updatestep2.png" width="50%" alt="image showing where the pencil icon is in the User List Page"><br><br>
-      <p><b>Step 3: </b> After clicking the pencil icon you will be directed to the Update View page. This page will be populated with the current user information. Change any information here that you want to update and then click the Submit button. You will then be redirected back to the <a routerLink="/admin/users" target="_blank">User List</a> page where your updated record will be displayed.</p>
-      <img class="rounded zoom" src="./assets/updatestep3.png" width="50%" alt="image showing where the submit button is on the User View page">
+      <p>
+        <b>Step 1: </b>Navigate to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page - the
+        link for this is located in the top right of the page under the profile
+        icon when you are signed in as an Administrator.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/addstep1.png"
+        width="50%"
+        alt="image showing where the Users link is"
+      /><br /><br />
+      <p>
+        <b>Step 2: </b>Click the pencil icon next to the user you wish to
+        disable.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/updatestep2.png"
+        width="50%"
+        alt="image showing where the pencil icon is in the User List Page"
+      /><br /><br />
+      <p>
+        <b>Step 3: </b> After clicking the pencil icon you will be directed to
+        the Update View page. This page will be populated with the current user
+        information. Change any information here that you want to update and
+        then click the Submit button. You will then be redirected back to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page where
+        your updated record will be displayed.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/updatestep3.png"
+        width="50%"
+        alt="image showing where the submit button is on the User View page"
+      />
     </mat-expansion-panel>
-    <br>
+    <br />
 
-      <!--Disabling a User-->
-      <mat-expansion-panel>
+    <!--Disabling a User-->
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title>
-          How do I disable a user?
-        </mat-panel-title>
+        <mat-panel-title> How do I disable a user? </mat-panel-title>
       </mat-expansion-panel-header>
-      <p><b>Step 1: </b> Navigate to the <a routerLink="/admin/users" target="_blank">User List</a> page - the link is located in the top right of the page under the profile icon when you are signed in as an Administrator.</p>
-      <img class="rounded zoom" src="./assets/addstep1.png" width="50%" alt="image showing where the Users link is"><br><br>
-      <p><b>Step 2: </b> Click the trash can icon next to the user you wish to disable.</p>
-      <img class="rounded zoom" src="./assets/disablestep2.png" width="50%" alt="image showing where the disable icon is in the User List Page"><br><br>
-      <p><b>Step 3: </b> After clicking the trash can icon, a dialog box will ask you to confirm that you want to disable the user. Click OK.</p>
-      <img class="rounded zoom" src="./assets/disablestep3.png" width="50%" alt="image showing the dialog box asking to confirm the disabling of the user"><br><br>
-      <p><b>Step 4: </b> After clicking OK, you should see a User Disabled Successfully message and then the page will refresh after a few seconds and the user that was disabled should no longer be visible.</p>
-      <img class="rounded zoom" src="./assets/disablestep4.png" width="50%" alt="image showing the user disabled successfully message"><br><br>
+      <p>
+        <b>Step 1: </b> Navigate to the
+        <a routerLink="/admin/users" target="_blank">User List</a> page - the
+        link is located in the top right of the page under the profile icon when
+        you are signed in as an Administrator.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/addstep1.png"
+        width="50%"
+        alt="image showing where the Users link is"
+      /><br /><br />
+      <p>
+        <b>Step 2: </b> Click the trash can icon next to the user you wish to
+        disable.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/disablestep2.png"
+        width="50%"
+        alt="image showing where the disable icon is in the User List Page"
+      /><br /><br />
+      <p>
+        <b>Step 3: </b> After clicking the trash can icon, a dialog box will ask
+        you to confirm that you want to disable the user. Click OK.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/disablestep3.png"
+        width="50%"
+        alt="image showing the dialog box asking to confirm the disabling of the user"
+      /><br /><br />
+      <p>
+        <b>Step 4: </b> After clicking OK, you should see a User Disabled
+        Successfully message and then the page will refresh after a few seconds
+        and the user that was disabled should no longer be visible.
+      </p>
+      <img
+        class="rounded zoom"
+        src="./assets/disablestep4.png"
+        width="50%"
+        alt="image showing the user disabled successfully message"
+      /><br /><br />
     </mat-expansion-panel>
-    <br>
+    <br />
 
-      <!--Viewing Purchases By Service-->
-      <mat-expansion-panel>
+    <!--Viewing Purchases By Service-->
+    <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
           How can I view the amount of purchases by service?
@@ -150,11 +238,6 @@
       <p>Step 4</p>
     </mat-expansion-panel>
     <!--creates some room at the end of the page between the footer-->
-    <br><br><br><br><br><br><br><br><br>
-
-    </div>
-
-
-
-
+    <br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </div>
 </div>

@@ -144,18 +144,18 @@
                   }
                 }
               }
-            },
-            "responses": {
-              "201": {
-                "description": "User created successfully"
-              },
-              "400": {
-                "description": "Bad request"
-              },
-              "404": {
-                "description": "Not found"
-              }
             }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
