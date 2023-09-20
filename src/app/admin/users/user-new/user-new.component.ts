@@ -13,7 +13,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User, SecurityQuestion } from '../user';
+import { User } from '../user';
 import { UserService } from '../user.service';
 
 @Component({
