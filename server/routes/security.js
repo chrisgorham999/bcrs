@@ -168,7 +168,7 @@ router.post('/register', (req, res, next) => {
         }
         console.log('User to be inserted into MongoDB:', newUser)
 
-        const result = await db.collections('users').insertOne(newUser)
+        const result = await db.collection('users').insertOne(newUser)
 
         console.log('MongoDB Result:', result)
         res.send({ id: result.insertedId })
