@@ -91,16 +91,7 @@
                         "type": "array",
                         "items": {
                           "type": "object",
-                          "properties": {
-                            "question": {
-                              "type": "string",
-                              "example": "What is your favorite color?"
-                            },
-                            "answer": {
-                              "type": "string",
-                              "example": "Blue"
-                            }
-                          },
+                          "properties": {},
                           "required": ["question", "answer"],
                           "additionalProperties": false
                         }
