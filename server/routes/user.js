@@ -35,14 +35,6 @@ const securityQuestionsSchema = {
       question3: { type: "string" },
       answer3: { type: "string" },
     },
-    required: [
-      "question1",
-      "answer1",
-      "question2",
-      "answer2",
-      "question3",
-      "answer3",
-    ],
     additionalProperties: false,
   },
 };
@@ -74,7 +66,9 @@ const userSchema = {
     isDisabled: {
       type: "boolean",
     },
-    selectedSecurityQuestions: securityQuestionsSchema,
+    selectedSecurityQuestions: {
+      type: "array"
+    },
   },
   required: [
     "email",

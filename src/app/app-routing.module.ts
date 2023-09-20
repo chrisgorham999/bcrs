@@ -3,7 +3,7 @@
 ; Title: app-routing.module .ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 20 September 2023
 ; Description: This code supports all routes
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -17,6 +17,7 @@ import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FaqComponent } from './faq/faq.component';
+import { RegisterComponent } from './register/register.component';
 
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
@@ -44,6 +45,11 @@ const routes: Routes = [
         path: 'faq',
         component: FaqComponent,
         title: 'BCRS: FAQ'
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        title: 'BCRS: Register'
       },
       {
         path: 'admin',
