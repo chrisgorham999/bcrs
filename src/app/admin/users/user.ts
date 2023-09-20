@@ -19,7 +19,7 @@ export interface User {
   phoneNumber: string;
   address: string;
   isDisabled: boolean;
-  selectedSecurityQuestions: SecurityQuestion[];
+  selectedSecurityQuestions: [];
 }
 
 export interface SecurityQuestion {

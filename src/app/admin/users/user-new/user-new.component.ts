@@ -47,8 +47,7 @@ export class UserNewComponent {
         Validators.required,
         Validators.pattern('^[0-9-]*$'),
       ]),
-    ],
-    selectedSecurityQuestions: ['', Validators.compose([Validators.required])],
+    ]
   });
 
   constructor(
@@ -73,8 +72,7 @@ export class UserNewComponent {
       role: this.userForm.controls['role'].value,
       // set to false because we're creating a user, we don't want it disabled and the admin shouldn't have to tell us that, it is implied
       isDisabled: false,
-      selectedSecurityQuestions:
-        this.userForm.controls['selectedSecurityQuestions'].value,
+      selectedSecurityQuestions: []
     };
 
     this.userService.createUser(user).subscribe({
