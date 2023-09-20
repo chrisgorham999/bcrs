@@ -196,6 +196,7 @@ router.post("/register", (req, res, next) => {
         next(err);
         return;
       }
+
       // get the info for the new user
       const newUser = {
         email: user.email,
@@ -215,6 +216,7 @@ router.post("/register", (req, res, next) => {
       console.log("MongoDB Result:", result);
       res.send({ id: result.insertedId });
     }, next);
+
   } catch (err) {
     console.log("err", err);
   }
