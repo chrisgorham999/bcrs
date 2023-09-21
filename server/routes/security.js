@@ -295,7 +295,7 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
 });
 
 // resetPassword API
-router.post("/users/:email/reset-password", (req, res, next) => {
+router.delete("/users/:email/reset-password", (req, res, next) => {
   try {
     const email = req.params.email;
     const user = req.body;
@@ -312,7 +312,9 @@ router.post("/users/:email/reset-password", (req, res, next) => {
       return;
     }
 
-    mongo(async db => {
+    const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
+
+    mongo(async (db) => {
       const user = await db.collection("users").findOne({ email: email });
 
       if (!user) {
@@ -323,11 +325,11 @@ router.post("/users/:email/reset-password", (req, res, next) => {
         return;
       }
       console.log("Selected User", user);
-      const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
+
       const result = await db.collection("users").updateOne(
         { email: email },
         {
-          $set: { password: hashedPassword }
+          $set: { password: hashedPassword },
         }
       );
 
