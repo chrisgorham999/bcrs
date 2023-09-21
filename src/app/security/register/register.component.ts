@@ -12,7 +12,7 @@
 // imports
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { RegisterViewModel } from '../signin/register-view-model';
+import { RegisterViewModel } from '../register-view-model';
 import { Router } from '@angular/router';
 import { SecurityService } from '../security.service';
 

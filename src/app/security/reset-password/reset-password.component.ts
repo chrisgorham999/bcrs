@@ -14,7 +14,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SecurityService } from '../security.service';
-import { ThisReceiver } from '@angular/compiler';
 
 @Component({
   selector: 'app-reset-password',
@@ -29,7 +28,7 @@ export class ResetPasswordComponent {
   // change password form
   changePasswordForm: FormGroup = this.fb.group({
     password: [
-      '',
+      null,
       Validators.compose([
         Validators.required,
         Validators.pattern(

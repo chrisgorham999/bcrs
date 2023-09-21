@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center mt-5">
     <div class="col-lg-8 col-md-10">
-      <div class="card shadow p-4">
+      <div class="card shadow p-4 bg-black font-yellow">
         <form [formGroup]="sqForm" (ngSubmit)="verifySecurityQuestions()" class="form row g-3">
           <div *ngIf="errorMessage">
             <div class="col-12">
@@ -21,14 +21,14 @@
                 </div>
 
                 <label *ngIf="!isLoadingLabels" for="q1" class="form-label">{{ question1 }}</label>
-                <input type="text" formControlName="answer1" class="form-control">
+                <input type="text" formControlName="answer1" class="form-control bg-potter-yellow">
 
                 <!--validation errors-->
                 <div class="alert alert-danger mt-2" *ngIf="sqForm.controls['answer1'].invalid && (sqForm.controls['answer1'].dirty || sqForm.controls['answer1'].touched)">
                   Answer is required.
                 </div>
               </div>
-            </div>
+            </div><br>
 
             <div class="row">
               <div class="col-md-12">
@@ -37,14 +37,14 @@
                 </div>
 
                 <label *ngIf="!isLoadingLabels" for="q2" class="form-label">{{ question2 }}</label>
-                <input type="text" formControlName="answer2" class="form-control">
+                <input type="text" formControlName="answer2" class="form-control bg-potter-yellow">
 
                 <!--validation errors-->
                 <div class="alert alert-danger mt-2" *ngIf="sqForm.controls['answer2'].invalid && (sqForm.controls['answer2'].dirty || sqForm.controls['answer2'].touched)">
                   Answer is required.
                 </div>
               </div>
-            </div>
+            </div><br>
 
             <div class="row">
               <div class="col-md-12">
@@ -53,7 +53,7 @@
                 </div>
 
                 <label *ngIf="!isLoadingLabels" for="q1" class="form-label">{{ question3 }}</label>
-                <input type="text" formControlName="answer3" class="form-control">
+                <input type="text" formControlName="answer3" class="form-control bg-potter-yellow">
 
                 <!--validation errors-->
                 <div class="alert alert-danger mt-2" *ngIf="sqForm.controls['answer3'].invalid && (sqForm.controls['answer3'].dirty || sqForm.controls['answer3'].touched)">
@@ -65,15 +65,15 @@
 
           </fieldset>
 
-          <button type="submit" id="submit" [disabled]="!sqForm.valid" class="btn btn-lg">
+          <button type="submit" id="submit" [disabled]="!sqForm.valid" class="btn btn-lg bg-potter-yellow text-black">
             <span *ngIf="!isLoadingSubmit">Verify Security Questions</span>
             <div *ngIf="isLoadingSubmit">
               <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...
             </div>
           </button>
         </form>
-      </div>
-      <a class="text-underline-hover" routerLink="/security/forgot-password">Return</a>
+      </div><br>
+      <a routerLink="/" class="text-dark text-underline-hover"><button mat-raised button class="btn bg-black font-yellow">Go Back</button></a>
     </div>
   </div>
 </div>
