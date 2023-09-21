@@ -1,0 +1,22 @@
+/*
+======================================
+; Title: register.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 21 September 2023
+; Last Updated: 21 September 2023
+; Description: This code supports styling for the Register Component
+; Sources Used: N/A
+;=====================================
+*/
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+.bg-black {
+  background-color: #000;
+}

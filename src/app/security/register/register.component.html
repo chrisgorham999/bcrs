@@ -3,18 +3,17 @@
 ; Title: register.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 20 September 2023
-; Last Updated: 20 September 2023
+; Last Updated: 21 September 2023
 ; Description: This code supports the HTML functionality for the Register Component
 ; Sources Used: Bellevue University WEB-450 Coding Sessions
 ;=====================================
 -->
 
-
 <div class="container-fluid pt-2">
-  <h1 class="text-center">Welcome to the User Registration Page!</h1>
+  <h1 class="text-center">Welcome to the User Creation Page!</h1>
 
   <div class="row justify-content-center pt-4">
-    <form class="col-sm-10 col-md-8 col-lg-6">
+    <div class="col-sm-10 col-md-8 col-lg-6">
 
       <div *ngIf="errorMessage">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -30,33 +29,46 @@
             <fieldset class="form-group">
               <legend>User Information</legend><br><br>
 
-              <div class="mb-3">
-                <label for="txtFirstName">First Name:</label>
-                <input type="text" id="txtFirstName" class="form-control" formControlName="firstName" required>
-              </div>
+    <!--First Row-->
+    <div class="row">
 
-              <!-- first name error handling -->
-              <div *ngIf="userForm.controls['firstName'].touched && userForm.controls['firstName'].hasError('required')">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  First name is required.
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+
+                <div class="mb-3">
+                  <label for="txtFirstName">First Name:</label>
+                  <input type="text" id="txtFirstName" class="form-control" formControlName="firstName" required>
                 </div>
-              </div>
-              <!-- end first name error handling -->
 
-              <div class="mb-3">
-                <label for="txtLastName">Last Name:</label>
-                <input type="text" id="txtLastName" class="form-control" formControlName="lastName" required>
-              </div>
-
-              <!-- last name error handling -->
-              <div *ngIf="userForm.controls['lastName'].touched && userForm.controls['lastName'].hasError('required')">
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  Last name is required.
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <!-- first name error handling -->
+                <div *ngIf="registerForm.controls['firstName'].touched && registerForm.controls['firstName'].hasError('required')">
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    First name is required.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
                 </div>
-              </div>
-              <!-- end last name error handling -->
+                <!-- end first name error handling -->
+
+                <div class="mb-3">
+                  <label for="txtLastName">Last Name:</label>
+                  <input type="text" id="txtLastName" class="form-control" formControlName="lastName" required>
+                </div>
+
+                <!-- last name error handling -->
+                <div *ngIf="registerForm.controls['lastName'].touched && registerForm.controls['lastName'].hasError('required')">
+                  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Last name is required.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                </div>
+                <!-- end last name error handling -->
+
+
+
+
+
+    </div>
+
+
 
               <div class="mb-3">
                 <label for="txtAddress">Address:</label>
@@ -64,7 +76,7 @@
               </div>
 
               <!-- address error handling -->
-              <div *ngIf="userForm.controls['address'].touched && userForm.controls['address'].hasError('required')">
+              <div *ngIf="registerForm.controls['address'].touched && registerForm.controls['address'].hasError('required')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Address is required.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -78,14 +90,14 @@
               </div>
 
               <!-- phone number error handling -->
-              <div *ngIf="userForm.controls['phoneNumber'].touched && userForm.controls['phoneNumber'].hasError('required')">
+              <div *ngIf="registerForm.controls['phoneNumber'].touched && registerForm.controls['phoneNumber'].hasError('required')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Phone Number is required.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>
 
-              <div *ngIf="userForm.controls['phoneNumber'].touched && userForm.controls['phoneNumber'].hasError('pattern')">
+              <div *ngIf="registerForm.controls['phoneNumber'].touched && registerForm.controls['phoneNumber'].hasError('pattern')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Phone Number must be in format: 555-111-5555 or 5551115555
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -99,14 +111,14 @@
               </div>
 
               <!-- email error handling -->
-              <div *ngIf="userForm.controls['email'].touched && userForm.controls['email'].hasError('required')">
+              <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('required')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Email is required.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>
 
-              <div *ngIf="userForm.controls['email'].touched && userForm.controls['email'].hasError('email')">
+              <div *ngIf="registerForm.controls['email'].touched && registerForm.controls['email'].hasError('email')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Please enter a valid email address.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -120,14 +132,14 @@
               </div>
 
               <!-- password error handling -->
-              <div *ngIf="userForm.controls['password'].touched && userForm.controls['password'].hasError('required')">
+              <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('required')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   Password is required.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
               </div>
 
-              <div *ngIf="userForm.controls['password'].touched && userForm.controls['password'].hasError('pattern')">
+              <div *ngIf="registerForm.controls['password'].touched && registerForm.controls['password'].hasError('pattern')">
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                   The password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, and one number.
                   <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -135,100 +147,125 @@
               </div>
               <!-- end password error handling -->
 
+              <!--Row for Question and Answer 1-->
+              <div class="row">
+
+                <!--Question 1-->
+              <div class="col-md-6">
+                <label for="q1">Question:</label>
+                <select name="q1" formControlName="question1" id="q1" class="form-select">
+                  <option *ngFor="let question of qArr1" [value]="question">{{ question }}</option>
+                </select>
+              </div>
+
+              <!-- question 1 error handling -->
+              <div *ngIf="registerForm.controls['question1'].invalid && (registerForm.controls['question1'].dirty || registerForm.controls['question1'].touched)">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Question is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              <!--Answer 1-->
+              <div class="col-md-6">
+                <label for="a1">Answer:</label>
+                <input type="text" name="a1" formControlName="answer1" id="a1" class="form-control">
+              </div>
+
+              <!-- answer 1 error handling -->
+              <div *ngIf="registerForm.controls['answer1'].invalid && (registerForm.controls['answer1'].dirty || registerForm.controls['answer1'].touched)">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Answer is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              </div>
+
+              <!--Row for Question and Answer 2-->
+              <div class="row">
+
+                <!--Question 2-->
+              <div class="col-md-6">
+                <label for="q2">Question:</label>
+                <select name="q2" formControlName="question2" id="q2" class="form-select">
+                  <option *ngFor="let question of qArr2" [value]="question">{{ question }}</option>
+                </select>
+              </div>
+
+              <!-- question 2 error handling -->
+              <div *ngIf="registerForm.controls['question2'].invalid && (registerForm.controls['question2'].dirty || registerForm.controls['question2'].touched)">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Question is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              <!--Answer 2-->
+              <div class="col-md-6">
+                <label for="a2">Answer:</label>
+                <input type="text" name="a2" formControlName="answer2" id="a2" class="form-control">
+              </div>
+
+              <!-- answer 2 error handling -->
+              <div *ngIf="registerForm.controls['answer2'].invalid && (registerForm.controls['answer2'].dirty || registerForm.controls['answer2'].touched)">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Answer is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              </div>
+
+
+
+              <!--Row for Question and Answer 3-->
+              <div class="row">
+
+                <!--Question 3-->
+              <div class="col-md-6">
+                <label for="q3">Question:</label>
+                <select name="q3" formControlName="question3" id="q3" class="form-select">
+                  <option *ngFor="let question of qArr3" [value]="question">{{ question }}</option>
+                </select>
+              </div>
+
+              <!-- question 3 error handling -->
+              <div *ngIf="registerForm.controls['question3'].invalid && (registerForm.controls['question3'].dirty || registerForm.controls['question3'].touched)">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Question is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              <!--Answer 3-->
+              <div class="col-md-6">
+                <label for="a3">Answer:</label>
+                <input type="text" name="a3" formControlName="answer3" id="a3" class="form-control">
+              </div>
+
+              <!-- answer 3 error handling -->
+              <div *ngIf="registerForm.controls['answer3'].invalid && (registerForm.controls['answer3'].dirty || registerForm.controls['answer3'].touched)">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Answer is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              </div>
             </fieldset>
 
-            <!---Start of Password Reset Questions-->
-            <fieldset class="mb-3 form-group">
-
-              <legend>Security Questions</legend>
-              <!--Question 1-->
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="q1">Question:</label>
-                  <select name="q1" formControlName="question1" id="q1" class="form-select">
-                    <option *ngFor="let question of qArr1" [value]="question">{{ question }}</option>
-                  </select>
-
-                  <!--validation errors-->
-                  <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question1'].invalid && (registerForm.controls['question1'].dirty || registerForm.controls['question1'].touched)">
-                    Question is required.
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <label for="a1">Answer:</label><br>
-                <input type="text" id="a1" formControlName="answer1" name="a1" class="form-control" required>
-
-                <!--validation errors-->
-                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer1'].invalid && (registerForm.controls['answer1'].dirty || registerForm.controls['answer1'].touched)">
-                  Answer is required.
-                </div>
-              </div>
-
-              <!--Question 2-->
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="q2">Question:</label>
-                  <select name="q2" formControlName="question2" id="q2" class="form-select">
-                    <option *ngFor="let question of qArr2" [value]="question">{{ question }}</option>
-                  </select>
-
-                  <!--validation errors-->
-                  <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question2'].invalid && (registerForm.controls['question2'].dirty || registerForm.controls['question2'].touched)">
-                    Question is required.
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <label for="a2">Answer:</label><br>
-                <input type="text" id="a2" formControlName="answer2" name="a2" class="form-control" required>
-
-                <!--validation errors-->
-                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer2'].invalid && (registerForm.controls['answer2'].dirty || registerForm.controls['answer2'].touched)">
-                  Answer is required.
-                </div>
-              </div>
-
-              <!--Question 3-->
-              <div class="row">
-                <div class="col-md-6">
-                  <label for="q3">Question:</label>
-                  <select name="q3" formControlName="question3" id="q3" class="form-select">
-                    <option *ngFor="let question of qArr3" [value]="question">{{ question }}</option>
-                  </select>
-
-                  <!--validation errors-->
-                  <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['question3'].invalid && (registerForm.controls['question3'].dirty || registerForm.controls['question3'].touched)">
-                    Question is required.
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <label for="a3">Answer:</label><br>
-                <input type="text" id="a3" formControlName="answer3" name="a3" class="form-control" required>
-
-                <!--validation errors-->
-                <div class="alert alert-danger mt-2" *ngIf="registerForm.controls['answer3'].invalid && (registerForm.controls['answer3'].dirty || registerForm.controls['answer3'].touched)">
-                  Answer is required.
-                </div>
-              </div>
-
-            </fieldset>
-
-            <input type="submit" id="submit" value="Submit" [disabled]="!userForm.valid" class="btn btn-lg bg-black text-white d-block mx-auto extra-width">
+            <input type="submit" id="submit" value="Submit" [disabled]="!registerForm.valid" class="btn btn-lg bg-black text-white d-block mx-auto extra-width">
           </form>
         </div>
       </div><br>
-      <input type="submit" id="submit" [disabled]="!registerForm.valid" value="Register Account" class="btn btn-lg bg-black font-yellow">
-    </form>
-    <br>
-    <a routerLink="/security/signin"><button mat-raised button class="bg-black font-yellow">Return</button></a>
+      <a routerLink="/security/signin"><button mat-raised-button class="btn bg-black font-yellow">Return</button></a>
       <!--Puts some space between footer and the bottom of the form-->
       <br><br><br><br>
       <br><br><br><br><br><br><br><br>
     </div>
   </div>
 </div>
+
+
+

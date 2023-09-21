@@ -44,6 +44,15 @@ export class RegisterComponent {
     answer3: ['', Validators.compose([Validators.required])],
     phoneNumber: ['', Validators.compose([Validators.required])],
     address: ['', Validators.compose([Validators.required])],
+    password: [
+      '',
+      Validators.compose([
+        Validators.required,
+        Validators.pattern(
+          '^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$'
+        ),
+      ]),
+    ],
 
   })
 
@@ -79,6 +88,56 @@ export class RegisterComponent {
       this.qArr3 = this.qArr2.filter(q => q !== val) // filter the first array of questions to remove the selected question
   })
 
+  }
+
+  // register function that takes in no parameters and returns nothing
+  // this function registers a new user and navigates to the signin page
+  register() {
+    // set the user object to the values of the register form
+    this.user = {
+      firstName: this.registerForm.get('firstName')?.value,
+      lastName: this.registerForm.get('lastName')?.value,
+      email: this.registerForm.get('email')?.value,
+      password: this.registerForm.get('password')?.value,
+      address: this.registerForm.get('address')?.value,
+      role: "standard",
+      isDisabled: false,
+      phoneNumber: this.registerForm.get('phoneNumber')?.value,
+      selectedSecurityQuestions: [
+        {
+          question: this.registerForm.get('question1')?.value,
+          answer: this.registerForm.get('answer1')?.value
+        },
+        {
+          question: this.registerForm.get('question2')?.value,
+          answer: this.registerForm.get('answer2')?.value
+        },
+        {
+          question: this.registerForm.get('question3')?.value,
+          answer: this.registerForm.get('answer3')?.value
+        }
+      ]
+
+    }
+
+    console.log('Registering new user', this.user) // log the user object to the console
+
+    //call the register function from the security service and subscribe to the result
+    this.securityService.register(this.user).subscribe({
+      next: (result) => {
+        console.log('Result from Register API Call: ', result) // log the result to the console
+        this.router.navigate(['/security/signin']) // navigate to the sign in page
+      },
+      error: (err) => {
+        if (err.error.message) {
+          console.log('db error: ', err.error.message) // log the error message to the console
+          this.errorMessage = err.error.message // set the error message to the error message from the API
+        } else {
+          this.errorMessage = 'Something went wrong. Please contact the system administrator.'
+          console.log(err)
+        }
+      }
+    })
   }
 
 

@@ -20,5 +20,7 @@ export interface RegisterViewModel {
   password: string
   phoneNumber: string
   address: string
+  role: string
+  isDisabled: boolean
   selectedSecurityQuestions: selectedSecurityQuestionsViewModel[]
 }
