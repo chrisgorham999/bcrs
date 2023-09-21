@@ -3,7 +3,7 @@
 ; Title: register-view-model.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 20 September 2023
-; Last Updated: 20 September 2023
+; Last Updated: 21 September 2023
 ; Description: This code supports the Register View Model
 ; Sources Used: Bellevue University WEB-450 Coding Sessions
 ;=====================================
