@@ -18,11 +18,19 @@ import { RouterModule } from '@angular/router';
 import { SecurityComponent } from './security.component';
 import { SecurityRoutingModule } from './security-routing.module';
 import { SigninComponent } from './signin/signin.component';
+import { RegisterComponent } from './register/register.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { VerifySecurityQuestionsComponent } from './verify-security-questions/verify-security-questions.component';
 
 @NgModule({
   declarations: [
     SecurityComponent,
-    SigninComponent
+    SigninComponent,
+    RegisterComponent,
+    ResetPasswordComponent,
+    VerifyEmailComponent,
+    VerifySecurityQuestionsComponent
   ],
   imports: [
     CommonModule,

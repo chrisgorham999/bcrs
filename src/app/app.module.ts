@@ -26,7 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { RegisterComponent } from './register/register.component';
+
 
 
 
@@ -39,7 +39,6 @@ import { RegisterComponent } from './register/register.component';
     FooterComponent,
     NavComponent,
     NotFoundComponent,
-    RegisterComponent
   ],
   imports: [
     BrowserModule,
