@@ -20,3 +20,11 @@
 .bg-black {
   background-color: #000;
 }
+
+.extra-width {
+  width: 200px;
+}
+
+.border-yellow {
+  border: #FFD800;
+}

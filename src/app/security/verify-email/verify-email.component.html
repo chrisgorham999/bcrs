@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center mt-5">
     <div class="col-lg-8 col-md-10">
-      <div class="card shadow p-4">
+      <div class="card shadow p-4 bg-black font-yellow">
         <form [formGroup]="emailForm" (ngSubmit)="verifyEmail()" class="form row g-3">
           <!--Error Message-->
           <div *ngIf="errorMessage" class="row">
@@ -13,12 +13,11 @@
           </div>
 
           <fieldset class="mb-3 form-group">
-            <legend>User Information</legend>
+            <legend>Enter The Email Address Associated With Your Account</legend>
 
             <div class="row">
               <div class="col-md-12">
-                <label class="form-label" for="email">Email:</label>
-                <input class="form-control" formControlName="email" type="text" id="email" name="email" required>
+                <input class="form-control bg-potter-yellow" formControlName="email" type="text" id="email" name="email" required>
 
                 <!--validation errors-->
                 <div class="alert alert-danger mt-2" *ngIf="emailForm.controls['email'].invalid && (emailForm.controls['email'].dirty || emailForm.controls['email'].touched)">
@@ -32,15 +31,15 @@
             </div>
           </fieldset>
 
-          <button type="submit" id="submit" [disabled]="!emailForm.valid" class="btn btn-lg bg-black font-yellow">
+          <button type="submit" id="submit" [disabled]="!emailForm.valid" class="btn btn-lg bg-potter-yellow text-black">
             <span *ngIf="!isLoading">Verify Account</span>
             <div *ngIf="isLoading">
               <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Loading...
             </div>
           </button>
         </form>
-      </div>
-      <a class="text-underline-hover" routerLink="/security/signin">Return</a>
+      </div><br>
+      <a routerLink="/security/signin"><< Go Back</a>
     </div>
   </div>
 </div>

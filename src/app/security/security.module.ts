@@ -13,6 +13,7 @@
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SecurityComponent } from './security.component';
@@ -36,6 +37,7 @@ import { VerifySecurityQuestionsComponent } from './verify-security-questions/ve
     CommonModule,
     FormsModule,
     HttpClientModule,
+    MatButtonModule,
     ReactiveFormsModule,
     RouterModule,
     SecurityRoutingModule
