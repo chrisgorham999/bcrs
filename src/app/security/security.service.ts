@@ -13,8 +13,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RegisterViewModel } from './signin/register-view-model';
-import { selectedSecurityQuestionsViewModel } from './signin/selected-security-questions-view-model';
+import { RegisterViewModel } from './register-view-model';
+import { selectedSecurityQuestionsViewModel } from './selected-security-questions-view-model';
 
 
 @Injectable({

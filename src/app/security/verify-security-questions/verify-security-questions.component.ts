@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SecurityService } from '../security.service';
-import { selectedSecurityQuestionsViewModel } from '../signin/selected-security-questions-view-model';
+import { selectedSecurityQuestionsViewModel } from '../selected-security-questions-view-model';
 
 @Component({
   selector: 'app-verify-security-questions',
