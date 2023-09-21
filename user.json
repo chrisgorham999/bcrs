@@ -266,6 +266,38 @@
         }
       }
     },
+    "/users/{email}/security-questions": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Find user security questions by email",
+        "description": "Returns an user's security questions based on their email.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Email document found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/security/signin": {
       "post": {
         "tags": ["Security"],
@@ -382,6 +414,8 @@
                       "password",
                       "firstName",
                       "lastName",
+                      "address",
+                      "phoneNumber",
                       "selectedSecurityQuestions"
                     ],
                     "additionalProperties": false
@@ -433,6 +467,72 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/security/verify/users/{email}/security-questions": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Verify security questions",
+        "description": "Verifies the security questions for the user.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "shanehingtgen@email.com"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request body containing security questions",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "securityQuestions": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "question": {
+                          "type": "string",
+                          "example": "What is your favorite color?"
+                        },
+                        "answer": {
+                          "type": "string",
+                          "example": "Blue"
+                        }
+                      },
+                      "required": ["question", "answer"],
+                      "additionalProperties": false
+                    },
+                    "minItems": 3,
+                    "maxItems": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "User found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "User not found"
           },
           "500": {
             "description": "Internal server error"
