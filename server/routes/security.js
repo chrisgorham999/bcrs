@@ -80,6 +80,8 @@ const registerSchema = {
     "password",
     "firstName",
     "lastName",
+    "address",
+    "phoneNumber",
     "role",
     "isDisabled",
     "selectedSecurityQuestions",
@@ -196,8 +198,8 @@ router.post("/register", (req, res, next) => {
         lastName: user.lastName,
         address: user.address,
         phoneNumber: user.phoneNumber,
-        role: user.role,
-        isDisabled: "false",
+        role: "standard",
+        isDisabled: false,
         selectedSecurityQuestions: user.selectedSecurityQuestions,
       };
       console.log("User to be inserted into MongoDB:", newUser);
@@ -262,17 +264,19 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
       if (!user) {
         const err = new Error("Not Found");
         err.status = 404;
-        console.log("Employee not found", err);
+        console.log("User not found", err);
         next(err);
         return;
       }
 
-      console.log("Selected User", user);
+      console.log("Selected Email", user);
+
+      const userSecurityQuestions = user.selectedSecurityQuestions;
+
       if (
-        securityQuestions[0].answer !==
-          user.selectedSecurityQuestions[0].answer ||
-        securityQuestions[1].answer !== user.selectedSecurityQuestions[1] ||
-        securityQuestions[3].answer !== user.selectedSecurityQuestions[3].answer
+        securityQuestions[0].answer !== userSecurityQuestions[0].answer ||
+        securityQuestions[1].answer !== userSecurityQuestions[1].answer ||
+        securityQuestions[2].answer !== userSecurityQuestions[2].answer
       ) {
         const err = new Error("Unauthorized");
         err.status = 401;
