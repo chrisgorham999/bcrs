@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { DirectoryComponent } from './directory/directory.component';
 
 
 
@@ -39,6 +40,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     FooterComponent,
     NavComponent,
     NotFoundComponent,
+    DirectoryComponent,
   ],
   imports: [
     BrowserModule,
