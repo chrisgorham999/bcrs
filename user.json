@@ -539,6 +539,58 @@
           }
         }
       }
+    },
+    "/security/users/{email}/reset-password": {
+      "post": {
+        "tags": ["Security"],
+        "summary": "Reset password",
+        "description": "Resets the password for the user.",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "bach@nodebucket.com"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Input new password to reset",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "password": {
+                    "type": "string",
+                    "example": "Password01"
+                  }
+                },
+                "required": ["password"],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Password Reset"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   }
 }
