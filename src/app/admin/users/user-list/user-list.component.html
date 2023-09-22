@@ -38,14 +38,14 @@
 
       <!-- tablet and desktop view ports -->
       <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block">
-        <table *ngIf="!isLoading" class="table">
-          <thead class="table-dark">
-            <tr>
-              <th class="font-yellow">First Name</th>
-              <th class="font-yellow">Last Name</th>
-              <th class="font-yellow">Role</th>
-              <th class="font-yellow">Functions</th>
-            </tr>
+        <table *ngIf="!isLoading">
+            <thead class="table-dark">
+              <tr>
+                <th class="font-yellow">First Name</th>
+                <th class="font-yellow">Last Name</th>
+                <th class="font-yellow">Role</th>
+                <th class="font-yellow">Functions</th>
+              </tr>
           </thead>
           <tbody *ngFor="let user of users">
             <tr>
