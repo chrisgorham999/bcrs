@@ -13,3 +13,8 @@ a {
 .directory-width {
   width: 60%;
 }
+
+.source {
+  font-size: small;
+  font-style: italic;
+}
