@@ -23,15 +23,15 @@
       </div>
 
       <div class="card">
-        <div class="card-body">
+        <div class="card-body bg-black font-yellow">
           <form [formGroup]="userForm" (ngSubmit)="createUser();">
 
             <fieldset class="form-group">
-              <legend>User Information</legend><br><br>
+              <legend>Enter User Information Here:</legend><br><br>
 
               <div class="mb-3">
                 <label for="txtFirstName">First Name:</label>
-                <input type="text" id="txtFirstName" class="form-control" formControlName="firstName" required>
+                <input type="text" id="txtFirstName" class="form-control bg-potter-yellow" formControlName="firstName" required>
               </div>
 
               <!-- first name error handling -->
@@ -45,7 +45,7 @@
 
               <div class="mb-3">
                 <label for="txtLastName">Last Name:</label>
-                <input type="text" id="txtLastName" class="form-control" formControlName="lastName" required>
+                <input type="text" id="txtLastName" class="form-control bg-potter-yellow" formControlName="lastName" required>
               </div>
 
               <!-- last name error handling -->
@@ -59,7 +59,7 @@
 
               <div class="mb-3">
                 <label for="txtAddress">Address:</label>
-                <input type="text" id="txtAddress" class="form-control" formControlName="address" required>
+                <input type="text" id="txtAddress" class="form-control bg-potter-yellow" formControlName="address" required>
               </div>
 
               <!-- address error handling -->
@@ -73,7 +73,7 @@
 
               <div class="mb-3">
                 <label for="txtPhoneNumber">Phone Number:</label>
-                <input type="text" id="txtPhoneNumber" placeholder="format: 555-111-5555 or 5551115555" class="form-control" formControlName="phoneNumber" required>
+                <input type="text" id="txtPhoneNumber" placeholder="format: 555-111-5555 or 5551115555" class="form-control bg-potter-yellow" formControlName="phoneNumber" required>
               </div>
 
               <!-- phone number error handling -->
@@ -94,7 +94,7 @@
 
               <div class="mb-3">
                 <label for="txtEmail">Email:</label>
-                <input type="text" id="txtEmail" class="form-control" formControlName="email" required>
+                <input type="text" id="txtEmail" class="form-control bg-potter-yellow" formControlName="email" required>
               </div>
 
               <!-- email error handling -->
@@ -115,7 +115,7 @@
 
               <div class="mb-3">
                 <label for="txtPassword">Password:</label>
-                <input type="password" id="txtPassword" class="form-control" formControlName="password" required>
+                <input type="password" id="txtPassword" class="form-control bg-potter-yellow" formControlName="password" required>
               </div>
 
               <!-- password error handling -->
@@ -136,7 +136,7 @@
 
               <div class="mb-3">
                 <label for="role">Role:</label><br />
-                <select formControlName="role" name="role" id="role" class="form-select-sm">
+                <select formControlName="role" name="role" id="role" class="form-select-sm bg-potter-yellow">
                   <option value="standard">Standard</option>
                   <option value="admin">Admin</option>
                 </select>
@@ -153,7 +153,7 @@
 
             </fieldset>
 
-            <input type="submit" id="submit" value="Submit" [disabled]="!userForm.valid" class="btn btn-lg bg-black text-white d-block mx-auto extra-width">
+            <input type="submit" id="submit" value="Submit" [disabled]="!userForm.valid" class="btn btn-lg bg-potter-yellow text-black d-block mx-auto extra-width">
           </form>
         </div>
       </div><br>
