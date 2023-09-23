@@ -42,7 +42,13 @@ export class RegisterComponent {
     answer1: ['', Validators.compose([Validators.required])],
     answer2: ['', Validators.compose([Validators.required])],
     answer3: ['', Validators.compose([Validators.required])],
-    phoneNumber: ['', Validators.compose([Validators.required])],
+    phoneNumber: [
+      '',
+      Validators.compose([
+        Validators.required,
+        Validators.pattern('^[0-9-]*$'),
+      ]),
+    ],
     address: ['', Validators.compose([Validators.required])],
     password: [
       '',
