@@ -63,4 +63,31 @@
 </con:request><con:originalUri>http://localhost/api/security/users/tedlasso@gmail.com/reset-password</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="signin" path="/api/security/signin" id="64593f07-ea04-410e-a638-052b44f7e4e4"><con:settings/><con:parameters/><con:method name="Method 1" id="fac4cd03-7a17-40f6-b0e0-07ea8c347ce6" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:sig="http://localhost/api/security/signin">sig:Response</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>401</con:status><con:params/><con:element xmlns:sig="http://localhost/api/security/signin">sig:Fault</con:element></con:representation><con:request name="Request 1" id="191c32c1-499b-42b7-863c-b2a7be8403dd" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:3000</con:endpoint><con:request>{
   "email": "sdddssss@nodebucket.com",
   "password": "Password02"
-}</con:request><con:originalUri>http://localhost/api/security/signin</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
+}</con:request><con:originalUri>http://localhost/api/security/signin</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="createInvoice" path="/api/invoices" id="51f7971c-8e39-49d0-a962-aaf858ddd60d"><con:settings/><con:parameters/><con:method name="Method 1" id="dd3cfa85-7645-45a0-9a15-0635e0464b0f" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:inv="http://localhost/api/invoices">inv:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:inv="http://localhost/api/invoices">inv:Response</con:element></con:representation><con:request name="Request 1" id="c6f0f035-0d57-40be-8f88-833965c01235" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:3000</con:endpoint><con:request>{
+  "invoice": {
+    "email": "email@email.com",
+    "fullName": "Wolfgang Mozart",
+    "partsAmount": 123.54,
+    "laborAmount": 55.45,
+    "lineItemTotal": 255.87,
+    "invoiceTotal": 344.11,
+    "orderDate": "09/25/2023",
+    "lineItems": [
+      {
+        "name": "Upgrade OS",
+        "price": 120.67
+      },
+      {
+        "name": "Upgrade Graphics",
+        "price": 120.67
+      }
+    ]
+  }
+}</con:request><con:originalUri>http://localhost/api/invoices</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="updateProfile" path="/api/users/sdddssss@nodebucket.com/profile" id="c69ef5dc-0f51-4f80-a6b8-ef362b58d1c8"><con:settings/><con:parameters/><con:method name="Method 1" id="761ee20d-b402-4dde-a3de-95d2fdf2055a" method="PUT"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json; charset=utf-8</con:mediaType><con:status>404</con:status><con:params/><con:element xmlns:prof="http://localhost/api/user/sdddssss@nodebucket.com/profile">prof:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>204</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" id="6a59a8c4-e3a2-4559-aec5-0e9d4093dccd" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://localhost:3000</con:endpoint><con:request>{
+  "user": {
+    "firstName": "Wolf",
+    "lastName": "Gang",
+    "address": "123 Main St",
+    "phoneNumber": "34535435345"
+  }
+}</con:request><con:originalUri>http://localhost/api/user/sdddssss@nodebucket.com/profile</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

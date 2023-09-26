@@ -35,10 +35,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../dist/bcrs")));
 app.use("/", express.static(path.join(__dirname, "../dist/bcrs")));
 
-// our two routes from our routes folder
+// our routes from our routes folder
 app.use("/api/users", userRoute);
 app.use("/api/security", securityRoute);
-// app.use("/api/invoice", invoiceRoute); // i think we need to add this in the DB?
+app.use("/api/invoices", invoiceRoute);
 
 // more swagger: openapi specification
 const options = {

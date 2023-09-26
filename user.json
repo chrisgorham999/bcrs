@@ -266,6 +266,79 @@
         }
       }
     },
+    "/users/{email}/profile": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Updates a user's profile",
+        "description": "Updates a user's profile",
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "description": "Email Address",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "requestBody": {
+          "description": "User object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user": {
+                    "type": "object",
+                    "properties": {
+                      "firstName": {
+                        "type": "string",
+                        "example": "Wolf"
+                      },
+                      "lastName": {
+                        "type": "string",
+                        "example": "Gang"
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "123 Main St"
+                      },
+                      "phoneNumber": {
+                        "type": "string",
+                        "example": "34535435345"
+                      }
+                    },
+                    "required": [
+                      "firstName",
+                      "lastName",
+                      "phoneNumber",
+                      "address"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users/{email}/security-questions": {
       "get": {
         "tags": ["Users"],
@@ -588,6 +661,99 @@
           },
           "500": {
             "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/invoices": {
+      "post": {
+        "tags": ["Invoices"],
+        "summary": "Create a new invoice",
+        "description": "Creates a new invoice.",
+        "requestBody": {
+          "description": "invoice object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "invoice": {
+                    "type": "object",
+                    "properties": {
+                      "email": {
+                        "type": "string",
+                        "example": "email@email.com"
+                      },
+                      "fullName": {
+                        "type": "string",
+                        "example": "Wolfgang Mozart"
+                      },
+                      "partsAmount": {
+                        "type": "number",
+                        "example": 123.54
+                      },
+                      "laborAmount": {
+                        "type": "number",
+                        "example": 55.45
+                      },
+                      "lineItemTotal": {
+                        "type": "number",
+                        "example": 255.87
+                      },
+                      "invoiceTotal": {
+                        "type": "number",
+                        "example": 344.11
+                      },
+                      "orderDate": {
+                        "type": "string",
+                        "example": "09/25/2023"
+                      },
+                      "lineItems": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "Password Reset"
+                            },
+                            "price": {
+                              "type": "number",
+                              "example": 39.99
+                            }
+                          },
+                          "required": ["name", "number"],
+                          "additionalProperties": false
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "email",
+                  "fullName",
+                  "partsAmount",
+                  "laborAmount",
+                  "lineItemTotal",
+                  "invoiceTotal",
+                  "orderDate",
+                  "lineItems"
+                ],
+                "additionalProperties": false
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Invoice created successfully"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
           }
         }
       }
