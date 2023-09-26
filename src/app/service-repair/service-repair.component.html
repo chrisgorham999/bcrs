@@ -1,16 +1,30 @@
-<div class="container less-width">
+<div class="container-fluid pt-2 set-width">
 
-  <mat-card elevation="0" class="padding-left bg-black font-yellow">
+  <mat-card class="padding-left bg-black font-yellow">
 
     <h1 class="text-center">Welcome to the Service Repair Page</h1>
-
+    <br><br>
     <form [formGroup]="invoiceForm" (ngSubmit)="createUser();">
-      <label>Customer Email:</label>
-      <input class="form-control bg-potter-yellow half-width" type="text" formControlName="email">
+      <!--Start of First Row-->
+      <div class="row">
+        <div class="col-md-4">
+          <label>Customer Email:</label>
+          <input class="form-control bg-potter-yellow half-width" type="text" formControlName="email">
+        </div>
+
+        <div class="col-md-4">
+          <label>Customer Full Name:</label>
+          <input class="form-control bg-potter-yellow half-width" type="text" formControlName="fullName"><br>
+        </div>
+
+
+
+
+    </div>
+    <!--End of First Row-->
       <br>
-      <label>Customer Full Name:</label>
-      <input class="form-control bg-potter-yellow" type="text" formControlName="fullName"><br>
-    <button type="submit" mat-raised-button class="bg-potter-yellow text-black">Create Invoice</button>
+
+    <button type="submit" mat-raised-button class="bg-potter-yellow text-black">Create Invoice</button><br><br>
     </form>
 
       <div *ngFor="let service of services">
@@ -20,11 +34,22 @@
         </label>
       </div>
       <br>
-      <label>Labor ($50/hour):</label>
-      <input class="form-control bg-potter-yellow" type="number" id="laborCost" [(ngModel)]="labor" (input)="calculateTotal()" placeholder="Enter the number of labor hours, whole number only"><br>
+      <!--Second Row Start-->
+      <div class="row">
+        <div class="col-md-4">
+          <label>Labor ($50/hour):</label>
+          <input class="form-control bg-potter-yellow half-width" type="number" id="laborCost" [(ngModel)]="labor" (input)="calculateTotal()" placeholder="Enter the number of labor hours, whole number only"><br>
+        </div>
 
-      <label>Parts Cost:</label>
-      <input class="form-control bg-potter-yellow" type="number" id="partsCost" [(ngModel)]="parts" (input)="calculateTotal()" placeholder="enter the cost for parts"><br>
+        <div class="col-md-4">
+          <label>Parts Cost:</label>
+          <input class="form-control bg-potter-yellow half-width" type="number" id="partsCost" [(ngModel)]="parts" (input)="calculateTotal()" placeholder="enter the cost for parts"><br>
+        </div>
+      <!--Second Row End-->
+      </div>
+
+
+
 
 
       <div>
