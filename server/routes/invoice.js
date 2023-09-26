@@ -1,3 +1,14 @@
+/*
+======================================
+; Title: invoice.js
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 25 September 2023
+; Last Updated: 25 September 2023
+; Description: This code supports the Invoice Route
+; Sources Used: N/A
+;=====================================
+*/
+
 const express = require("express");
 const router = express.Router();
 const { mongo } = require("../utils/mongo");
