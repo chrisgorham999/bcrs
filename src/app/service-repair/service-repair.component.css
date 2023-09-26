@@ -1,6 +1,10 @@
 .half-width {
-  width: 80%;
+  width: 40%;
 }
 .bg-potter-yellow {
   background-color: #FFD800;
+}
+
+.less-width {
+  width: 75%;
 }
