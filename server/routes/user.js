@@ -23,21 +23,6 @@ const saltRounds = 10; // number of salt rounds for hashing
 
 const ajv = new Ajv(); //creates a new instance of Ajv class
 
-const securityQuestionsSchema = {
-  type: "array",
-  items: {
-    type: "object",
-    properties: {
-      question: { type: "string" },
-      answer: { type: "string" },
-    },
-    required: ["question", "answer"],
-    additionalProperties: false,
-  },
-  // minItems: 3, // Minimum number of items (security questions and answers)
-  // maxItems: 3, // Maximum number of items (security questions and answers)
-};
-
 const userSchema = {
   type: "object",
   properties: {
@@ -113,6 +98,31 @@ const updateUserSchema = {
     "isDisabled",
   ],
   additionalProperties: false,
+};
+
+const updateProfileSchema = {
+  type: "object",
+  properties: {
+    user: {
+      type: "object",
+      properties: {
+        firstName: {
+          type: "string",
+        },
+        lastName: {
+          type: "string",
+        },
+        address: {
+          type: "string",
+        },
+        phoneNumber: {
+          type: "string",
+        },
+      },
+      required: ["firstName", "lastName", "phoneNumber", "address"],
+      additionalProperties: false,
+    },
+  },
 };
 
 /**
@@ -284,7 +294,6 @@ router.post("/", (req, res, next) => {
       next(err);
       return;
     }
-    0;
 
     user.password = bcrypt.hashSync(user.password, saltRounds); // hash the password
 
@@ -411,6 +420,49 @@ router.get("/:email/security-questions", (req, res, next) => {
     }, next);
   } catch (err) {
     console.log("err", err); // log for troubleshooting
+    next(err);
+  }
+});
+
+// updateProfile
+router.put("/:email/profile", (req, res, next) => {
+  try {
+    let { email } = req.params;
+
+    const { user } = req.body;
+
+    const validator = ajv.compile(updateProfileSchema);
+    const valid = validator(user);
+    console.log(user);
+
+    if (!valid) {
+      const err = new Error("Bad Request");
+      err.status = 400;
+      err.errors = validator.errors;
+      console.log("updateProfile validation failed", err);
+      next(err);
+      return;
+    }
+
+    mongo(async (db) => {
+      const result = await db.collection("users").updateOne(
+        { email },
+        {
+          $set: {
+            firstName: user.firstName,
+            lastName: user.lastName,
+            phoneNumber: user.phoneNumber,
+            address: user.address,
+          },
+        }
+      );
+
+      console.log("update user result: ", result);
+
+      res.status(204).send();
+    });
+  } catch (err) {
+    console.log("err", err);
     next(err);
   }
 });
