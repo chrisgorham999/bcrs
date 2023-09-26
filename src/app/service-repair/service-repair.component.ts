@@ -1,4 +1,11 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+
+interface Service {
+  name: string;
+  price: number;
+  selected: boolean;
+}
 
 @Component({
   selector: 'app-service-repair',
@@ -6,28 +13,42 @@ import { Component } from '@angular/core';
   styleUrls: ['./service-repair.component.css']
 })
 export class ServiceRepairComponent {
+
+  invoiceForm: FormGroup = this.fb.group({
+    email: ['', Validators.compose([Validators.required, Validators.email])],
+    fullName: ['', Validators.compose([Validators.required])],
+  })
   services: Service[] = [
-    { name: 'Service A', cost: 10.0, selected: false },
-    { name: 'Service B', cost: 20.0, selected: false },
-    { name: 'Service C', cost: 30.0, selected: false }
+    { name: 'Password Reset', price: 39.99, selected: false },
+    { name: 'Spyware Removal', price: 99.99, selected: false },
+    { name: 'RAM Upgrade', price: 129.99, selected: false },
+    { name: 'Software Installation', price: 49.99, selected: false},
+    { name: 'PC Tune-up', price: 89.99, selected: false},
+    { name: 'Keyboard Cleaning', price: 45.00, selected: false},
+    { name: 'Disk Clean-up', price: 129.99, selected: false}
   ];
 
+  parts: number = 0;
+  labor: number = 0;
   totalCost: number = 0;
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
+
+  constructor(private fb: FormBuilder) { }
 
   calculateTotal(): void {
-    this.totalCost = this.services
+    const servicesCost = this.services
       .filter(service => service.selected)
-      .reduce((total, service) => total + service.cost, 0);
+      .reduce((total, service) => total + service.price, 0);
+
+      const laborPrice = this.labor *50;
+      const partsPrice = this.parts;
+      this.totalCost = servicesCost + laborPrice + partsPrice;
+  }
+
+  createUser() {
+    console.log("Hello")
   }
 }
 
-interface Service {
-  name: string;
-  cost: number;
-  selected: boolean;
-}
+
