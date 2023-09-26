@@ -48,6 +48,7 @@ export class ServiceRepairComponent {
 
   createUser() {
     console.log("Hello")
+    alert("Test");
   }
 }
 

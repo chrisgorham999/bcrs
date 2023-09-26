@@ -1,33 +1,36 @@
-<div class="container half-width">
+<div class="container less-width">
 
   <mat-card elevation="0" class="padding-left bg-black font-yellow">
 
     <h1 class="text-center">Welcome to the Service Repair Page</h1>
-    <form [formGroup]="invoiceForm" (ngSubmit)="createUser();">
 
+    <form [formGroup]="invoiceForm" (ngSubmit)="createUser();">
       <label>Customer Email:</label>
-      <input class="form-control" type="text" formControlName="email">
+      <input class="form-control bg-potter-yellow" type="text" formControlName="email">
       <br>
       <label>Customer Full Name:</label>
-      <input class="form-control" type="text" formControlName="fullName"><br>
+      <input class="form-control bg-potter-yellow" type="text" formControlName="fullName"><br>
+    <button type="submit" mat-raised-button class="bg-potter-yellow text-black">Create Invoice</button>
     </form>
+
       <div *ngFor="let service of services">
         <label>
-          <input type="checkbox" [(ngModel)]="service.selected" (change)="calculateTotal()">
+          <input class="bg-potter-yellow" type="checkbox" [(ngModel)]="service.selected" (change)="calculateTotal()">
           {{ service.name }} - {{ service.price | currency }}
         </label>
       </div>
       <br>
-      <label>Labor (# of Hours):</label>
-      <input class="form-control" type="number" id="laborCost" [(ngModel)]="labor" (input)="calculateTotal()" placeholder="Enter the number of labor hours, whole number only"><br>
+      <label>Labor ($50/hour):</label>
+      <input class="form-control bg-potter-yellow" type="number" id="laborCost" [(ngModel)]="labor" (input)="calculateTotal()" placeholder="Enter the number of labor hours, whole number only"><br>
 
       <label>Parts Cost:</label>
-      <input class="form-control" type="number" id="partsCost" [(ngModel)]="parts" (input)="calculateTotal()" placeholder="enter the cost for parts"><br>
+      <input class="form-control bg-potter-yellow" type="number" id="partsCost" [(ngModel)]="parts" (input)="calculateTotal()" placeholder="enter the cost for parts"><br>
 
 
       <div>
-        <h3>Total: {{ totalCost | currency }}</h3>
+        <h3 class="font-yellow">Total: {{ totalCost | currency }}</h3>
       </div>
+
 
 
 
