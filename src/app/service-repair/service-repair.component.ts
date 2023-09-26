@@ -69,10 +69,12 @@ export class ServiceRepairComponent {
       lineItemTotal: servicesCost,
       invoiceTotal: this.totalCost,
       orderDate: "test",
-      lineItems: {
+      lineItems: [
+        {
         name: "test",
         price: 100,
       }
+    ]
     };
 
     this.invoiceService.createTheInvoice(invoice).subscribe({

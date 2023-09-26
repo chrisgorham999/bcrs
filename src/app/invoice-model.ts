@@ -9,5 +9,5 @@ export interface InvoiceModel {
   lineItemTotal: number
   invoiceTotal: number
   orderDate: string
-  lineItems: LineItemsModel
+  lineItems: LineItemsModel[]
 }
