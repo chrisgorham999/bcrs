@@ -3,7 +3,7 @@
 ; Title: app-routing.module .ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 22 September 2023
+; Last Updated: 25 September 2023
 ; Description: This code supports all routes
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -12,12 +12,13 @@
 // imports statements
 import { authGuard } from './shared/auth.guard';
 import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component';
+import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
-import { DirectoryComponent } from './directory/directory.component';
+import { ServiceRepairComponent } from './service-repair/service-repair.component';
 
 
 
@@ -51,6 +52,11 @@ const routes: Routes = [
         path: 'directory',
         component: DirectoryComponent,
         title: 'BCRS: Employee Directory'
+      },
+      {
+        path: 'service-repair',
+        component: ServiceRepairComponent,
+        title: 'BCRS: Service Repair'
       },
       {
         path: 'admin',

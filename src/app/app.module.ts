@@ -21,12 +21,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { DirectoryComponent } from './directory/directory.component';
+import { ServiceRepairComponent } from './service-repair/service-repair.component';
 
 
 
@@ -41,6 +44,7 @@ import { DirectoryComponent } from './directory/directory.component';
     NavComponent,
     NotFoundComponent,
     DirectoryComponent,
+    ServiceRepairComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +53,8 @@ import { DirectoryComponent } from './directory/directory.component';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatCardModule,
+    MatCheckboxModule,
     MatExpansionModule,
     MatFormFieldModule,
     ReactiveFormsModule
