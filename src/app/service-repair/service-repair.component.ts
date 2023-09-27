@@ -1,10 +1,23 @@
+/*
+======================================
+; Title: service-repair.component.ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 26 September 2023
+; Last Updated: 26 September 2023
+; Description: This code supports the Service Repair Component
+; Sources Used: Bellevue University WEB-450 Coding Sessions
+;=====================================
+*/
+
+
+// imports
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { InvoiceService } from '../invoice.service';
 import { InvoiceModel } from '../invoice-model';
 
-
+// the interface for the local Service that will assign the services name, price, and a state to tell whether they have been checked or not
 interface Service {
   name: string;
   price: number;
@@ -18,10 +31,14 @@ interface Service {
 })
 export class ServiceRepairComponent {
 
+
+  // establish form group and define validators
   invoiceForm: FormGroup = this.fb.group({
     email: ['', Validators.compose([Validators.required, Validators.email])],
     fullName: ['', Validators.compose([Validators.required])],
   })
+
+  // populate the services variable with the name of the service, price, and set them to unselected to start
   services: Service[] = [
     { name: 'Password Reset', price: 39.99, selected: false },
     { name: 'Spyware Removal', price: 99.99, selected: false },
@@ -32,6 +49,7 @@ export class ServiceRepairComponent {
     { name: 'Disk Clean-up', price: 129.99, selected: false}
   ];
 
+  // initialize variables for error messages and calculations
   parts: number = 0;
   labor: number = 0;
   totalCost: number = 0;
@@ -42,6 +60,7 @@ export class ServiceRepairComponent {
     this.errorMessage = '';
   }
 
+  // the function that calculates the live running total on the page
   calculateTotal(): void {
     const servicesCost = this.services
       .filter(service => service.selected)
@@ -52,6 +71,7 @@ export class ServiceRepairComponent {
       this.totalCost = servicesCost + laborPrice + partsPrice;
   }
 
+  // creates the invoice and pushes it to the database
   createInvoice() {
     const servicesCost = this.services
     .filter(service => service.selected)
@@ -62,14 +82,14 @@ export class ServiceRepairComponent {
     this.totalCost = servicesCost + laborPrice + partsPrice;
 
     const invoice: InvoiceModel = {
-      email: this.invoiceForm.controls['email'].value,
-      fullName: this.invoiceForm.controls['fullName'].value,
+      email: this.invoiceForm.controls['email'].value, // pulls the email from the form on the page
+      fullName: this.invoiceForm.controls['fullName'].value, // pulls the full name from the form on the page
       partsAmount: partsPrice,
       laborAmount: laborPrice,
       lineItemTotal: servicesCost,
       invoiceTotal: this.totalCost,
-      orderDate: "test",
-      lineItems: [
+      orderDate: "test", // need to fix
+      lineItems: [ // need to fix
         {
         name: "test",
         price: 100,
@@ -77,10 +97,11 @@ export class ServiceRepairComponent {
     ]
     };
 
+    // calls the invoice Service to create an invoice
     this.invoiceService.createTheInvoice(invoice).subscribe({
       next: (res) => {
         console.log(res); // for troubleshooting
-        this.router.navigate(['/admin/users']);
+        this.router.navigate(['/service-repair']);
       },
       // error handling
       error: (err) => {
