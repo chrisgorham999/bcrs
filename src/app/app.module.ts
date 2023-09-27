@@ -27,6 +27,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatListModule } from '@angular/material/list';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
@@ -56,6 +57,7 @@ import { ServiceRepairComponent } from './service-repair/service-repair.componen
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatDatepickerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatListModule,

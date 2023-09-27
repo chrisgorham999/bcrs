@@ -36,6 +36,7 @@ export class ServiceRepairComponent {
   invoiceForm: FormGroup = this.fb.group({
     email: ['', Validators.compose([Validators.required, Validators.email])],
     fullName: ['', Validators.compose([Validators.required])],
+    orderDate: ['', Validators.compose([Validators.required, Validators.pattern('^[0-9-]*$')])],
   })
 
   // populate the services variable with the name of the service, price, and set them to unselected to start
@@ -88,7 +89,7 @@ export class ServiceRepairComponent {
       laborAmount: laborPrice,
       lineItemTotal: servicesCost,
       invoiceTotal: this.totalCost,
-      orderDate: "test", // need to fix
+      orderDate: this.invoiceForm.controls['orderDate'].value,
       lineItems: [ // need to fix
         {
         name: "test",
@@ -101,7 +102,7 @@ export class ServiceRepairComponent {
     this.invoiceService.createTheInvoice(invoice).subscribe({
       next: (res) => {
         console.log(res); // for troubleshooting
-        this.router.navigate(['/service-repair']);
+        this.router.navigate(['/']);
       },
       // error handling
       error: (err) => {
