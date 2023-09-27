@@ -1,3 +1,15 @@
+/*
+======================================
+; Title: invoice.service.ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 26 September 2023
+; Last Updated: 26 September 2023
+; Description: This code supports the Invoice Service
+; Sources Used: N/A
+;=====================================
+*/
+
+// imports
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { InvoiceModel } from './invoice-model';

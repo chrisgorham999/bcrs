@@ -3,7 +3,7 @@
 ; Title: app.module.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 20 September 2023
+; Last Updated: 26 September 2023
 ; Description: This code supports the App Module and handles all imports
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -31,8 +31,6 @@ import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
-import { TableModule } from "primeng/table";
-import { ButtonModule } from "primeng/button";
 
 
 
@@ -53,7 +51,6 @@ import { ButtonModule } from "primeng/button";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ButtonModule,
     FormsModule,
     HttpClientModule,
     MatButtonModule,
@@ -63,7 +60,6 @@ import { ButtonModule } from "primeng/button";
     MatFormFieldModule,
     MatListModule,
     ReactiveFormsModule,
-    TableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
