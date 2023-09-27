@@ -3,7 +3,7 @@
 ; Title: nav.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 22 September 2023
+; Last Updated: 27 September 2023
 ; Description: This code supports the HTML functionality for the Nav Component
 ; Sources Used: Bellevue University WEB-450 GitHub
 ;=====================================
@@ -61,7 +61,10 @@
         <a routerLink="/admin/users" class="dropdown-item font-yellow custom-drop">Users</a>
       </li>
       <li>
-        <a routerLink="/service-repair" class="dropdown-item font-yellow custom-drop custom-drop-link">Service Repair</a>
+        <a routerLink="/service-repair" class="dropdown-item font-yellow custom-drop custom-drop-link">Add Invoice</a>
+      </li>
+      <li>
+        <a routerLink="/invoice-list" class="dropdown-item font-yellow custom-drop custom-drop-link">Invoice List</a>
       </li>
       <li>
         <a (click)="signout()" class="dropdown-item font-yellow custom-drop custom-drop-link">Sign Out</a>

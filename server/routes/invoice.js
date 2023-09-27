@@ -105,5 +105,65 @@ router.post("/", async (req, res, next) => {
 
 //findPurchasesByService
 
+
+/**
+ * getAllInvoices
+ * * @openapi
+ * /api/invoices
+ *   get:
+ *     tags:
+ *       - Invoices
+ *     description:  API for returning an invoice document
+ *     summary: returns all invoice documents
+ *     parameters:
+ *       - name: email (FIX)
+ *         in: path
+ *         required: true
+ *         description: user document email
+ *         schema:
+ *           type: string
+ *     responses:
+ *       '200':
+ *         description: invoice document found
+ *       '400':
+ *         description: Bad request
+ *       '404':
+ *         description: Not found
+ *       '500':
+ *         description: Server Error
+ */
+
+ router.get("/", (req, res, next) => {
+  try {
+    mongo(async (db) => {
+      const invoices = await db
+        .collection("invoices")
+        .find(
+          {},
+          {
+            projection: {
+              email: 1,
+              fullName: 1,
+              partsAmount: 1,
+              laborAmount: 1,
+              lineItemTotal: 1,
+              invoiceTotal: 1,
+              orderDate: 1,
+              lineItems: 1,
+            },
+          }
+        )
+        .sort({ orderDate: 1 })
+        .toArray();
+
+      console.log("invoices", invoices);
+      res.send(invoices);
+    }, next);
+  } catch (err) {
+    console.log("err", err);
+    next(err);
+  }
+});
+
 // exporting router module
 module.exports = router;

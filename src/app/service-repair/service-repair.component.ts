@@ -117,7 +117,7 @@ export class ServiceRepairComponent {
     this.invoiceService.createTheInvoice(invoice).subscribe({
       next: (res) => {
         console.log(res); // for troubleshooting
-        this.router.navigate(['/']);
+        this.router.navigate(['/invoice-list']);
       },
       // error handling
       error: (err) => {
