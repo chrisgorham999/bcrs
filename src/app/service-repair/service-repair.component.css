@@ -3,12 +3,11 @@
 ; Title: service-repair.component.css
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 26 September 2023
-; Last Updated: 26 September 2023
+; Last Updated: 27 September 2023
 ; Description: This code supports styling for the Service Repair Component
 ; Sources Used: N/A
 ;=====================================
 */
-
 
 .half-width {
   width: 85%;
@@ -19,4 +18,12 @@
 
 .set-width {
   width: 65%;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.font-yellow {
+  color: #FFD800;
 }
