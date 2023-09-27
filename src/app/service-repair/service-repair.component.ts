@@ -3,7 +3,7 @@
 ; Title: service-repair.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 26 September 2023
-; Last Updated: 26 September 2023
+; Last Updated: 27 September 2023
 ; Description: This code supports the Service Repair Component
 ; Sources Used: Bellevue University WEB-450 Coding Sessions
 ;=====================================
@@ -41,9 +41,9 @@ export class ServiceRepairComponent {
 
   // populate the services variable with the name of the service, price, and set them to unselected to start
   services: Service[] = [
-    { name: 'Password Reset', price: 39.99, selected: false },
-    { name: 'Spyware Removal', price: 99.99, selected: false },
-    { name: 'RAM Upgrade', price: 129.99, selected: false },
+    { name: 'Password Reset', price: 39.99, selected: false},
+    { name: 'Spyware Removal', price: 99.99, selected: false},
+    { name: 'RAM Upgrade', price: 129.99, selected: false},
     { name: 'Software Installation', price: 49.99, selected: false},
     { name: 'PC Tune-up', price: 89.99, selected: false},
     { name: 'Keyboard Cleaning', price: 45.00, selected: false},
@@ -74,12 +74,32 @@ export class ServiceRepairComponent {
 
   // creates the invoice and pushes it to the database
   createInvoice() {
+
+    // setup the lineItems variable to an empty array
+    const lineItems= [];
+
+    // loop over all selected services (services that are checked) and if they are checked, push their name and price to the lineItems array; only do the name and price because that's all that matters for the back end schema
+    for (const service of this.services) {
+      if (service.selected) {
+        lineItems.push({
+          name: service.name,
+          price: service.price
+        });
+      }
+    }
+
+    console.log(lineItems) // for troubleshooting
+
+    // calculate the total line items cost
     const servicesCost = this.services
     .filter(service => service.selected)
     .reduce((total, service) => total + service.price, 0);
 
+    // calculate labor total
     const laborPrice = this.labor *50;
+    // calculate parts total
     const partsPrice = this.parts;
+    // calculate overall total cost
     this.totalCost = servicesCost + laborPrice + partsPrice;
 
     const invoice: InvoiceModel = {
@@ -90,12 +110,7 @@ export class ServiceRepairComponent {
       lineItemTotal: servicesCost,
       invoiceTotal: this.totalCost,
       orderDate: this.invoiceForm.controls['orderDate'].value,
-      lineItems: [ // need to fix
-        {
-        name: "test",
-        price: 100,
-      }
-    ]
+      lineItems: lineItems
     };
 
     // calls the invoice Service to create an invoice
