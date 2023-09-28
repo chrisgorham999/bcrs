@@ -33,6 +33,7 @@ import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 
 
 
@@ -49,6 +50,7 @@ import { InvoiceListComponent } from './invoice-list/invoice-list.component';
     NotFoundComponent,
     ServiceRepairComponent,
     InvoiceListComponent,
+    InvoiceViewComponent,
   ],
   imports: [
     BrowserModule,

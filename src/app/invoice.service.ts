@@ -27,4 +27,8 @@ export class InvoiceService {
   getInvoices() {
     return this.http.get('/api/invoices/')
   }
+
+  getInvoice(_id: string) {
+    return this.http.get('/api/invoices/' + _id)
+  }
 }

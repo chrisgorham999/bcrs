@@ -1,0 +1,77 @@
+<!--
+======================================
+; Title: invoice-view.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 27 September 2023
+; Last Updated: 27 September 2023
+; Description: This code supports the HTML functionality for Invoice View Component
+; Sources Used: N/A
+;=====================================
+-->
+
+<div class="container-fluid pt-2">
+  <h1 class="text-center">Welcome to the Invoice View Page!</h1>
+
+  <div class="row justify-content-center pt-4">
+    <div class="col-sm-10 col-md-8 col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="invoiceForm">
+            <fieldset class="form-group">
+              <legend>Invoice Information</legend>
+
+              <div class="mb-3">
+                <label for="fullName">Customer Name:</label>
+                <input
+                  type="text"
+                  id="txtfullName"
+                  class="form-control"
+                  formControlName="fullName"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="txtLastName">Customer Email:</label>
+                <input
+                  type="text"
+                  id="txtEmail"
+                  class="form-control"
+                  formControlName="email"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="txtAddress">Parts Amount:</label>
+                <input
+                  type="text"
+                  id="txtPartsAmount"
+                  class="form-control"
+                  formControlName="partsAmount"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="txtPhoneNumber">Labor Amount:</label>
+                <input
+                  type="text"
+                  id="txtLaborAmount"
+                  class="form-control"
+                  formControlName="laborAmount"
+                  required
+                />
+              </div>
+
+            </fieldset>
+
+          </form>
+        </div>
+      </div><br>
+      <a routerLink="/admin/users" class="text-underline-hover text-dark"
+        ><button mat-raised button class="btn bg-black font-yellow">Return To User List</button></a>
+    </div>
+  </div>
+</div>
+

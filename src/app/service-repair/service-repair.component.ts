@@ -102,7 +102,11 @@ export class ServiceRepairComponent {
     // calculate overall total cost
     this.totalCost = servicesCost + laborPrice + partsPrice;
 
+    // generate random invoiceNumber
+    const rando = Math.floor(10000 * Math.random());
+
     const invoice: InvoiceModel = {
+      invoiceNumber: rando,
       email: this.invoiceForm.controls['email'].value, // pulls the email from the form on the page
       fullName: this.invoiceForm.controls['fullName'].value, // pulls the full name from the form on the page
       partsAmount: partsPrice,

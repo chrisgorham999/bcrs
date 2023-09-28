@@ -20,6 +20,7 @@ import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
@@ -62,6 +63,11 @@ const routes: Routes = [
         path: 'invoice-list',
         component: InvoiceListComponent,
         title: 'BCRS: Invoice List'
+      },
+      {
+        path: 'invoice-list/:_id/view',
+        component: InvoiceViewComponent,
+        title: 'BCRS: User'
       },
       {
         path: 'admin',

@@ -1,20 +1,20 @@
 <!--
 ======================================
-; Title: user-list.component.html
+; Title: invoice-list.component.html
 ; Author: Chris Gorham, Shane Hingtgen
-; Date Created: 14 September 2023
-; Last Updated: 14 September 2023
-; Description: This code supports the HTML functionality for User List Component
+; Date Created: 27 September 2023
+; Last Updated: 27 September 2023
+; Description: This code supports the HTML functionality for Invoice List Component
 ; Sources Used: Bellevue University WEB-450 GitHub
 ;=====================================
 -->
 
 <div class="container-fluid pt-2" style="min-height: 600px">
-  <h1 class="text-center">Welcome to the Invoice List Page!</h1>
+  <h1 class="text-center">Welcome to the Invoices Page!</h1>
 
   <div class="row pt-4 justify-content-center">
 
-    <div class="col-sm-12 col-md-10 col-lg-6">
+    <div class="col-sm-12 col-md-10 col-lg-8">
 
       <div *ngIf="errorMessage">
         <div class="alert alert-danger" role="alert">
@@ -41,26 +41,35 @@
         <table *ngIf="!isLoading">
             <thead>
               <tr>
+                <th class="font-yellow">Invoice Date:</th>
                 <th class="font-yellow">Customer Email:</th>
-                <th class="font-yellow">Customer Full Name:</th>
+                <th class="font-yellow">Customer Name:</th>
                 <th class="font-yellow">Services Ordered:</th>
-                <th class="font-yellow">Customer Labor Cost:</th>
+                <th class="font-yellow">Labor Cost:</th>
                 <th class="font-yellow">Parts Cost:</th>
                 <th class="font-yellow">Invoice Total Cost:</th>
+                <th class="font-yellow">Functions</th>
 
               </tr>
           </thead>
           <tbody *ngFor="let invoice of invoices">
             <tr>
+              <td>{{ invoice.orderDate | date }}</td>
               <td>{{ invoice.email }}</td>
               <td>{{ invoice.fullName }}</td>
-              <td>{{ invoice.lineItems }}</td>
+              <td>
+                  {{ invoice.lineItems[0].name }}:
+                  {{ invoice.lineItems[0].price | currency }}
+              </td>
               <td>{{ invoice.laborAmount | currency }}</td>
               <td>{{ invoice.partsAmount | currency }}</td>
               <td>{{ invoice.invoiceTotal | currency }}</td>
               <td>
                 <a routerLink="/invoices/{{ invoice.email}}/view">
                 <span class="material-icons text-secondary">edit</span></a>
+                &nbsp;
+                <a routerLink="/invoice-list/{{ invoice.invoiceNumber }}/view">
+                <span class="material-icons text-secondary">print</span></a>
               </td>
             </tr>
           </tbody>

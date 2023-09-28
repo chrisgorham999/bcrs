@@ -39,6 +39,9 @@ const lineItemSchema = {
 const invoiceSchema = {
   type: "object",
   properties: {
+    invoiceNumber: {
+      type: "number"
+    },
     email: {
       type: "string",
     },
@@ -63,6 +66,7 @@ const invoiceSchema = {
     lineItems: lineItemSchema,
   },
   required: [
+    "invoiceNumber",
     "email",
     "fullName",
     "partsAmount",
@@ -119,12 +123,12 @@ router.post("/", async (req, res, next) => {
  *       - name: email (FIX)
  *         in: path
  *         required: true
- *         description: user document email
+ *         description: ????
  *         schema:
  *           type: string
  *     responses:
  *       '200':
- *         description: invoice document found
+ *         description: Invoice document found
  *       '400':
  *         description: Bad request
  *       '404':
@@ -153,12 +157,58 @@ router.post("/", async (req, res, next) => {
             },
           }
         )
-        .sort({ orderDate: 1 })
+        .sort({ orderDate: -1 })
         .toArray();
 
       console.log("invoices", invoices);
       res.send(invoices);
     }, next);
+  } catch (err) {
+    console.log("err", err);
+    next(err);
+  }
+});
+
+// getInvoiceById
+router.get("/:_id", (req, res, next) => {
+  try {
+    console.log("_id", req.params._id);
+    let { _id } = req.params; //get the email from the req.params object
+
+    // connection to mongo, to find collection of users, then find one empId.
+    mongo(
+      async (db) => {
+        const invoice = await db.collection("invoices").findOne(
+          { _id },
+          {
+            projection: {
+              email: 1,
+              fullName: 1,
+              partsAmount: 1,
+              laborAmount: 1,
+              lineItemTotal: 1,
+              invoiceTotal: 1,
+              orderDate: 1,
+              lineItems: 1,
+            },
+          }
+        ); //find user by ID
+
+        //another early return method
+        if (!invoice) {
+          // if user does not exist
+          const err = new Error("Unable to find invoice with id ", _id);
+          err.status = 404;
+          console.log("err", err);
+          next(err);
+          return;
+        }
+
+        res.send(invoice);
+      },
+      // err handling
+      next
+    );
   } catch (err) {
     console.log("err", err);
     next(err);
