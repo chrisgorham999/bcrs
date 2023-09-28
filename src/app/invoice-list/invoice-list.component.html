@@ -14,7 +14,7 @@
 
   <div class="row pt-4 justify-content-center">
 
-    <div class="col-sm-12 col-md-10 col-lg-8">
+    <div class="col-sm-12 col-md-10 col-lg-10">
 
       <div *ngIf="errorMessage">
         <div class="alert alert-danger" role="alert">
@@ -41,6 +41,7 @@
         <table *ngIf="!isLoading">
             <thead>
               <tr>
+                <th class="font-yellow">Invoice Number:</th>
                 <th class="font-yellow">Invoice Date:</th>
                 <th class="font-yellow">Customer Email:</th>
                 <th class="font-yellow">Customer Name:</th>
@@ -54,6 +55,7 @@
           </thead>
           <tbody *ngFor="let invoice of invoices">
             <tr>
+              <td>{{ invoice.invoiceNumber }}</td>
               <td>{{ invoice.orderDate | date }}</td>
               <td>{{ invoice.email }}</td>
               <td>{{ invoice.fullName }}</td>

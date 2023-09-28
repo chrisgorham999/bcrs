@@ -65,7 +65,7 @@ const routes: Routes = [
         title: 'BCRS: Invoice List'
       },
       {
-        path: 'invoice-list/:_id/view',
+        path: 'invoice-list/:invoiceNumber/view',
         component: InvoiceViewComponent,
         title: 'BCRS: User'
       },
