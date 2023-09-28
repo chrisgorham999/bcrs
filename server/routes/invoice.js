@@ -107,7 +107,6 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-//findPurchasesByService
 /**
  * getAllInvoices
  * * @openapi
