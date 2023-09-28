@@ -3,7 +3,7 @@
 ; Title: invoice.service.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 26 September 2023
-; Last Updated: 26 September 2023
+; Last Updated: 27 September 2023
 ; Description: This code supports the Invoice Service
 ; Sources Used: N/A
 ;=====================================
@@ -28,7 +28,7 @@ export class InvoiceService {
     return this.http.get('/api/invoices/')
   }
 
-  getInvoice(_id: string) {
-    return this.http.get('/api/invoices/' + _id)
+  getInvoice(invoiceNumber: string) {
+    return this.http.get('/api/invoices/' + invoiceNumber)
   }
 }
