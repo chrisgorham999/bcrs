@@ -3,7 +3,7 @@
 ; Title: app-routing.module .ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 27 September 2023
+; Last Updated: 28 September 2023
 ; Description: This code supports all routes
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -67,7 +67,7 @@ const routes: Routes = [
       {
         path: 'invoice-list/:invoiceNumber/view',
         component: InvoiceViewComponent,
-        title: 'BCRS: User'
+        title: 'BCRS: Invoice View'
       },
       {
         path: 'admin',

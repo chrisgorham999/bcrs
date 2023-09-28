@@ -1,3 +1,27 @@
 .font-yellow {
   color: #FFD800;
 }
+
+.invoice-table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 7px;
+}
+
+.category {
+  font-weight: bold;
+}
+
+.smaller {
+  font-size: small;
+}
+
+@media print {
+  .hide-print {
+    display: none !important;
+  }
+}
+
+.text-left {
+  text-align: left;
+}
