@@ -16,11 +16,13 @@ import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
-import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
+
+
 
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)

@@ -64,7 +64,10 @@
         <a routerLink="/service-repair" class="dropdown-item font-yellow custom-drop custom-drop-link">Add Invoice</a>
       </li>
       <li>
-        <a routerLink="/invoice-list" class="dropdown-item font-yellow custom-drop custom-drop-link">Invoice List</a>
+        <a (click)="signout()" class="dropdown-item font-yellow custom-drop custom-drop-link">Sign Out</a>
+      </li>
+      <li>
+        <a routerLink="/admin/users/{{ sessionUser.email }}/profile" class="dropdown-item font-yellow custom-drop custom-drop-link">My Profile</a>
       </li>
       <li>
         <a (click)="signout()" class="dropdown-item font-yellow custom-drop custom-drop-link">Sign Out</a>
