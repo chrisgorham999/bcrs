@@ -1,3 +1,15 @@
+/*
+======================================
+; Title: invoice-view.component.ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 27 September 2023
+; Last Updated: 28 September 2023
+; Description: This code supports the Invoice View Component
+; Sources Used: Bellevue University WEB-450 GitHub Repository
+;=====================================
+*/
+
+// imports
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceModel } from '../invoice-model';

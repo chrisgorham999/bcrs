@@ -103,7 +103,7 @@ export class ServiceRepairComponent {
     this.totalCost = servicesCost + laborPrice + partsPrice;
 
     // generate random invoiceNumber
-    const rando = Math.floor(10000 * Math.random());
+    const rando = Math.floor(1000000 * Math.random());
     const randomNumber = rando.toString();
 
     const invoice: InvoiceModel = {
