@@ -14,6 +14,7 @@ import { LineItemsModel } from "./line-items-model"
 
 // export the model
 export interface InvoiceModel {
+  invoiceNumber: number
   email: string
   fullName: string
   partsAmount: number

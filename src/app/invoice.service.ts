@@ -24,4 +24,11 @@ export class InvoiceService {
   createTheInvoice(invoice: InvoiceModel) {
     return this.http.post('/api/invoices/', { invoice })
   }
+  getInvoices() {
+    return this.http.get('/api/invoices/')
+  }
+
+  getInvoice(_id: string) {
+    return this.http.get('/api/invoices/' + _id)
+  }
 }

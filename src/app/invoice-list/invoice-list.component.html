@@ -1,0 +1,83 @@
+<!--
+======================================
+; Title: invoice-list.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 27 September 2023
+; Last Updated: 27 September 2023
+; Description: This code supports the HTML functionality for Invoice List Component
+; Sources Used: Bellevue University WEB-450 GitHub
+;=====================================
+-->
+
+<div class="container-fluid pt-2" style="min-height: 600px">
+  <h1 class="text-center">Welcome to the Invoices Page!</h1>
+
+  <div class="row pt-4 justify-content-center">
+
+    <div class="col-sm-12 col-md-10 col-lg-8">
+
+      <div *ngIf="errorMessage">
+        <div class="alert alert-danger" role="alert">
+          {{ errorMessage }}
+        </div>
+      </div>
+
+      <div *ngIf="successMessage">
+        <div class="alert alert-success" role="alert">
+          {{ successMessage }}
+        </div>
+      </div>
+
+      <a routerLink="/service-repair" class="text-dark text-underline-hover"><button class="btn bg-black font-yellow">Add A New Invoice</button></a>
+      <br><br>
+      <div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
+        <div class="spinner-border spinner-lg" style="width: 3rem; height: 3rem;" role="status" aria-hidden="true">
+          <span class="sr-only visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <!-- tablet and desktop view ports -->
+      <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block">
+        <table *ngIf="!isLoading">
+            <thead>
+              <tr>
+                <th class="font-yellow">Invoice Date:</th>
+                <th class="font-yellow">Customer Email:</th>
+                <th class="font-yellow">Customer Name:</th>
+                <th class="font-yellow">Services Ordered:</th>
+                <th class="font-yellow">Labor Cost:</th>
+                <th class="font-yellow">Parts Cost:</th>
+                <th class="font-yellow">Invoice Total Cost:</th>
+                <th class="font-yellow">Functions</th>
+
+              </tr>
+          </thead>
+          <tbody *ngFor="let invoice of invoices">
+            <tr>
+              <td>{{ invoice.orderDate | date }}</td>
+              <td>{{ invoice.email }}</td>
+              <td>{{ invoice.fullName }}</td>
+              <td>
+                  {{ invoice.lineItems[0].name }}:
+                  {{ invoice.lineItems[0].price | currency }}
+              </td>
+              <td>{{ invoice.laborAmount | currency }}</td>
+              <td>{{ invoice.partsAmount | currency }}</td>
+              <td>{{ invoice.invoiceTotal | currency }}</td>
+              <td>
+                <a routerLink="/invoices/{{ invoice.email}}/view">
+                <span class="material-icons text-secondary">edit</span></a>
+                &nbsp;
+                <a routerLink="/invoice-list/{{ invoice.invoiceNumber }}/view">
+                <span class="material-icons text-secondary">print</span></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- end of tablet viewport -->
+
+    </div>
+  </div>
+</div>
+

@@ -3,7 +3,7 @@
 ; Title: app-routing.module .ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 26 September 2023
+; Last Updated: 27 September 2023
 ; Description: This code supports all routes
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -15,10 +15,13 @@ import { BaseLayoutComponent } from './layouts/base-layout/base-layout.component
 import { DirectoryComponent } from './directory/directory.component';
 import { FaqComponent } from './faq/faq.component';
 import { HomeComponent } from './home/home.component';
+import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
+
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -55,6 +58,16 @@ const routes: Routes = [
         path: 'service-repair',
         component: ServiceRepairComponent,
         title: 'BCRS: Service Repair'
+      },
+      {
+        path: 'invoice-list',
+        component: InvoiceListComponent,
+        title: 'BCRS: Invoice List'
+      },
+      {
+        path: 'invoice-list/:_id/view',
+        component: InvoiceViewComponent,
+        title: 'BCRS: User'
       },
       {
         path: 'admin',
