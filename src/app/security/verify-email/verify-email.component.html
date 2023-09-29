@@ -13,21 +13,24 @@
 <div class="container mt-5">
   <div class="row justify-content-center mt-5">
     <div class="col-lg-8 col-md-10">
+
+        <!--logo start-->
+        <div class="text-center bg-potter-yellow"><img src="./assets/reset-password.png" width="80%" alt="Logo displaying a computer with text next to it that says Reset Password - Follow The Steps To Reset"></div><hr>
+        <!--logo end-->
+
+
       <div class="card shadow p-4 bg-black font-yellow">
         <form [formGroup]="emailForm" (ngSubmit)="verifyEmail()" class="form row g-3">
           <!--Error Message-->
           <div *ngIf="errorMessage" class="row">
             <div class="col-12">
 
-              <!--logo start-->
-              <div class="text-center bg-potter-yellow"><img src="./assets/registration-logo.png" width="80%" alt="Logo displaying a computer with text next to it that says Registration - Make A New Account"></div><hr>
-              <!--logo end-->
-
               <div class="alert alert-danger">
                 {{ errorMessage }}
               </div>
             </div>
           </div>
+
 
           <fieldset class="mb-3 form-group">
             <legend>Enter The Email Address Associated With Your Account</legend>
