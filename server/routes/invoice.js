@@ -40,7 +40,7 @@ const invoiceSchema = {
   type: "object",
   properties: {
     invoiceNumber: {
-      type: "string"
+      type: "string",
     },
     email: {
       type: "string",

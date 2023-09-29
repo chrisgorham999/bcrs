@@ -777,16 +777,16 @@
         }
       }
     },
-    "/invoices/{:_id}": {
+    "/invoices/{invoiceNumber}": {
       "get": {
         "tags": ["Invoices"],
-        "summary": "Find invoice by id",
-        "description": "Returns an invoice based on their id.",
+        "summary": "Find invoice by invoice number",
+        "description": "Returns an invoice based on the invoice number.",
         "parameters": [
           {
-            "name": "_id",
+            "name": "invoiceNumber",
             "in": "path",
-            "description": "Invoice ID",
+            "description": "Invoice Number",
             "required": true,
             "schema": {
               "type": "string"
