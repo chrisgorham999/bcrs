@@ -1,0 +1,121 @@
+<!--
+======================================
+; Title: profile.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 28 September 2023
+; Last Updated: 29 September 2023
+; Description: This code supports the HTML functionality for Profile Component
+; Sources Used: Bellevue University WEB-450 Live Coding Sessions
+;=====================================
+-->
+
+
+<div class="container-fluid mt-6" style="min-height: 600px">
+
+  <div class="row justify-content-center">
+
+    <div class="col-md-6 mb-3">
+
+      <div class="card border-0">
+
+        <div class="card-body bg-black">
+
+          <div class="d-flex flex-column align-items-center text-center">
+
+            <div class="font-yellow">
+
+             <h4> {{ profile.firstName}} {{profile.lastName}}'s Profile</h4>
+
+            </div>
+
+            <div class="mt-3 font-yellow">
+
+              <!--start of error handling / validators-->
+
+              <!-- first name error handling -->
+              <div *ngIf="profileForm.controls['firstName'].touched && profileForm.controls['firstName'].hasError('required')">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  First name is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+              <!-- end first name error handling -->
+
+              <!-- last name error handling -->
+              <div *ngIf="profileForm.controls['lastName'].touched && profileForm.controls['lastName'].hasError('required')">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Last name is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+              <!-- end last name error handling -->
+
+              <!-- address error handling -->
+              <div *ngIf="profileForm.controls['address'].touched && profileForm.controls['address'].hasError('required')">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Address is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+              <!-- end address error handling -->
+
+              <!-- phone number error handling -->
+              <div *ngIf="profileForm.controls['phoneNumber'].touched && profileForm.controls['phoneNumber'].hasError('required')">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Phone Number is required.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+
+              <div *ngIf="profileForm.controls['phoneNumber'].touched && profileForm.controls['phoneNumber'].hasError('pattern')">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  Phone Number must not contain any letters and must be in format: 555-111-5555 or 5551115555
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              </div>
+              <!-- end phone number error handling -->
+
+
+              <!--end of error handling / validators-->
+
+              <form [formGroup]="profileForm">
+                <mat-form-field>
+                  <mat-label>First Name:</mat-label>
+                  <input class="full-width" matInput type="text" formControlName="firstName">
+                </mat-form-field>&nbsp;
+                <mat-form-field>
+                  <mat-label>Last Name:</mat-label>
+                  <input matInput type="text" formControlName="lastName">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="extra-width">
+                  <mat-label>Phone Number:</mat-label>
+                  <input matInput type="text" formControlName="phoneNumber">
+                </mat-form-field><br>
+                <mat-form-field class="extra-width">
+                  <mat-label>Address:</mat-label>
+                  <input matInput type="text" formControlName="address">
+                </mat-form-field>
+              </form>
+
+            </div>
+
+            <div class="mt-3 font-yellow">
+              <button class="btn btn-lg bg-potter-yellow text-black" (click)="editEnabled()">Edit</button>&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-lg bg-potter-yellow text-black" (click)="updateProfile()">Save</button>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+  </div><!--end of first row-->
+
+
+
+</div> <!--end of container-->

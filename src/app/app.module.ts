@@ -34,7 +34,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { ProfileComponent } from './admin/users/profile/profile.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
 import { GraphComponent } from './graph/graph.component';
 
