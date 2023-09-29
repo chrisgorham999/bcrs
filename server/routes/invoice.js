@@ -40,7 +40,7 @@ const invoiceSchema = {
   type: "object",
   properties: {
     invoiceNumber: {
-      type: "number"
+      type: "number",
     },
     email: {
       type: "string",
@@ -108,7 +108,38 @@ router.post("/", async (req, res, next) => {
 });
 
 //findPurchasesByService
+router.get("/graph", async (req, res, next) => {
+  try {
+    console.log("findAllServices API");
 
+    mongo(async (db) => {
+      const aggregationPipeline = [
+        { $unwind: "$lineItems" },
+        {
+          $group: {
+            _id: {
+              title: "$lineItems.title",
+              price: "$lineItems.price",
+              name: "$lineItems.name",
+            },
+            count: { $sum: 1 },
+          },
+        },
+        { $sort: { "_id.title": 1 } },
+      ];
+
+      const result = await db
+        .collection("invoices")
+        .aggregate(aggregationPipeline)
+        .toArray();
+
+      res.status(200).json(result);
+    }, next);
+  } catch (err) {
+    console.error("err:", err);
+    next(err);
+  }
+});
 
 /**
  * getAllInvoices
@@ -137,7 +168,7 @@ router.post("/", async (req, res, next) => {
  *         description: Server Error
  */
 
- router.get("/", (req, res, next) => {
+router.get("/", (req, res, next) => {
   try {
     mongo(async (db) => {
       const invoices = await db

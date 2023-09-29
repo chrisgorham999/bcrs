@@ -34,9 +34,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
-
-
-
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +49,7 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
     ServiceRepairComponent,
     InvoiceListComponent,
     InvoiceViewComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +67,6 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -10,18 +10,18 @@
 -->
 
 <nav class="bg-potter-black ps-3 navbar navbar-expand-sm fixed-top">
-  <a routerLink="/" class="logo"><img src="./assets/logo.png" width="50%"></a>
+  <a routerLink="/" class="logo"><img src="./assets/logo.png" width="50%" /></a>
 
   <button
-  class="navbar-toggler"
-  type="button"
-  data-bs-toggle="collapse"
-  data-bs-target="#navbarResponsive"
-  aria-controls="navbarResponsive"
-  aria-expanded="false"
-  aria-label="Toggle navigation">
-
-  <span class="navbar-toggler-icon"></span>
+    class="navbar-toggler"
+    type="button"
+    data-bs-toggle="collapse"
+    data-bs-target="#navbarResponsive"
+    aria-controls="navbarResponsive"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
   </button>
 
   <!-- navbar links-->
@@ -34,43 +34,76 @@
         <a class="nav-link font-yellow" routerLink="/faq">FAQ</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link font-yellow" routerLink="/directory">Employee Directory</a>
+        <a class="nav-link font-yellow" routerLink="/directory"
+          >Employee Directory</a
+        >
       </li>
       <li *ngIf="!isSignedIn" class="padding-left">
-        <a class="rounded nav-link bg-potter-yellow text-black" routerLink="/security/signin"> SIGN IN </a>
+        <a
+          class="rounded nav-link bg-potter-yellow text-black"
+          routerLink="/security/signin"
+        >
+          SIGN IN
+        </a>
       </li>
 
       <!--user account-->
       <li *ngIf="isSignedIn" class="nav-item dropdown">
         <a
-        href="#"
-        class="nav-link pe-3 font-yellow bg-slytherin"
-        id="navbarDropdown"
-        role="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false">
-      <span class="material-icons">person</span>
-    </a>
+          href="#"
+          class="nav-link pe-3 font-yellow bg-slytherin"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <span class="material-icons">person</span>
+        </a>
 
-    <ul class="dropdown-menu dropdown-menu-end bg-black" aria-labelledby="navbarDropdown">
-      <li class="dropdown-item font-yellow custom-drop">
-        Signed in as {{ sessionUser.fullName }}
-      </li>
-      <hr class="font-yellow">
-      <li *ngIf="sessionUser.role === 'admin'">
-        <a routerLink="/admin/users" class="dropdown-item font-yellow custom-drop">Users</a>
-      </li>
-      <li>
-        <a routerLink="/service-repair" class="dropdown-item font-yellow custom-drop custom-drop-link">Add Invoice</a>
-      </li>
-      <li>
-        <a routerLink="/invoice-list" class="dropdown-item font-yellow custom-drop custom-drop-link">Invoice List</a>
-      </li>
-      <li>
-        <a (click)="signout()" class="dropdown-item font-yellow custom-drop custom-drop-link">Sign Out</a>
-      </li>
-
-    </ul>
+        <ul
+          class="dropdown-menu dropdown-menu-end bg-black"
+          aria-labelledby="navbarDropdown"
+        >
+          <li class="dropdown-item font-yellow custom-drop">
+            Signed in as {{ sessionUser.fullName }}
+          </li>
+          <hr class="font-yellow" />
+          <li *ngIf="sessionUser.role === 'admin'">
+            <a
+              routerLink="/admin/users"
+              class="dropdown-item font-yellow custom-drop"
+              >Users</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/service-repair"
+              class="dropdown-item font-yellow custom-drop custom-drop-link"
+              >Add Invoice</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/invoice-list"
+              class="dropdown-item font-yellow custom-drop custom-drop-link"
+              >Invoice List</a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/graph"
+              class="dropdown-item font-yellow custom-drop custom-drop-link"
+              >Service Graph</a
+            >
+          </li>
+          <li>
+            <a
+              (click)="signout()"
+              class="dropdown-item font-yellow custom-drop custom-drop-link"
+              >Sign Out</a
+            >
+          </li>
+        </ul>
       </li>
     </ul>
   </div>
