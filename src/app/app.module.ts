@@ -3,7 +3,7 @@
 ; Title: app.module.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 26 September 2023
+; Last Updated: 28 September 2023
 ; Description: This code supports the App Module and handles all imports
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -21,6 +21,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InvoiceListComponent } from './invoice-list/invoice-list.component';
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -31,6 +33,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NavComponent } from './layouts/nav/nav.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileComponent } from './admin/users/profile/profile.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
 import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
@@ -39,13 +42,16 @@ import { GraphComponent } from './graph/graph.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     BaseLayoutComponent,
     DirectoryComponent,
     FaqComponent,
     FooterComponent,
+    HomeComponent,
+    InvoiceListComponent,
+    InvoiceViewComponent,
     NavComponent,
     NotFoundComponent,
+    ProfileComponent,
     ServiceRepairComponent,
     InvoiceListComponent,
     InvoiceViewComponent,

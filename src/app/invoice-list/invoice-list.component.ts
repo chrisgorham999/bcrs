@@ -1,9 +1,9 @@
 /*
 ======================================
-; Title: invoice.component.ts
+; Title: invoice-list.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 27 September 2023
-; Last Updated: 27 September 2023
+; Last Updated: 28 September 2023
 ; Description: This code supports the Invoice List Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================

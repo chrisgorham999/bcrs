@@ -15,7 +15,7 @@
   <div class="row justify-content-center pt-4">
     <div class="col-sm-10 col-md-8 col-lg-6">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body bg-black font-yellow">
           <form [formGroup]="userForm" (ngSubmit)="updateUser()">
             <fieldset class="form-group">
               <legend>User Information</legend>
@@ -25,7 +25,7 @@
                 <input
                   type="text"
                   id="txtFirstName"
-                  class="form-control"
+                  class="form-control bg-potter-yellow"
                   formControlName="firstName"
                   required
                 />
@@ -58,7 +58,7 @@
                 <input
                   type="text"
                   id="txtLastName"
-                  class="form-control"
+                  class="form-control bg-potter-yellow"
                   formControlName="lastName"
                   required
                 />
@@ -91,7 +91,7 @@
                 <input
                   type="text"
                   id="txtAddress"
-                  class="form-control"
+                  class="form-control bg-potter-yellow"
                   formControlName="address"
                   required
                 />
@@ -124,7 +124,7 @@
                 <input
                   type="text"
                   id="txtPhoneNumber"
-                  class="form-control"
+                  class="form-control bg-potter-yellow"
                   formControlName="phoneNumber"
                   required
                 />
@@ -165,7 +165,7 @@
                   formControlName="role"
                   name="role"
                   id="role"
-                  class="form-select-sm"
+                  class="form-select-sm bg-potter-yellow"
                 >
                   <option value="standard">Standard</option>
                   <option value="admin">Admin</option>
@@ -201,7 +201,7 @@
               id="submit"
               [disabled]="!userForm.valid"
               value="Submit"
-              class="btn btn-lg bg-dark text-white mx-auto d-block"
+              class="btn btn-lg bg-potter-yellow text-black mx-auto d-block"
             />
           </form>
         </div>

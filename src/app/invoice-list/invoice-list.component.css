@@ -3,12 +3,19 @@
 ; Title: invoice-list.component.css
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 27 September 2023
-; Last Updated: 27 September 2023
+; Last Updated: 28 September 2023
 ; Description: This code supports styling for the Invoice List Component
 ; Sources Used: N/A
 ;=====================================
 */
 
+.bg-black {
+  background-color: black;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
 
 .font-yellow {
   color: #FFD800;
@@ -24,12 +31,16 @@ table {
   background-color: #FFF;
   width: 100%;
   border-collapse: collapse;
+  border: 1px solid black
+}
+
+table tr {
+  border: 1px solid black;
 }
 
 table tr:hover {
   background-color: #000;
   color: #FFD800;
-  padding: 5px;
 }
 
 table th {
@@ -39,5 +50,13 @@ table th {
 }
 
 table td {
-  padding: 15px;
+  padding: 5px;
+}
+
+a {
+  color: black
+}
+
+.width {
+  width: 80%;
 }

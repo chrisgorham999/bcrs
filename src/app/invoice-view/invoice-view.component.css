@@ -1,0 +1,38 @@
+/*
+======================================
+; Title: invoice-view.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 27 September 2023
+; Last Updated: 28 September 2023
+; Description: This code supports styling for the Invoice View Component
+; Sources Used: N/A
+;=====================================
+*/
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.invoice-table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 7px;
+}
+
+.category {
+  font-weight: bold;
+}
+
+.smaller {
+  font-size: small;
+}
+
+@media print {
+  .hide-print {
+    display: none !important;
+  }
+}
+
+.text-left {
+  text-align: left;
+}

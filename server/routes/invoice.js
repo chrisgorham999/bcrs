@@ -40,7 +40,7 @@ const invoiceSchema = {
   type: "object",
   properties: {
     invoiceNumber: {
-      type: "number",
+      type: "string"
     },
     email: {
       type: "string",
@@ -177,6 +177,7 @@ router.get("/", (req, res, next) => {
           {},
           {
             projection: {
+              invoiceNumber: 1,
               email: 1,
               fullName: 1,
               partsAmount: 1,
@@ -200,17 +201,17 @@ router.get("/", (req, res, next) => {
   }
 });
 
-// getInvoiceById
-router.get("/:_id", (req, res, next) => {
+// getInvoiceByInvoiceNumber
+router.get("/:invoiceNumber", (req, res, next) => {
   try {
-    console.log("_id", req.params._id);
-    let { _id } = req.params; //get the email from the req.params object
+    console.log("invoiceNumber", req.params.invoiceNumber);
+    let { invoiceNumber } = req.params; //get the invoiceNumber from the req.params object
 
     // connection to mongo, to find collection of users, then find one empId.
     mongo(
       async (db) => {
         const invoice = await db.collection("invoices").findOne(
-          { _id },
+          { invoiceNumber },
           {
             projection: {
               email: 1,
@@ -223,7 +224,7 @@ router.get("/:_id", (req, res, next) => {
               lineItems: 1,
             },
           }
-        ); //find user by ID
+        ); //find invoice by invoiceNumber
 
         //another early return method
         if (!invoice) {

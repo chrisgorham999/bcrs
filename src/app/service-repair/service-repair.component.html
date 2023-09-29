@@ -3,7 +3,7 @@
 ; Title: service-repair.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 26 September 2023
-; Last Updated: 27 September 2023
+; Last Updated: 28 September 2023
 ; Description: This code supports the HTML functionality for the Service Repair Component
 ; Sources Used: N/A
 ;=====================================
@@ -12,9 +12,6 @@
 <div class="container-fluid pt-2 set-width">
 
   <mat-card class="padding-left padding-right bg-black font-yellow">
-
-    <h1 class="text-center">Welcome to the Add Invoice Page</h1>
-    <br><br>
     <form [formGroup]="invoiceForm">
       <!--Start of First Row-->
       <div class="row">
@@ -98,31 +95,28 @@
       <!--End of Second Row-->
       <br>
       <!--Third Row Start-->
-      <div class="row">
+      <div class="row bg-potter-yellow rounded">
         <div class="col-md-12">
-          <h4 class="text-center">Custom Work Services:</h4>
-          <h6 class="text-center">Enter the total number of hours the custom work will take and the total cost associated with the parts</h6><br>
+          <h4 class="text-center text-black">Custom Work Services:</h4>
+          <h6 class="text-center text-black">Enter the total number of hours the custom work will take and the total cost associated with the parts</h6><br>
         </div>
+
+        <div class="col-md-3">
+          <label class="text-black">Labor Hours ($50/hour):</label>
+          <input class="form-control half-width text-black" type="number" id="laborCost" [(ngModel)]="labor" (input)="calculateTotal()"><br>
+        </div>
+
+        <div class="col-md-3">
+          <label class="text-black">Parts Cost:</label>
+          <input class="form-control half-width text-black" type="number" id="partsCost" [(ngModel)]="parts" (input)="calculateTotal()"><br>
+        </div>
+
+
       </div>
       <!--Third Row End-->
 
-      <!--Fourth Row Start-->
-      <div class="row">
-        <div class="col-md-3">
-          <label>Labor Hours ($50/hour):</label>
-          <input class="form-control bg-potter-yellow half-width" type="number" id="laborCost" [(ngModel)]="labor" (input)="calculateTotal()"><br>
-        </div>
 
-        <div class="col-md-3">
-          <label>Parts Cost:</label>
-          <input class="form-control bg-potter-yellow half-width" type="number" id="partsCost" [(ngModel)]="parts" (input)="calculateTotal()"><br>
-        </div>
-      <!--Fourth Row End-->
-      </div>
-
-
-
-      <div>
+      <div><br>
         <h3 class="font-yellow">Invoice Total: {{ totalCost | currency }}</h3>
       </div>
       <br>

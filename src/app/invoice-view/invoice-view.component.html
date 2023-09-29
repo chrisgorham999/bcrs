@@ -10,68 +10,89 @@
 -->
 
 <div class="container-fluid pt-2">
-  <h1 class="text-center">Welcome to the Invoice View Page!</h1>
-
   <div class="row justify-content-center pt-4">
     <div class="col-sm-10 col-md-8 col-lg-6">
       <div class="card">
         <div class="card-body">
-          <form [formGroup]="invoiceForm">
-            <fieldset class="form-group">
-              <legend>Invoice Information</legend>
+          <button class="text-right btn hide-print" onclick="window.print()"><span class="material-icons text-secondary">print</span></button>
+          <h2 class="text-center">Bob's Computer Repair Shop</h2>
+          <p class="text-center smaller">1 Bellevue Avenue Bellevue, Nebraska 68005</p>
+          <p class="text-center smaller">phone: 555-555-5555, email:<a href="mailto:bob@bcrs.com">bob@bcrs.com</a></p>
+          <h3 class="text-center">Service Invoice</h3><br><br>
+        <div>
 
-              <div class="mb-3">
-                <label for="fullName">Customer Name:</label>
-                <input
-                  type="text"
-                  id="txtfullName"
-                  class="form-control"
-                  formControlName="fullName"
-                  required
-                />
-              </div>
+        <!--First Row-->
+        <div class="row">
+          <div class="col-lg-12">
+            <table class="invoice-table">
+              <tr>
+                <th class="text-left">Invoice Number:</th>
+                <th class="text-left">Order Date:</th>
+                <th class="text-left">Customer Name:</th>
+                <th class="text-left">Customer Email:</th>
+              </tr>
+              <tr>
+                <td>{{ id }}</td>
+                <td>{{ invoice.orderDate | date }}</td>
+                <td>{{ invoice.fullName }}</td>
+                <td>{{ invoice.email }}
+              </tr>
 
-              <div class="mb-3">
-                <label for="txtLastName">Customer Email:</label>
-                <input
-                  type="text"
-                  id="txtEmail"
-                  class="form-control"
-                  formControlName="email"
-                  required
-                />
-              </div>
+            </table>
+             <br><br><br>
+          </div>
 
-              <div class="mb-3">
-                <label for="txtAddress">Parts Amount:</label>
-                <input
-                  type="text"
-                  id="txtPartsAmount"
-                  class="form-control"
-                  formControlName="partsAmount"
-                  required
-                />
-              </div>
-
-              <div class="mb-3">
-                <label for="txtPhoneNumber">Labor Amount:</label>
-                <input
-                  type="text"
-                  id="txtLaborAmount"
-                  class="form-control"
-                  formControlName="laborAmount"
-                  required
-                />
-              </div>
-
-            </fieldset>
-
-          </form>
         </div>
-      </div><br>
-      <a routerLink="/admin/users" class="text-underline-hover text-dark"
-        ><button mat-raised button class="btn bg-black font-yellow">Return To User List</button></a>
-    </div>
+        <!--End of First Row-->
+
+        <!--Second Row-->
+        <div class="row">
+          <div class="col-6">
+            <b><u>Services Purchased:</u></b><br>
+            <ol>
+              <!-- Use *ngFor to iterate over lineItems and display each item -->
+              <li *ngFor="let item of invoice.lineItems">{{ item.name }}: {{ item.price | currency }}<br></li>
+              <li *ngIf="invoice.lineItems.length === 0">None</li>
+            </ol>
+          </div>
+
+          <div class="col-6">
+            <b><u>Invoice Cost Breakdown:</u></b> <br>
+            Purchased Services Total: {{ invoice.lineItemTotal | currency }}<br>
+            Parts Cost: {{ invoice.partsAmount | currency }}<br>
+            Labor Cost: {{ invoice.laborAmount | currency }} <br>
+
+
+          </div>
+
+        </div>
+        <!--End of Second Row-->
+
+        <div class="row">
+
+          <div class="col-lg-8"><br>
+            <table class="invoice-table">
+              <tr>
+                <td><h3>Total Invoice Cost:</h3></td>
+                <td><h3>{{ invoice.invoiceTotal | currency }}</h3></td>
+              </tr>
+            </table>
+          </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        </div>
+      </div><br><br><br>
+
+    </div><br>
+    <a routerLink="/invoice-list"><button class="btn bg-black font-yellow hide-print">Return To Invoices List</button></a><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
 </div>
 

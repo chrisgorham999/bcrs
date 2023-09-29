@@ -17,6 +17,7 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserNewComponent } from './users/user-new/user-new.component';
 import { UserViewComponent } from './users/user-view/user-view.component';
 import { roleGuard } from '../shared/role.guard';
+import { ProfileComponent } from './users/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,10 @@ const routes: Routes = [
         path: 'users/new',
         component: UserNewComponent,
         title: 'BCRS: New User'
+      },
+      {
+        path: 'users/:email/profile',
+        component: ProfileComponent
       }
     ],
     canActivate: [roleGuard]

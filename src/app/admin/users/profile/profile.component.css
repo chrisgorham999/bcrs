@@ -1,0 +1,19 @@
+/*
+======================================
+; Title: profile.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 28 September 2023
+; Last Updated: 28 September 2023
+; Description: This code supports styling for the Profile Component
+; Sources Used: N/A
+;=====================================
+*/
+
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.bg-black {
+  background-color: black;
+}

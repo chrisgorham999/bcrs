@@ -3,14 +3,15 @@
 ; Title: nav.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 27 September 2023
+; Last Updated: 28 September 2023
 ; Description: This code supports the HTML functionality for the Nav Component
 ; Sources Used: Bellevue University WEB-450 GitHub
 ;=====================================
 -->
 
-<nav class="bg-potter-black ps-3 navbar navbar-expand-sm fixed-top">
-  <a routerLink="/" class="logo"><img src="./assets/logo.png" width="50%" /></a>
+
+<nav class="bg-potter-black ps-3 navbar navbar-expand-sm fixed-top hide-print">
+  <a routerLink="/" class="logo"><img src="./assets/logo.png" width="50%"></a>
 
   <button
     class="navbar-toggler"
@@ -59,7 +60,6 @@
         >
           <span class="material-icons">person</span>
         </a>
-
         <ul
           class="dropdown-menu dropdown-menu-end bg-black"
           aria-labelledby="navbarDropdown"
@@ -91,19 +91,37 @@
           </li>
           <li>
             <a
-              routerLink="/graph"
-              class="dropdown-item font-yellow custom-drop custom-drop-link"
-              >Service Graph</a
-            >
-          </li>
-          <li>
-            <a
               (click)="signout()"
               class="dropdown-item font-yellow custom-drop custom-drop-link"
               >Sign Out</a
             >
           </li>
         </ul>
+    <ul class="dropdown-menu dropdown-menu-end bg-black" aria-labelledby="navbarDropdown">
+      <li class="dropdown-item font-yellow custom-drop">
+        Signed in as {{ sessionUser.fullName }}
+      </li>
+      <hr class="font-yellow">
+      <li *ngIf="sessionUser.role === 'admin'">
+        <a routerLink="/admin/users" class="dropdown-item font-yellow custom-drop">Users</a>
+      </li>
+      <li>
+        <a routerLink="/service-repair" class="dropdown-item font-yellow custom-drop custom-drop-link">Add Invoice</a>
+      </li>
+      <li>
+        <a routerLink="/invoice-list" class="dropdown-item font-yellow custom-drop custom-drop-link">Invoices</a>
+      </li>
+            <li>
+        <a routerLink="/graph" class="dropdown-item font-yellow custom-drop custom-drop-link">Service Graph</a>
+      </li>
+      <li>
+        <a routerLink="/admin/users/{{ sessionUser.email }}/profile" class="dropdown-item font-yellow custom-drop custom-drop-link">My Profile</a>
+      </li>
+      <li>
+        <a (click)="signout()" class="dropdown-item font-yellow custom-drop custom-drop-link">Sign Out</a>
+      </li>
+
+    </ul>
       </li>
     </ul>
   </div>

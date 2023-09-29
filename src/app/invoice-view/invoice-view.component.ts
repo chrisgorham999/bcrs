@@ -1,5 +1,16 @@
+/*
+======================================
+; Title: invoice-view.component.ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 27 September 2023
+; Last Updated: 28 September 2023
+; Description: This code supports the Invoice View Component
+; Sources Used: Bellevue University WEB-450 GitHub Repository
+;=====================================
+*/
+
+// imports
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InvoiceModel } from '../invoice-model';
 import { InvoiceService } from '../invoice.service';
@@ -11,23 +22,18 @@ import { InvoiceService } from '../invoice.service';
 })
 export class InvoiceViewComponent {
 
-  id: string // define the email variable
+  id: string // define the id variable
   invoice: InvoiceModel // define the user variable
-
-  // form validators
-  invoiceForm: FormGroup = this.fb.group({
-  })
 
   constructor(
     private route: ActivatedRoute,
     private invoiceService: InvoiceService,
-    private router: Router,
-    private fb: FormBuilder) {
+    private router: Router) {
 
       this.invoice = {} as InvoiceModel // initialize the user model
-      let invoiceID = this.route.snapshot.paramMap.get('invoiceNumber') || '' // get the id from the route
+      const l_invoiceNumber = this.route.snapshot.paramMap.get('invoiceNumber') || '' // get the id from the route
 
-      this.id = invoiceID;
+      this.id = l_invoiceNumber;
 
       console.log(this.id) // log the email to the console
 
@@ -41,11 +47,7 @@ export class InvoiceViewComponent {
           console.error(err)
         },
         complete: () => {
-          // populate form with values from the db
-          this.invoiceForm.controls['fullName'].setValue(this.invoice.fullName)
-          this.invoiceForm.controls['email'].setValue(this.invoice.email)
-          this.invoiceForm.controls['partsAmount'].setValue(this.invoice.partsAmount)
-          this.invoiceForm.controls['laborAmount'].setValue(this.invoice.laborAmount)
+          console.log('it all worked, great job!')
         }
       })
     }

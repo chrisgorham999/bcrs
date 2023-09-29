@@ -12,6 +12,7 @@
 // imports
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ProfileViewModel } from './profile-view-model';
 import { User } from './user';
 import { UserDisableModel } from './user-disable-model';
 import { UserViewModel } from './user-view-model';
