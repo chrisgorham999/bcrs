@@ -1,5 +1,16 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+/*
+======================================
+; Title: verify-email.component.spec.ts
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 20 September 2023
+; Last Updated: 29 September 2023
+; Description: This code supports the Verify Email Component
+; Sources Used: Bellevue University WEB-450 Coding Sessions
+;=====================================
+*/
 
+// imports
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { VerifyEmailComponent } from './verify-email.component';
 
 describe('VerifyEmailComponent', () => {

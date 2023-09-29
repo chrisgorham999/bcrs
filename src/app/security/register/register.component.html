@@ -3,17 +3,18 @@
 ; Title: register.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 20 September 2023
-; Last Updated: 21 September 2023
+; Last Updated: 29 September 2023
 ; Description: This code supports the HTML functionality for the Register Component
 ; Sources Used: Bellevue University WEB-450 Coding Sessions
 ;=====================================
 -->
 
 <div class="container-fluid pt-2 p-2">
-  <h1 class="text-center">Welcome to the User Registration Page!</h1>
 
   <div class="row justify-content-center pt-4">
     <div class="col-sm-10 col-md-8 col-lg-6">
+
+      <div class="text-center bg-potter-yellow"><img src="./assets/registration-logo.png" width="80%" alt="Logo displaying a computer with text next to it that says Registration - Make A New Account"></div><hr>
 
       <div *ngIf="errorMessage">
         <div class="alert alert-danger alert-dismissible fade show" role="alert">

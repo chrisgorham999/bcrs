@@ -3,7 +3,7 @@
 ; Title: service-repair.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 26 September 2023
-; Last Updated: 28 September 2023
+; Last Updated: 29 September 2023
 ; Description: This code supports the HTML functionality for the Service Repair Component
 ; Sources Used: N/A
 ;=====================================
@@ -11,10 +11,15 @@
 
 <div class="container-fluid pt-2 set-width">
 
+  <!--logo-->
+  <div class="text-center bg-potter-yellow"><img src="./assets/add-invoice-logo.png" width="60%" alt="Logo displaying a computer with text next to it that says Add An Invoice - Fill Out The Form"></div><hr>
+
   <mat-card class="padding-left padding-right bg-black font-yellow">
+    <br>
     <form [formGroup]="invoiceForm">
       <!--Start of First Row-->
       <div class="row">
+        <br><br>
         <h4 class="text-center">Customer Information:</h4><br><br>
         <div class="col-md-4">
           <label>Customer Email:</label>

@@ -1,3 +1,15 @@
+<!--
+======================================
+; Title: verify-email.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 20 September 2023
+; Last Updated: 29 September 2023
+; Description: This code supports the HTML functionality for the Verify Email Component
+; Sources Used: Bellevue University WEB-450 Coding Sessions
+;=====================================
+-->
+
+
 <div class="container mt-5">
   <div class="row justify-content-center mt-5">
     <div class="col-lg-8 col-md-10">
@@ -6,6 +18,11 @@
           <!--Error Message-->
           <div *ngIf="errorMessage" class="row">
             <div class="col-12">
+
+              <!--logo start-->
+              <div class="text-center bg-potter-yellow"><img src="./assets/registration-logo.png" width="80%" alt="Logo displaying a computer with text next to it that says Registration - Make A New Account"></div><hr>
+              <!--logo end-->
+
               <div class="alert alert-danger">
                 {{ errorMessage }}
               </div>
