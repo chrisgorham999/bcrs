@@ -3,12 +3,13 @@
 ; Title: invoice.js
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 25 September 2023
-; Last Updated: 25 September 2023
+; Last Updated: 29 September 2023
 ; Description: This code supports the Invoice Route
 ; Sources Used: N/A
 ;=====================================
 */
 
+// imports
 const express = require("express");
 const router = express.Router();
 const { mongo } = require("../utils/mongo");
@@ -16,9 +17,9 @@ const Ajv = require("ajv");
 const { ObjectId } = require("mongodb");
 const bcrypt = require("bcryptjs");
 const ret = require("bluebird/js/release/util");
-
 const ajv = new Ajv(); //creates a new instance of Ajv class
 
+// line item schema
 const lineItemSchema = {
   type: "array",
   items: {
@@ -36,6 +37,7 @@ const lineItemSchema = {
   },
 };
 
+// invoice schema
 const invoiceSchema = {
   type: "object",
   properties: {
@@ -79,7 +81,7 @@ const invoiceSchema = {
   additionalProperties: false,
 };
 
-// createInvoice
+// createInvoice API
 router.post("/", async (req, res, next) => {
   try {
     const { invoice } = req.body;
@@ -107,7 +109,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-//findPurchasesByService
+//findPurchasesByService API
 router.get("/graph", async (req, res, next) => {
   try {
     console.log("findAllServices API");
@@ -201,7 +203,7 @@ router.get("/", (req, res, next) => {
   }
 });
 
-// getInvoiceByInvoiceNumber
+// getInvoiceByInvoiceNumber API
 router.get("/:invoiceNumber", (req, res, next) => {
   try {
     console.log("invoiceNumber", req.params.invoiceNumber);
