@@ -90,6 +90,12 @@
             >
           </li>
           <li>
+            <a routerLink="/graph" class="dropdown-item font-yellow custom-drop custom-drop-link">Service Graph</a>
+          </li>
+          <li>
+            <a routerLink="/admin/users/{{ sessionUser.email }}/profile" class="dropdown-item font-yellow custom-drop custom-drop-link">My Profile</a>
+          </li>
+          <li>
             <a
               (click)="signout()"
               class="dropdown-item font-yellow custom-drop custom-drop-link"
@@ -97,30 +103,7 @@
             >
           </li>
         </ul>
-    <ul class="dropdown-menu dropdown-menu-end bg-black" aria-labelledby="navbarDropdown">
-      <li class="dropdown-item font-yellow custom-drop">
-        Signed in as {{ sessionUser.fullName }}
-      </li>
-      <hr class="font-yellow">
-      <li *ngIf="sessionUser.role === 'admin'">
-        <a routerLink="/admin/users" class="dropdown-item font-yellow custom-drop">Users</a>
-      </li>
-      <li>
-        <a routerLink="/service-repair" class="dropdown-item font-yellow custom-drop custom-drop-link">Add Invoice</a>
-      </li>
-      <li>
-        <a routerLink="/invoice-list" class="dropdown-item font-yellow custom-drop custom-drop-link">Invoices</a>
-      </li>
-      <li>
-        <a routerLink="/graph" class="dropdown-item font-yellow custom-drop custom-drop-link">Service Graph</a>
-      </li>
-      <li>
-        <a routerLink="/admin/users/{{ sessionUser.email }}/profile" class="dropdown-item font-yellow custom-drop custom-drop-link">My Profile</a>
-      </li>
-      <li>
-        <a (click)="signout()" class="dropdown-item font-yellow custom-drop custom-drop-link">Sign Out</a>
-      </li>
-    </ul>
+
       </li>
     </ul>
   </div>
