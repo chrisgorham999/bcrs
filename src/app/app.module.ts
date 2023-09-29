@@ -35,11 +35,7 @@ import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './admin/users/profile/profile.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
-
-
-
-
-
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +51,7 @@ import { ServiceRepairComponent } from './service-repair/service-repair.componen
     NotFoundComponent,
     ProfileComponent,
     ServiceRepairComponent,
+    GraphComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +69,6 @@ import { ServiceRepairComponent } from './service-repair/service-repair.componen
     ReactiveFormsModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,9 @@
+.chart {
+  position: relative;
+  height: 600px;
+  width: 600px;
+  margin: 0 auto;
+}
+.container {
+  text-align: center;
+}

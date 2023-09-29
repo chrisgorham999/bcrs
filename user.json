@@ -756,6 +756,78 @@
             "description": "Not found"
           }
         }
+      },
+      "get": {
+        "tags": ["Invoices"],
+        "summary": "Find all invoices",
+        "description": "Returns all invoices.",
+        "responses": {
+          "200": {
+            "description": "Invoices found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/invoices/{:_id}": {
+      "get": {
+        "tags": ["Invoices"],
+        "summary": "Find invoice by id",
+        "description": "Returns an invoice based on their id.",
+        "parameters": [
+          {
+            "name": "_id",
+            "in": "path",
+            "description": "Invoice ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice document found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
+      }
+    },
+    "/invoices/graph": {
+      "get": {
+        "tags": ["Invoices"],
+        "summary": "Find all services",
+        "description": "Returns all services.",
+        "responses": {
+          "200": {
+            "description": "Invoices found"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "404": {
+            "description": "Not found"
+          },
+          "500": {
+            "description": "Server Error"
+          }
+        }
       }
     }
   }
