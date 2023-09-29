@@ -27,12 +27,12 @@ export class InvoiceService {
     return this.http.get('/api/invoices/');
   }
 
+  // for our services graph
   findPurchasesByServiceGraph() {
     return this.http.get('/api/invoices/graph');
   }
-  
-  getInvoice(invoiceNumber: string) {
-    return this.http.get('/api/invoices/' + invoiceNumber)
 
+  getInvoice(invoiceNumber: string) {
+    return this.http.get('/api/invoices/' + invoiceNumber);
   }
 }

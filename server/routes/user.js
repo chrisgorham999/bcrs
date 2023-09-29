@@ -125,33 +125,7 @@ const updateProfileSchema = {
   },
 };
 
-/**
- * findAllUsers
- * * @openapi
- * /api/users
- *   get:
- *     tags:
- *       - Users
- *     description:  API for returning an user document
- *     summary: returns all user documents
- *     parameters:
- *       - name: email
- *         in: path
- *         required: true
- *         description: user document email
- *         schema:
- *           type: string
- *     responses:
- *       '200':
- *         description: user document found
- *       '400':
- *         description: Bad request
- *       '404':
- *         description: Not found
- *       '500':
- *         description: Server Error
- */
-
+// findAllUsers API
 router.get("/", (req, res, next) => {
   try {
     mongo(async (db) => {
