@@ -10,11 +10,14 @@
 -->
 
 <div class="container-fluid pt-2" style="min-height: 600px">
-  <div class="text-center"><img src="./assets/invoices-logo.png" width="40%" alt="Logo displaying a computer with text next to it that says Meet The Team - Our Employees Are Our Best Asset"></div><br><hr>
+
 
   <div class="row justify-content-center pt-4">
 
     <div class="col-sm-12 col-md-10 col-lg-10">
+      <!--logo start-->
+      <div class="text-center"><img src="./assets/invoices-logo.png" width="60%" alt="Logo displaying a computer with text next to it that says Invoices - Sorted By Most Recent"></div><br><hr>
+      <!--logo end-->
       <a routerLink="/service-repair" class="text-dark text-underline-hover"><button class="btn bg-black font-yellow">Add A New Invoice</button></a>
       <br><br>
       <div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
