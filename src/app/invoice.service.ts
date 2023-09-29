@@ -15,20 +15,24 @@ import { Injectable } from '@angular/core';
 import { InvoiceModel } from './invoice-model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class InvoiceService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   createTheInvoice(invoice: InvoiceModel) {
-    return this.http.post('/api/invoices/', { invoice })
+    return this.http.post('/api/invoices/', { invoice });
   }
   getInvoices() {
-    return this.http.get('/api/invoices/')
+    return this.http.get('/api/invoices/');
   }
 
+  findPurchasesByServiceGraph() {
+    return this.http.get('/api/invoices/graph');
+  }
+  
   getInvoice(invoiceNumber: string) {
     return this.http.get('/api/invoices/' + invoiceNumber)
+
   }
 }

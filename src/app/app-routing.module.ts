@@ -21,9 +21,8 @@ import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
-
-
-
+import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
+import { GraphComponent } from './graph/graph.component';
 
 // routes array with a path, component, and title for each route in the application (e.g. home, about, contact, etc.)
 const routes: Routes = [
@@ -34,37 +33,42 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
-        title: 'BCRS: Home' // title for the home page
+        title: 'BCRS: Home', // title for the home page
       },
       {
         path: 'home',
         component: HomeComponent,
-        title: 'BCRS: Home'
+        title: 'BCRS: Home',
       },
       {
         path: 'not-found',
         component: NotFoundComponent,
-        title: 'Error: Page Not Found'
+        title: 'Error: Page Not Found',
       },
       {
         path: 'faq',
         component: FaqComponent,
-        title: 'BCRS: FAQ'
+        title: 'BCRS: FAQ',
+      },
+      {
+        path: 'graph',
+        component: GraphComponent,
+        title: 'BCRS: Graph',
       },
       {
         path: 'directory',
         component: DirectoryComponent,
-        title: 'BCRS: Employee Directory'
+        title: 'BCRS: Employee Directory',
       },
       {
         path: 'service-repair',
         component: ServiceRepairComponent,
-        title: 'BCRS: Service Repair'
+        title: 'BCRS: Service Repair',
       },
       {
         path: 'invoice-list',
         component: InvoiceListComponent,
-        title: 'BCRS: Invoice List'
+        title: 'BCRS: Invoice List',
       },
       {
         path: 'invoice-list/:invoiceNumber/view',
@@ -73,25 +77,33 @@ const routes: Routes = [
       },
       {
         path: 'admin',
-        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
-        canActivate: [authGuard]
-      }
-    ]
+        loadChildren: () =>
+          import('./admin/admin.module').then((m) => m.AdminModule),
+        canActivate: [authGuard],
+      },
+    ],
   },
   {
     // path for the security module (e.g. login, register, forgot password, etc.)
     path: 'security',
-    loadChildren: () => import('./security/security.module').then(m => m.SecurityModule)
+    loadChildren: () =>
+      import('./security/security.module').then((m) => m.SecurityModule),
   },
   {
     path: '**',
-    redirectTo: 'not-found'
-  }
+    redirectTo: 'not-found',
+  },
 ];
 
 @NgModule({
   // imports the RouterModule and defines the routes array and other options (e.g. useHash, enableTracing, scrollPositionRestoration)
-  imports: [RouterModule.forRoot(routes, { useHash: true, enableTracing: false, scrollPositionRestoration: 'enabled'})],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+      enableTracing: false,
+      scrollPositionRestoration: 'enabled',
+    }),
+  ],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
