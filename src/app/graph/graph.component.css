@@ -1,3 +1,14 @@
+/*
+======================================
+; Title: graph.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 27 September 2023
+; Last Updated: 29 September 2023
+; Description: This code supports styling for the Graph Component
+; Sources Used: N/A
+;=====================================
+*/
+
 .chart {
   position: relative;
   height: 600px;
