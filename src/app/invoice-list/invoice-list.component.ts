@@ -50,8 +50,6 @@ export class InvoiceListComponent {
     })
   }
 
-
-
   // makes alerts disappear after 3 seconds by resetting them to empty values
   hideAlert() {
     setTimeout(() => {
@@ -59,5 +57,4 @@ export class InvoiceListComponent {
       this.errorMessage = ''
     }, 3000)
   }
-
 }

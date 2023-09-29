@@ -3,7 +3,7 @@
 ; Title: invoice-view.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 27 September 2023
-; Last Updated: 27 September 2023
+; Last Updated: 28 September 2023
 ; Description: This code supports the HTML functionality for Invoice View Component
 ; Sources Used: N/A
 ;=====================================
@@ -16,9 +16,10 @@
         <div class="card-body">
           <button class="text-right btn hide-print" onclick="window.print()"><span class="material-icons text-secondary">print</span></button>
           <h2 class="text-center">Bob's Computer Repair Shop</h2>
-          <p class="text-center smaller">1 Bellevue Avenue Bellevue, Nebraska 68005</p>
-          <p class="text-center smaller">phone: 555-555-5555, email:<a href="mailto:bob@bcrs.com">bob@bcrs.com</a></p>
-          <h3 class="text-center">Service Invoice</h3><br><br>
+          <p class="text-center smaller">1 Bellevue Avenue Bellevue, Nebraska 68005<br>
+          phone: (555)-555-5555, email:<a href="mailto:bob@bcrs.com">bob@bcrs.com</a>
+          </p>
+          <h3 class="text-center">Service Repair Invoice</h3><br>
         <div>
 
         <!--First Row-->
@@ -59,8 +60,8 @@
           <div class="col-6">
             <b><u>Invoice Cost Breakdown:</u></b> <br>
             Purchased Services Total: {{ invoice.lineItemTotal | currency }}<br>
-            Parts Cost: {{ invoice.partsAmount | currency }}<br>
-            Labor Cost: {{ invoice.laborAmount | currency }} <br>
+            Custom Work Parts Cost: {{ invoice.partsAmount | currency }}<br>
+            Custom Work Labor Cost: {{ invoice.laborAmount | currency }} <br>
 
 
           </div>

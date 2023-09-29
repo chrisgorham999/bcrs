@@ -15,19 +15,6 @@
   <div class="row justify-content-center pt-4">
 
     <div class="col-sm-12 col-md-10 col-lg-10">
-
-      <div *ngIf="errorMessage">
-        <div class="alert alert-danger" role="alert">
-          {{ errorMessage }}
-        </div>
-      </div>
-
-      <div *ngIf="successMessage">
-        <div class="alert alert-success" role="alert">
-          {{ successMessage }}
-        </div>
-      </div>
-
       <a routerLink="/service-repair" class="text-dark text-underline-hover"><button class="btn bg-black font-yellow">Add A New Invoice</button></a>
       <br><br>
       <div *ngIf="isLoading" class="d-flex justify-content-center mt-5">
