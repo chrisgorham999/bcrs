@@ -28,6 +28,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NavComponent } from './layouts/nav/nav.component';
@@ -65,6 +66,7 @@ import { GraphComponent } from './graph/graph.component';
     MatDatepickerModule,
     MatExpansionModule,
     MatFormFieldModule,
+    MatInputModule,
     MatListModule,
     ReactiveFormsModule,
   ],

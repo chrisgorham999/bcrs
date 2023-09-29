@@ -3,7 +3,7 @@
 ; Title: profile.component.css
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 28 September 2023
-; Last Updated: 28 September 2023
+; Last Updated: 29 September 2023
 ; Description: This code supports styling for the Profile Component
 ; Sources Used: N/A
 ;=====================================
@@ -16,4 +16,12 @@
 
 .bg-black {
   background-color: black;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+.extra-width {
+  width: 100%;
 }

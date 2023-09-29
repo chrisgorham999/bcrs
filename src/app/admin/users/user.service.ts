@@ -3,7 +3,7 @@
 ; Title: user.service.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 29 September 2023
 ; Description: This code supports the User Service
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -42,6 +42,12 @@ export class UserService {
 
   updateUser(email: string, user: UserViewModel) {
     return this.http.put('/api/users/' + email, {
+      user
+    })
+  }
+
+  updateProfile(email: string, user: ProfileViewModel) {
+    return this.http.put('/api/users/' + email + '/profile', {
       user
     })
   }
