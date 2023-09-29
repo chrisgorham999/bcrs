@@ -38,6 +38,7 @@ export class GraphComponent implements OnInit {
         this.labels.length = 0;
         this.itemCount.length = 0;
 
+        // Populate the data arrays
         for (let item of this.purchases) {
           let title = item._id.name;
           let count = item.count;
@@ -50,10 +51,10 @@ export class GraphComponent implements OnInit {
         const myPie = new Chart('myPieChart', {
           type: 'pie',
           data: {
-            labels: this.labels,
+            labels: this.labels, //set from our db
             datasets: [
               {
-                data: this.itemCount,
+                data: this.itemCount, //set from our db
                 backgroundColor: [
                   '#ED0A3F',
                   '#FF8833',
