@@ -3,7 +3,7 @@
 ; Title: app-routing.module .ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 28 September 2023
+; Last Updated: 29 September 2023
 ; Description: This code supports all routes
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -19,6 +19,7 @@ import { InvoiceListComponent } from './invoice-list/invoice-list.component';
 import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
 import { GraphComponent } from './graph/graph.component';
@@ -73,6 +74,10 @@ const routes: Routes = [
         path: 'invoice-list/:invoiceNumber/view',
         component: InvoiceViewComponent,
         title: 'BCRS: Invoice View',
+      },
+      {
+        path: 'users/:email/profile',
+        component: ProfileComponent
       },
       {
         path: 'admin',

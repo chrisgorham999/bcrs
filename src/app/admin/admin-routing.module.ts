@@ -3,7 +3,7 @@
 ; Title: admin-routing.module.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 29 September 2023
 ; Description: This code supports the Admin Module
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -17,7 +17,6 @@ import { UserListComponent } from './users/user-list/user-list.component';
 import { UserNewComponent } from './users/user-new/user-new.component';
 import { UserViewComponent } from './users/user-view/user-view.component';
 import { roleGuard } from '../shared/role.guard';
-import { ProfileComponent } from './users/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -38,10 +37,6 @@ const routes: Routes = [
         path: 'users/new',
         component: UserNewComponent,
         title: 'BCRS: New User'
-      },
-      {
-        path: 'users/:email/profile',
-        component: ProfileComponent
       }
     ],
     canActivate: [roleGuard]

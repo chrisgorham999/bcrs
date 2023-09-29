@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileViewModel } from '../profile-view-model';
-import { UserService } from '../user.service';
+import { UserService } from '../admin/users/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -22,10 +22,10 @@ import { UserService } from '../user.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  successMessage: string
   email: string // define the email variable
   profile: ProfileViewModel // define the profile variable
 
+  // establish form group and make validators
   profileForm: FormGroup = this.fb.group({
     phoneNumber: ['', Validators.compose([Validators.required, Validators.pattern("^[0-9-]*$")])],
     firstName: ['', Validators.compose([Validators.required])],
@@ -34,16 +34,17 @@ export class ProfileComponent {
   })
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private fb: FormBuilder) {
-    this.profile = {} as ProfileViewModel
-    this.successMessage = '';
-    this.profileForm.disable();
+    this.profile = {} as ProfileViewModel // init profile variable
+    this.profileForm.disable(); // disable the form to start
 
+    // pull the email address from the route
     let l_email = this.route.snapshot.paramMap.get('email') || ''
 
     this.email = l_email;
 
     console.log(this.email)
 
+    // populates the form fields with the profile datga
     this.userService.getUser(this.email).subscribe({
       next: (profile: any) => {
         this.profile = profile
@@ -62,10 +63,12 @@ export class ProfileComponent {
 
   }
 
+  // toggles the form to enable
   editEnabled() {
     this.profileForm.enable();
   }
 
+  // the function that updates the profile
   updateProfile() {
     let profile = {} as ProfileViewModel // init the profile view model
 
