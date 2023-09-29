@@ -1,8 +1,20 @@
+<!--
+======================================
+; Title: profile.component.html
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 28 September 2023
+; Last Updated: 29 September 2023
+; Description: This code supports the HTML functionality for Profile Component
+; Sources Used: Bellevue University WEB-450 Live Coding Sessions
+;=====================================
+-->
+
+
 <div class="container-fluid mt-6" style="min-height: 600px">
 
   <div class="row justify-content-center">
 
-    <div class="col-md-4 mb-3">
+    <div class="col-md-6 mb-3">
 
       <div class="card border-0">
 
@@ -12,13 +24,37 @@
 
             <div class="font-yellow">
 
-             <h4> {{ profile.firstName}} {{profile.lastName}}</h4>
+             <h4> {{ profile.firstName}} {{profile.lastName}}'s Profile</h4>
 
             </div>
 
             <div class="mt-3 font-yellow">
-              <h4>{{ profile.phoneNumber }}</h4>
-              <h4>{{ profile.address }} </h4>
+              <form [formGroup]="profileForm">
+                <mat-form-field>
+                  <mat-label>First Name:</mat-label>
+                  <input class="full-width" matInput type="text" formControlName="firstName">
+                </mat-form-field>&nbsp;
+                <mat-form-field>
+                  <mat-label>Last Name:</mat-label>
+                  <input matInput type="text" formControlName="lastName">
+                </mat-form-field>
+                <br>
+                <mat-form-field class="extra-width">
+                  <mat-label>Phone Number:</mat-label>
+                  <input matInput type="text" formControlName="phoneNumber">
+                </mat-form-field><br>
+                <mat-form-field class="extra-width">
+                  <mat-label>Address:</mat-label>
+                  <input matInput type="text" formControlName="address">
+                </mat-form-field>
+              </form>
+
+            </div>
+
+            <div class="mt-3 font-yellow">
+              <button class="btn btn-lg bg-potter-yellow text-black" (click)="editEnabled()">Edit</button>&nbsp;&nbsp;&nbsp;
+              <button class="btn btn-lg bg-potter-yellow text-black" (click)="updateProfile()">Save</button>
+
             </div>
 
           </div>
