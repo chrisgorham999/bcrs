@@ -100,10 +100,16 @@
                   <input matInput type="text" formControlName="address">
                 </mat-form-field>
               </form>
+              <br>
+                <h4><b>Privacy Settings</b></h4>
+                <h5>Language: English</h5>
+                <h5>Role: {{ profile.role }} </h5>
+
+
 
             </div>
 
-            <div class="mt-3 font-yellow">
+            <div class="mt-3 font-yellow"><br>
               <button class="btn btn-lg bg-potter-yellow text-black" (click)="editEnabled()">Edit</button>&nbsp;&nbsp;&nbsp;
               <button class="btn btn-lg bg-potter-yellow text-black" (click)="updateProfile()">Save</button>
 

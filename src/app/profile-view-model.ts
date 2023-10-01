@@ -15,4 +15,5 @@ export interface ProfileViewModel {
   lastName: string
   phoneNumber: string
   address: string
+  role: string
 }
