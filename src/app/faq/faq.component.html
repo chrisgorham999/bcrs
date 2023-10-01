@@ -3,7 +3,7 @@
 ; Title: nav.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 19 September 2023
-; Last Updated: 30 September 2023
+; Last Updated: 01 October 2023
 ; Description: This code supports the HTML functionality for the FAQ Component
 ; Sources Used: Bellevue University WEB-450 GitHub
 ; MAT Expansion Panels: https://material.angular.io/components/expansion/overview
@@ -98,7 +98,7 @@
     src="./assets/profilestep3.png"
     width="50%"
     alt="image showing where the Save button is"><br><br>
-    <p><b>Step 4: </b>A success dialog will display and then the page will refresh and you'll see your new information displayed.</p>
+    <p><b>Step 4: </b>A success dialog will display and your updated information will display.</p>
     <img
     class="zoom rounded"
     src="./assets/profilestep4.png"
@@ -343,7 +343,22 @@
           How can I view the amount of purchases by service?
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>Coming Soon!</p>
+      <p> <b>Step 1: </b> Navigate to the
+        <a routerLink="/graph" target="_blank">Graph</a> page - the
+        link is located in the top right of the page under the profile icon when you are signed in as an Administrator.</p>
+        <img
+        class="rounded zoom"
+        src="./assets/graphstep1.png"
+        width="50%"
+        alt="image showing where the Graph page link is"
+      /><br /><br />
+      <p><b>Step 2: </b> Hover over any section of the pie chart to see how many sales there have been of that particular service.</p>
+      <img
+      class="rounded zoom"
+      src="./assets/graphstep2.png"
+      width="50%"
+      alt="image showing the number of sales for a particular service by hovering over the slice of the pie chart"
+    /><br /><br />
     </mat-expansion-panel>
     <!--creates some room at the end of the page between the footer-->
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br><br><br><br><br><br><br><br>
