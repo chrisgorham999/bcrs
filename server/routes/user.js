@@ -349,7 +349,7 @@ router.get("/:email/security-questions", (req, res, next) => {
   }
 });
 
-// updateProfile
+// updateProfile API
 router.put("/:email/profile", (req, res, next) => {
   try {
     let { email } = req.params;
