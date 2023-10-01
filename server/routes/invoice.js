@@ -87,14 +87,14 @@ router.post("/", async (req, res, next) => {
     const { invoice } = req.body;
     console.log("invoice", invoice);
 
-    const validator = ajv.compile(invoiceSchema);
+    const validator = ajv.compile(invoiceSchema); // validate against the invoiceSchema
     const valid = validator(invoice);
 
     if (!valid) {
-      const err = new Error("Bad Request");
+      const err = new Error("Bad Request"); // if its not valid, throw an error
       err.status = 400;
       err.errors = validator.errors;
-      console.log("req.body validation failed", err);
+      console.log("req.body validation failed", err); // for troubleshooting purposes
       next(err);
       return;
     }
@@ -115,6 +115,7 @@ router.get("/graph", async (req, res, next) => {
     console.log("findAllServices API");
 
     mongo(async (db) => {
+      // chart query
       const aggregationPipeline = [
         { $unwind: "$lineItems" },
         {
@@ -131,45 +132,20 @@ router.get("/graph", async (req, res, next) => {
       ];
 
       const result = await db
-        .collection("invoices")
+        .collection("invoices") // pull from the invoices collection
         .aggregate(aggregationPipeline)
         .toArray();
 
       res.status(200).json(result);
     }, next);
   } catch (err) {
-    console.error("err:", err);
+    console.error("err:", err); // for troubleshooting purposes
     next(err);
   }
 });
 
-/**
- * getAllInvoices
- * * @openapi
- * /api/invoices
- *   get:
- *     tags:
- *       - Invoices
- *     description:  API for returning an invoice document
- *     summary: returns all invoice documents
- *     parameters:
- *       - name: email (FIX)
- *         in: path
- *         required: true
- *         description: ????
- *         schema:
- *           type: string
- *     responses:
- *       '200':
- *         description: Invoice document found
- *       '400':
- *         description: Bad request
- *       '404':
- *         description: Not found
- *       '500':
- *         description: Server Error
- */
 
+// getAllInvoices API
 router.get("/", (req, res, next) => {
   try {
     mongo(async (db) => {
@@ -178,7 +154,7 @@ router.get("/", (req, res, next) => {
         .find(
           {},
           {
-            projection: {
+            projection: { // sets the info that will be pulled
               invoiceNumber: 1,
               email: 1,
               fullName: 1,
@@ -215,7 +191,7 @@ router.get("/:invoiceNumber", (req, res, next) => {
         const invoice = await db.collection("invoices").findOne(
           { invoiceNumber },
           {
-            projection: {
+            projection: { // sets the info that will be pulled
               email: 1,
               fullName: 1,
               partsAmount: 1,
@@ -244,7 +220,7 @@ router.get("/:invoiceNumber", (req, res, next) => {
       next
     );
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });

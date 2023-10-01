@@ -11,15 +11,18 @@
 
 "use strict";
 
+// sets the variables for the database username, database name, and password for the selected user
 const {
   DB_USERNAME = "bcrs_user",
   DB_PASSWORD = "s3cret",
   DB_NAME = "bcrsDB",
 } = process.env;
 
+// db connection string to MongoDB
 const CONFIG = {
   DB_URL: `mongodb+srv://${DB_USERNAME}:${DB_PASSWORD}@bellevueuniversity.up6klva.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`,
   DB_NAME: DB_NAME,
 };
 
+// exports the module
 module.exports = CONFIG;

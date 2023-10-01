@@ -11,18 +11,17 @@
 
 "use strict";
 
-// imports
+// imports and requires
 const express = require("express");
 const router = express.Router();
 const { mongo } = require("../utils/mongo");
 const Ajv = require("ajv");
 const { ObjectId } = require("mongodb");
 const bcrypt = require("bcryptjs");
-
 const saltRounds = 10; // number of salt rounds for hashing
-
 const ajv = new Ajv(); //creates a new instance of Ajv class
 
+// userSchema
 const userSchema = {
   type: "object",
   properties: {
@@ -67,6 +66,7 @@ const userSchema = {
   additionalProperties: false,
 };
 
+// updateUserSchema
 const updateUserSchema = {
   type: "object",
   properties: {
@@ -100,6 +100,7 @@ const updateUserSchema = {
   additionalProperties: false,
 };
 
+// updateProfileSchema
 const updateProfileSchema = {
   type: "object",
   properties: {
@@ -147,42 +148,17 @@ router.get("/", (req, res, next) => {
         .sort({ email: 1 })
         .toArray();
 
-      console.log("users", users);
+      console.log("users", users); // for troubleshooting purposes
       res.send(users);
     }, next);
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });
 
-/**
- * findUserById
- * @openapi
- * /api/users/{email}:
- *   get:
- *     tags:
- *       - Users
- *     description:  API for returning an user document
- *     summary: returns an user document
- *     parameters:
- *       - name: email
- *         in: path
- *         required: true
- *         description: user document email
- *         schema:
- *           type: string
- *     responses:
- *       '200':
- *         description: User document found
- *       '400':
- *         description: Bad request
- *       '404':
- *         description: Not found
- *       '500':
- *         description: Server Error
- */
 
+// findUserById API
 router.get("/:email", (req, res, next) => {
   try {
     console.log("email", req.params.email);
@@ -210,7 +186,7 @@ router.get("/:email", (req, res, next) => {
           // if user does not exist
           const err = new Error("Unable to find users with email ", email);
           err.status = 404;
-          console.log("err", err);
+          console.log("err", err); // for troubleshooting purposes
           next(err);
           return;
         }
@@ -221,38 +197,13 @@ router.get("/:email", (req, res, next) => {
       next
     );
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });
 
-/**
- * createUser
- *  * @openapi
- * /api/:
- *   post:
- *     tags:
- *       - Users
- *     description:  API for creating an user document
- *     summary: creates an user document
- *     parameters:
- *       - name: ----------TODO
- *         in: path
- *         required: true
- *         description: user document id
- *         schema:
- *           type: number
- *     responses:
- *       '200':
- *         description: User document found
- *       '400':
- *         description: Bad request
- *       '404':
- *         description: Not found
- *       '500':
- *         description: Server Error
- */
 
+// createUser API
 router.post("/", (req, res, next) => {
   try {
     const { user } = req.body; // get the user object from the request body
@@ -264,7 +215,7 @@ router.post("/", (req, res, next) => {
       const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validator.errors;
-      console.log("req.body validation failed", err);
+      console.log("req.body validation failed", err); // for troubleshooting purposes
       next(err);
       return;
     }
@@ -273,11 +224,11 @@ router.post("/", (req, res, next) => {
 
     mongo(async (db) => {
       const result = await db.collection("users").insertOne(user); // insert the user object into the employees collection
-      console.log("result", result);
+      console.log("result", result); // for troubleshooting purposes
       res.status(201).json({ id: result.insertedId });
     }, next);
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });
@@ -291,13 +242,13 @@ router.put("/:email", (req, res, next) => {
 
     const validator = ajv.compile(updateUserSchema);
     const valid = validator(user);
-    console.log(user);
+    console.log(user); // for troubleshooting purposes
 
     if (!valid) {
       const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validator.errors;
-      console.log("updatedUserSchema validation failed", err);
+      console.log("updatedUserSchema validation failed", err); // for troubleshooting purposes
       next(err);
       return;
     }
@@ -317,12 +268,12 @@ router.put("/:email", (req, res, next) => {
         }
       );
 
-      console.log("update user result: ", result);
+      console.log("update user result: ", result); // for troubleshooting purposes
 
       res.status(204).send();
     });
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });
@@ -345,7 +296,7 @@ router.delete("/:email", (req, res, next) => {
       if (result.modifiedCount !== 1) {
         const err = new Error("User not found");
         err.status = 404;
-        console.log("err", err);
+        console.log("err", err); // for troubleshooting purposes
         next(err);
         return;
       }
@@ -354,14 +305,14 @@ router.delete("/:email", (req, res, next) => {
       if (result.modifiedCount !== 1) {
         const err = new Error("User not found");
         err.status = 404;
-        console.log("err", err);
+        console.log("err", err); // for troubleshooting purposes
         next(err);
         return;
       }
       res.status(204).send();
     });
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });
@@ -385,7 +336,7 @@ router.get("/:email/security-questions", (req, res, next) => {
       if (!user) {
         const err = new Error("Unable to find user with email" + email);
         err.status = 404;
-        console.log("err", err);
+        console.log("err", err); // for troubleshooting purposes
         next(err);
         return;
       }
@@ -405,15 +356,15 @@ router.put("/:email/profile", (req, res, next) => {
 
     const { user } = req.body;
 
-    const validator = ajv.compile(updateProfileSchema);
+    const validator = ajv.compile(updateProfileSchema); // validates against the updateProfileSchema
     const valid = validator(user);
-    console.log(user);
+    console.log(user); // for troubleshooting purposes
 
     if (!valid) {
       const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validator.errors;
-      console.log("updateProfile validation failed", err);
+      console.log("updateProfile validation failed", err); // for troubleshooting purposes
       next(err);
       return;
     }
@@ -431,12 +382,12 @@ router.put("/:email/profile", (req, res, next) => {
         }
       );
 
-      console.log("update user result: ", result);
+      console.log("update user result: ", result); // for troubleshooting purposes
 
       res.status(204).send();
     });
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });

@@ -11,7 +11,7 @@
 
 "use strict";
 
-// Require statements
+// imports and require statements
 const express = require("express");
 const createServer = require("http-errors");
 const path = require("path");

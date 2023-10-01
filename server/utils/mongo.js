@@ -11,6 +11,7 @@
 
 'use strict'
 
+// imports and requires
 const { MongoClient } = require('mongodb')
 const config = require('./config')
 

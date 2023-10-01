@@ -21,6 +21,7 @@ Chart.register(...registerables);
   styleUrls: ['./graph.component.css'],
 })
 export class GraphComponent implements OnInit {
+  // init variables
   purchases: any;
   itemCount: string[] = [];
   labels: string[] = [];
