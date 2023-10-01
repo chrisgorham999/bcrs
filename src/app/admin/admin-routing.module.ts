@@ -18,6 +18,7 @@ import { UserNewComponent } from './users/user-new/user-new.component';
 import { UserViewComponent } from './users/user-view/user-view.component';
 import { roleGuard } from '../shared/role.guard';
 
+// establish routes
 const routes: Routes = [
   {
     path: '',

@@ -86,9 +86,9 @@ export class ProfileComponent {
     // call the userService updateProfile()
     this.userService.updateProfile(this.email, profile).subscribe({
       next: (res) => {
-        console.log(res)
-        this.profileForm.disable();
-        this.openProfileSuccessDialog();
+        console.log(res) // for troubleshooting purposes
+        this.profileForm.disable(); // disables the form since updates are done
+        this.openProfileSuccessDialog(); // calls the success dialog to open
       },
       error: (err) => {
         console.error(err) // log the error to the console

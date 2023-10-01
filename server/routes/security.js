@@ -12,8 +12,6 @@
 "use strict";
 
 // imports and requires
-
-// imports / requires
 const express = require("express");
 const { mongo } = require("../utils/mongo");
 const bcrypt = require("bcryptjs");
@@ -34,19 +32,7 @@ const signinSchema = {
   additionalProperties: false,
 };
 
-// const securityQuestionsSchema = {
-//   type: 'array',
-//   items: {
-//     type: 'object',
-//     properties: {
-//       question: { type: 'string' },
-//       answer: { type: 'string' }
-//     },
-//     required: ['question', 'answer'],
-//     additionalProperties: false
-//   }
-// }
-
+// security questions schema
 const securityQuestionsSchema = {
   type: "array",
   items: {
@@ -62,6 +48,8 @@ const securityQuestionsSchema = {
   maxItems: 3, // Maximum number of items (security questions and answers)
 };
 
+
+// register schema for registering a new user
 const registerSchema = {
   type: "object",
   properties: {
@@ -72,7 +60,7 @@ const registerSchema = {
     address: { type: "string" },
     phoneNumber: { type: "string" },
     role: { type: "string" },
-    isDisabled: { type: "boolean" }, // if there's an error check here first
+    isDisabled: { type: "boolean" },
     selectedSecurityQuestions: securityQuestionsSchema,
   },
   required: [
@@ -88,6 +76,7 @@ const registerSchema = {
   ],
 };
 
+// resetPassword schema
 const resetPasswordSchema = {
   type: "object",
   properties: {
@@ -101,16 +90,16 @@ const resetPasswordSchema = {
 router.post("/signin", (req, res, next) => {
   try {
     const signin = req.body;
-    console.log("Sign in object:", signin);
+    console.log("Sign in object:", signin); // for troubleshooting purposes
 
-    const validator = ajv.compile(signinSchema);
+    const validator = ajv.compile(signinSchema); // validates against the signinSchema
     const valid = validator(signin);
 
     if (!valid) {
       const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validator.errors;
-      console.log("signin validation errors:", validator.errors);
+      console.log("signin validation errors:", validator.errors); // for troubleshooting purposes
       next(err);
       return;
     }
@@ -127,18 +116,18 @@ router.post("/signin", (req, res, next) => {
         console.log(
           "Unauthorized: The email or password is invalid.",
           signin.email
-        );
+        ); // for troubleshooting purposes
         next(err);
         return;
       }
 
-      let passwordIsValid = bcrypt.compareSync(signin.password, user.password);
+      let passwordIsValid = bcrypt.compareSync(signin.password, user.password); // salts the password
 
       if (!passwordIsValid) {
         const err = new Error("Unauthorized");
         err.status = 401;
         err.message = "Unauthorized: The email or password is invalid.";
-        console.log("Unauthorized: The email or password is invalid.", err);
+        console.log("Unauthorized: The email or password is invalid.", err); // for troubleshooting purposes
         next(err);
         return;
       }
@@ -146,7 +135,7 @@ router.post("/signin", (req, res, next) => {
       res.send(user);
     }, next);
   } catch (err) {
-    console.log("err");
+    console.log("err"); // for troubleshooting purposes
     next(err);
   }
 });
@@ -155,20 +144,20 @@ router.post("/signin", (req, res, next) => {
 router.post("/register", (req, res, next) => {
   try {
     const { user } = req.body;
-    console.log("User:", user);
-    const validate = ajv.compile(registerSchema);
+    console.log("User:", user); // for troubleshooting purposes
+    const validate = ajv.compile(registerSchema); // validate against the registerSchema
     const valid = validate(user);
 
     if (!valid) {
       const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validate.errors;
-      console.log("user validation errors", validate.errors);
+      console.log("user validation errors", validate.errors); // for troubleshooting purposes
       next(err);
       return;
     }
 
-    user.password = bcrypt.hashSync(user.password, saltRounds);
+    user.password = bcrypt.hashSync(user.password, saltRounds); // salt password
 
     mongo(async (db) => {
       const users = await db
@@ -177,7 +166,7 @@ router.post("/register", (req, res, next) => {
         .sort({ email: 1 }) // sort by emails
         .toArray();
 
-      console.log("User List:", users);
+      console.log("User List:", users); // for troubleshooting purposes
 
       const userExists = users.find((usr) => usr.email === user.email);
 
@@ -185,7 +174,7 @@ router.post("/register", (req, res, next) => {
         const err = new Error("Bad Request");
         err.status = 400;
         err.message = "User for that email already exists";
-        console.log("User already exists", err);
+        console.log("User already exists", err); // for troubleshooting purposes
         next(err);
         return;
       }
@@ -202,22 +191,22 @@ router.post("/register", (req, res, next) => {
         isDisabled: false,
         selectedSecurityQuestions: user.selectedSecurityQuestions,
       };
-      console.log("User to be inserted into MongoDB:", newUser);
+      console.log("User to be inserted into MongoDB:", newUser); // for troubleshooting purposes
 
       const result = await db.collection("users").insertOne(newUser);
 
-      console.log("MongoDB Result:", result);
+      console.log("MongoDB Result:", result); // for troubleshooting purposes
       res.send({ id: result.insertedId });
     }, next);
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
   }
 });
 
 // verifyUser API
 router.post("/verify/users/:email", (req, res, next) => {
   try {
-    const email = req.params.email;
+    const email = req.params.email; // pull the email needed
     console.log("User email:", email); // for troubleshooting purposes
 
     mongo(async (db) => {
@@ -231,11 +220,11 @@ router.post("/verify/users/:email", (req, res, next) => {
         return;
       }
 
-      console.log("selected user", user);
+      console.log("selected user", user); // for troubleshooting purposes
       res.send(user);
     }, next);
   } catch (err) {
-    console.error("err", err);
+    console.error("err", err); // for troubleshooting purposes
     next(err);
   }
 });
@@ -243,9 +232,9 @@ router.post("/verify/users/:email", (req, res, next) => {
 // verifySecurityQuestions API
 router.post("/verify/users/:email/security-questions", (req, res, next) => {
   try {
-    const email = req.params.email;
+    const email = req.params.email; // pull the email
     const { securityQuestions } = req.body;
-    console.log(`Email: ${email}\nSecurity Questions: ${securityQuestions}`);
+    console.log(`Email: ${email}\nSecurity Questions: ${securityQuestions}`); // for troubleshooting purposes
     const validate = ajv.compile(securityQuestionsSchema);
     const valid = validate(securityQuestions);
 
@@ -253,7 +242,7 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
       const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validate.errors;
-      console.log("securityQuestions validation errors", validate.errors);
+      console.log("securityQuestions validation errors", validate.errors); // for troubleshooting purposes
       next(err);
       return;
     }
@@ -264,15 +253,16 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
       if (!user) {
         const err = new Error("Not Found");
         err.status = 404;
-        console.log("User not found", err);
+        console.log("User not found", err); // for troubleshooting purposes
         next(err);
         return;
       }
 
-      console.log("Selected Email", user);
+      console.log("Selected Email", user); // for troubleshooting purposes
 
       const userSecurityQuestions = user.selectedSecurityQuestions;
 
+      // if answers match then send the new password, otherwise throw an error
       if (
         securityQuestions[0].answer !== userSecurityQuestions[0].answer ||
         securityQuestions[1].answer !== userSecurityQuestions[1].answer ||
@@ -281,7 +271,7 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
         const err = new Error("Unauthorized");
         err.status = 401;
         err.message = "Unauthorized: Security Questions do not match";
-        console.log("Unauthorized: security questions do not match", err);
+        console.log("Unauthorized: security questions do not match", err); // for troubleshooting purposes
         next(err);
         return;
       }
@@ -289,7 +279,7 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
       res.send(user);
     }, next);
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });
@@ -297,9 +287,9 @@ router.post("/verify/users/:email/security-questions", (req, res, next) => {
 // resetPassword API
 router.post("/users/:email/reset-password", (req, res, next) => {
   try {
-    const email = req.params.email;
+    const email = req.params.email; // pulls the email needed
     const user = req.body;
-    console.log("User email", email);
+    console.log("User email", email); // for troubleshooting purposes
     const validate = ajv.compile(resetPasswordSchema);
     const valid = validate(user);
 
@@ -307,12 +297,12 @@ router.post("/users/:email/reset-password", (req, res, next) => {
       const err = new Error("Bad Request");
       err.status = 400;
       err.errors = validate.errors;
-      console.log("password validation errors", validate.errors);
+      console.log("password validation errors", validate.errors); // for troubleshooting purposes
       next(err);
       return;
     }
 
-    const hashedPassword = bcrypt.hashSync(user.password, saltRounds);
+    const hashedPassword = bcrypt.hashSync(user.password, saltRounds); // salt the password
 
     mongo(async (db) => {
       const user = await db.collection("users").findOne({ email: email });
@@ -320,11 +310,11 @@ router.post("/users/:email/reset-password", (req, res, next) => {
       if (!user) {
         const err = new Error("Not Found");
         err.status = 404;
-        console.log("User not found", err);
+        console.log("User not found", err); // for troubleshooting purposes
         next(err);
         return;
       }
-      console.log("Selected User", user);
+      console.log("Selected User", user); // for troubleshooting purposes
 
       const result = await db.collection("users").updateOne(
         { email: email },
@@ -333,11 +323,11 @@ router.post("/users/:email/reset-password", (req, res, next) => {
         }
       );
 
-      console.log("MongoDB update result", result);
+      console.log("MongoDB update result", result); // for troubleshooting purposes
       res.status(204).send();
     }, next);
   } catch (err) {
-    console.log("err", err);
+    console.log("err", err); // for troubleshooting purposes
     next(err);
   }
 });

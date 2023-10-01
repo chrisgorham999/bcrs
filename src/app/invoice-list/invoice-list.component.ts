@@ -21,27 +21,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./invoice-list.component.css']
 })
 export class InvoiceListComponent {
-
+  // init variables
   invoices: InvoiceModel[]
   successMessage: string
   errorMessage: string
   isLoading: boolean
 
   constructor(private invoiceService: InvoiceService, private router: Router) {
-    this.invoices = []
-    this.successMessage = ''
-    this.errorMessage = ''
-    this.isLoading = true
+    this.invoices = [] // set invoices to blank array
+    this.successMessage = '' // success message to blank
+    this.errorMessage = '' // set errorMessage to blank
+    this.isLoading = true // set isLoading to true
 
     this.invoiceService.getInvoices().subscribe({
       next: (invoices: any) => {
         this.invoices = invoices
-        console.log('Invoice List:', this.invoices)
+        console.log('Invoice List:', this.invoices) // for troubleshooting purposes
         this.isLoading = false
       },
       error: (err) => {
         this.errorMessage = err.message
-        console.log(err)
+        console.log(err) // for troubleshooting purposes
         this.isLoading = false
       },
       complete: () => {
