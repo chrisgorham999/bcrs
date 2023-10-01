@@ -36,3 +36,7 @@
 .text-left {
   text-align: left;
 }
+
+.greyscale {
+  filter: grayscale(100%);
+}

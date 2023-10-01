@@ -46,7 +46,7 @@ export class ProfileComponent {
 
     console.log(this.email)
 
-    // populates the form fields with the profile datga
+    // populates the form fields with the profile data
     this.userService.getUser(this.email).subscribe({
       next: (profile: any) => {
         this.profile = profile
@@ -60,6 +60,7 @@ export class ProfileComponent {
         this.profileForm.controls['address'].setValue(this.profile.address)
         this.profileForm.controls['firstName'].setValue(this.profile.firstName)
         this.profileForm.controls['lastName'].setValue(this.profile.lastName)
+
       }
     })
 
