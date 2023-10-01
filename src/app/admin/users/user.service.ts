@@ -56,6 +56,11 @@ export class UserService {
     return this.http.delete('/api/users/' + email)
     }
 
+  // refreshes the page to show the new info
+  pageRefresh() {
+    location.reload()
+  }
+
 }
 
 

@@ -3,7 +3,7 @@
 ; Title: profile.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 28 September 2023
-; Last Updated: 29 September 2023
+; Last Updated: 30 September 2023
 ; Description: This code supports the Profile Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -15,6 +15,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileViewModel } from '../profile-view-model';
 import { UserService } from '../admin/users/user.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ProfileSuccessComponent } from '../dialogs/profile-success/profile-success.component';
 
 @Component({
   selector: 'app-profile',
@@ -33,7 +35,7 @@ export class ProfileComponent {
     address: ['', Validators.compose([Validators.required])],
   })
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private fb: FormBuilder, private matDialog: MatDialog) {
     this.profile = {} as ProfileViewModel // init profile variable
     this.profileForm.disable(); // disable the form to start
 
@@ -85,17 +87,23 @@ export class ProfileComponent {
       next: (res) => {
         console.log(res)
         this.profileForm.disable();
-        alert('Profile Updated Successfully!')
-        this.pageRefresh();
+        this.openProfileSuccessDialog();
       },
       error: (err) => {
         console.error(err) // log the error to the console
       }
     })
   }
-
+  // refreshes the page to show the new info
   pageRefresh() {
     location.reload()
+  }
+
+  // opens the success dialog
+  openProfileSuccessDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    this.matDialog.open(ProfileSuccessComponent, dialogConfig);
   }
 
 }
