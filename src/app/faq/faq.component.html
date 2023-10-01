@@ -3,7 +3,7 @@
 ; Title: nav.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 19 September 2023
-; Last Updated: 22 September 2023
+; Last Updated: 30 September 2023
 ; Description: This code supports the HTML functionality for the FAQ Component
 ; Sources Used: Bellevue University WEB-450 GitHub
 ; MAT Expansion Panels: https://material.angular.io/components/expansion/overview
@@ -14,9 +14,9 @@
   <br />
   <!--First Column-->
   <div class="col faq-padding-left">
-    <br />
+    <br>
     <h2>Account FAQ:</h2>
-    <br />
+    <br>
 
     <!--How To Register For A New Account-->
     <mat-expansion-panel>
@@ -41,7 +41,8 @@
 
       <p><b>Step 4: </b>Sign in using the email address and password you entered from Step 3.</p>
     </mat-expansion-panel>
-    <br />
+    <br>
+
     <!--How To Reset A Password-->
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -73,8 +74,43 @@
       width="50%"
       alt="image showing where the Forgot Password button is"><br><br>
     </mat-expansion-panel>
+    <br>
+    <!--How To Edit My Profile-->
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> How do I edit my profile? </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p><b>Step 1: </b>Navigate to the My Profile page.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep1.png"
+    width="50%"
+    alt="image showing where the My Profile link is"><br><br>
+    <p><b>Step 2: </b>Click the Edit button.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep2.png"
+    width="50%"
+    alt="image showing where the Edit button is"><br><br>
+    <p><b>Step 3: </b>After you click the edit button, the form will "enable" and you will be able to change any of the information in the fields. Click the Save button when you're done.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep3.png"
+    width="50%"
+    alt="image showing where the Save button is"><br><br>
+    <p><b>Step 4: </b>A success dialog will display and then the page will refresh and you'll see your new information displayed.</p>
+    <img
+    class="zoom rounded"
+    src="./assets/profilestep4.png"
+    width="50%"
+    alt="image showing Profile Updated Successfully dialog"><br><br>
+  </mat-expansion-panel>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
+
+
+
 
   <!--Second Column-->
   <div class="col faq-padding-left">
@@ -87,7 +123,37 @@
       <mat-expansion-panel-header>
         <mat-panel-title> How do I make an invoice? </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>Coming Soon!</p>
+      <p><b>Step 1: </b> Navigate to the <a routerLink="/service-repair" target="_blank">Add Invoice</a> page.</p>
+      <p><b>Step 2: </b> Fill out the Customer Information (Customer Email, Customer Full Name).</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep2.png"
+      width="50%"
+      alt="image showing where the Customer Email and Customer Full Name fields are"><br><br>
+      <p><b>Step 3:</b> Fill out the Invoice Date (must be in the yyyy-mm-dd format).</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep3.png"
+      width="50%"
+      alt="image showing where the Invoice Date field is"><br><br>
+      <p><b>Step 4:</b> Select all fixed cost services that the customer has requested by checking the applicable check boxes.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep4.png"
+      width="50%"
+      alt="image showing where the Fixed Cost Services checkboxes are"><br><br>
+      <p><b>Step 5: </b>If the customer has any custom work that they want performed, enter the total number of hours (fractional hours i.e. "1.5" are okay) the work will take and the total cost for the parts (if applicable) for this custom work.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep5.png"
+      width="50%"
+      alt="image showing where the the Custom Work Labor and Parts fields are"><br><br>
+      <p><b>Step 6: </b>Click the "Create Invoice" button at the bottom of the form. The "Create Invoice" button will be greyed out (disabled) if there are any errors or missing items on the form. Once you hit the button, you will see the Invoice Created Successfully dialog box and you will automatically be redirected to the <a routerLink="/invoice-list" target="_blank">Invoice List</a> page where you will see your newly created invoice.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/invoicestep6.png"
+      width="50%"
+      alt="image showing where the Create Invoice button is"><br><br>
     </mat-expansion-panel>
     <br />
 
@@ -95,10 +161,29 @@
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
-          How do I make a service repair request?
+          How do I print an invoice?
         </mat-panel-title>
       </mat-expansion-panel-header>
-      <p>Coming Soon!</p>
+      <p><b>Step 1: </b> Navigate to the <a routerLink="/invoice-list" target="_blank">Invoice List</a> page.</p>
+      <p><b>Step 2: </b> Search the entries for the invoice you wish to print. If you know the customer email or custom name, hit ctrl-f to search to find it easier.</p>
+      <p><b>Step 3: </b> Click the yellow Invoice Number button for the invoice you wish to print. This will redirect you automatically to the invoice view page for that individual invoice.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/printstep3.png"
+      width="50%"
+      alt="image showing where the yellow Invoice Number button is"><br><br>
+      <p><b>Step 4: </b> Click the print icon on the invoice. This will initiate the computer's print function. All background colors and unnecessary formatting will automatically be hidden in order to print a clean invoice for the customer.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/printstep4.png"
+      width="50%"
+      alt="image showing where the print icon is"><br><br>
+      <p><b>Step 5:</b> Click print on your computer for the printer that you wish to use.</p>
+      <img
+      class="zoom rounded"
+      src="./assets/printstep5.png"
+      width="50%"
+      alt="image showing where the print function button is"><br><br>
     </mat-expansion-panel>
     <br /><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
   </div>
@@ -263,4 +348,7 @@
     <!--creates some room at the end of the page between the footer-->
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br><br><br><br><br><br><br><br>
   </div>
+
+
+
 </div>

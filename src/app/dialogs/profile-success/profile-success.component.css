@@ -1,0 +1,23 @@
+/*
+======================================
+; Title: profile-success.component.css
+; Author: Chris Gorham, Shane Hingtgen
+; Date Created: 30 September 2023
+; Last Updated: 30 September 2023
+; Description: This code supports styling for the Profile Success Component
+; Sources Used: N/A
+;=====================================
+*/
+
+
+.font-yellow {
+  color: #FFD800;
+}
+
+.bg-potter-yellow {
+  background-color: #FFD800;
+}
+
+.bg-black {
+  background-color: black;
+}

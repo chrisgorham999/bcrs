@@ -3,7 +3,7 @@
 ; Title: app.module.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 28 September 2023
+; Last Updated: 30 September 2023
 ; Description: This code supports the App Module and handles all imports
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -26,6 +26,7 @@ import { InvoiceViewComponent } from './invoice-view/invoice-view.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -37,6 +38,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
 import { GraphComponent } from './graph/graph.component';
+import { ProfileSuccessComponent } from './dialogs/profile-success/profile-success.component';
+import { InvoiceSuccessComponent } from './dialogs/invoice-success/invoice-success.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +56,8 @@ import { GraphComponent } from './graph/graph.component';
     ProfileComponent,
     ServiceRepairComponent,
     GraphComponent,
+    ProfileSuccessComponent,
+    InvoiceSuccessComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +69,7 @@ import { GraphComponent } from './graph/graph.component';
     MatCardModule,
     MatCheckboxModule,
     MatDatepickerModule,
+    MatDialogModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,

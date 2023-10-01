@@ -3,19 +3,20 @@
 ; Title: service-repair.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 26 September 2023
-; Last Updated: 27 September 2023
+; Last Updated: 30 September 2023
 ; Description: This code supports the Service Repair Component
 ; Sources Used: Bellevue University WEB-450 Coding Sessions
 ;=====================================
 */
 
-
 // imports
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { Router } from '@angular/router';
-import { InvoiceService } from '../invoice.service';
 import { InvoiceModel } from '../invoice-model';
+import { InvoiceService } from '../invoice.service';
+import { InvoiceSuccessComponent } from '../dialogs/invoice-success/invoice-success.component';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 // the interface for the local Service that will assign the services name, price, and a state to tell whether they have been checked or not
 interface Service {
@@ -57,7 +58,7 @@ export class ServiceRepairComponent {
   errorMessage: string;
 
 
-  constructor(private fb: FormBuilder, private router: Router, private invoiceService: InvoiceService) {
+  constructor(private fb: FormBuilder, private router: Router, private invoiceService: InvoiceService, private matDialog: MatDialog) {
     this.errorMessage = '';
   }
 
@@ -122,7 +123,10 @@ export class ServiceRepairComponent {
     this.invoiceService.createTheInvoice(invoice).subscribe({
       next: (res) => {
         console.log(res); // for troubleshooting
+        this.openInvoiceSuccessDialog(); // open the success dialog
         this.router.navigate(['/invoice-list']);
+
+
       },
       // error handling
       error: (err) => {
@@ -134,6 +138,13 @@ export class ServiceRepairComponent {
       }
     })
   }
+
+    // opens the success dialog
+    openInvoiceSuccessDialog() {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      this.matDialog.open(InvoiceSuccessComponent, dialogConfig);
+    }
 }
 
 
