@@ -3,7 +3,7 @@
 ; Title: app.module.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 07 September 2023
-; Last Updated: 30 September 2023
+; Last Updated: 03 October 2023
 ; Description: This code supports the App Module and handles all imports
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -37,7 +37,6 @@ import { NgModule } from '@angular/core';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ServiceRepairComponent } from './service-repair/service-repair.component';
-import { GraphComponent } from './graph/graph.component';
 import { ProfileSuccessComponent } from './dialogs/profile-success/profile-success.component';
 import { InvoiceSuccessComponent } from './dialogs/invoice-success/invoice-success.component';
 
@@ -55,7 +54,6 @@ import { InvoiceSuccessComponent } from './dialogs/invoice-success/invoice-succe
     NotFoundComponent,
     ProfileComponent,
     ServiceRepairComponent,
-    GraphComponent,
     ProfileSuccessComponent,
     InvoiceSuccessComponent,
   ],

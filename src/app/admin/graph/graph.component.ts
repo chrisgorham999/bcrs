@@ -3,7 +3,7 @@
 ; Title: invoice-list.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 27 September 2023
-; Last Updated: 29 September 2023
+; Last Updated: 03 October 2023
 ; Description: This code supports the Graph Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -11,7 +11,7 @@
 
 // imports
 import { Component, OnInit } from '@angular/core';
-import { InvoiceService } from '../invoice.service';
+import { InvoiceService } from 'src/app/invoice.service';
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
