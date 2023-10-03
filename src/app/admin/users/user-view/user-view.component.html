@@ -3,17 +3,20 @@
 ; Title: user-view.component.html
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 14 September 2023
+; Last Updated: 03 October 2023
 ; Description: This code supports the HTML functionality for User View Component
 ; Sources Used: Bellevue University WEB-450 GitHub
 ;=====================================
 -->
 
 <div class="container-fluid pt-2">
-  <h1 class="text-center">Welcome to the User View Page!</h1>
+
 
   <div class="row justify-content-center pt-4">
     <div class="col-sm-10 col-md-8 col-lg-6">
+      <!--logo-->
+      <div class="text-center"><img src="./assets/user-view-logo.png" width="60%" alt="Logo displaying a computer with text next to it that says User View - Edit User Info"></div><hr>
+      <!--logo end-->
       <div class="card">
         <div class="card-body bg-black font-yellow">
           <form [formGroup]="userForm" (ngSubmit)="updateUser()">
@@ -209,5 +212,7 @@
       <a routerLink="/admin/users" class="text-underline-hover text-dark"
         ><button mat-raised button class="btn bg-black font-yellow">Return To User List</button></a>
     </div>
+    <br><br><br><br><br><br><br><br><br>
   </div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
