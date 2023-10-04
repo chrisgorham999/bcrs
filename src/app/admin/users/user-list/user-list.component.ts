@@ -3,7 +3,7 @@
 ; Title: user-list.component.ts
 ; Author: Chris Gorham, Shane Hingtgen
 ; Date Created: 14 September 2023
-; Last Updated: 16 September 2023
+; Last Updated: 04 October 2023
 ; Description: This code supports the User List Component
 ; Sources Used: Bellevue University WEB-450 GitHub Repository
 ;=====================================
@@ -56,7 +56,6 @@ export class UserListComponent {
     }
     let user = {} as UserDisableModel;
     user.isDisabled = true;
-    console.log('You made it here')
     console.log(user) // for troubleshooting purposes
 
     this.userService.disableUser(email, user).subscribe({
